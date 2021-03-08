@@ -1,0 +1,14 @@
+[RESOURCES]
+recs_teste
+recs_arranjo
+[VARIABLES]
+arranjar artigos.NumberOut
+junta computadores do cliente.NumberOut
+Dispose 1.NumberOut
+teste.NumberIn
+total
+teste correr bem?.NumberOut True
+teste.NumberOut
+teste correr bem?.NumberOut False
+arranjar artigos.NumberIn
+chegada de clientes.NumberOut

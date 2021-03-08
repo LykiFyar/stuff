@@ -1,0 +1,8 @@
+[RESOURCES]
+[VARIABLES]
+via a secçao A?.NumberOut True
+sair do supermercado.NumberOut
+via a secçao A?.NumberOut False
+chegada clientes.NumberOut
+vai à secçao B?.NumberOut False
+vai à secçao B?.NumberOut True

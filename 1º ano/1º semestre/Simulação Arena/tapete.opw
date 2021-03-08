@@ -1,0 +1,12 @@
+[RESOURCES]
+robot_inspetor
+robot
+[VARIABLES]
+robot termina trabalho na peça.NumberOut
+robot termina trabalho na peça.NumberIn
+chegada material.NumberOut
+robo inicia trabalho na peça.NumberOut
+robo inicia trabalho na peça.NumberIn
+Dispose 1.NumberOut
+inspeçao.NumberIn
+inspeçao.NumberOut
