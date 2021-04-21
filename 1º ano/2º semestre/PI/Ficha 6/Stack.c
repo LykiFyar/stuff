@@ -65,20 +65,22 @@ int dupStack (DStack s) {
 }
 
 void DinitStack (DStack s) {
-	
+	s->size = Max;
+	s->sp = 0;
 }
 
-int  DisEmpty (DStack s) {
-	return 1;
+int DisEmpty (DStack s) {
+	return (s->sp == 0);
 }
 
-int  Dpush (DStack s, int x){
-	int r=0;
-	
-	return r;
+int Dpush (DStack s, int x){
+	if (s->sp == s->size) dupStack(s);
+		s->values[s->sp] = x;
+		s->sp++;
+	return 0;
 }
 
-int  Dpop (DStack s, int *x){
+int Dpop (DStack s, int *x){
 	int r=0;
 	
 	return r;
