@@ -78,7 +78,7 @@ int Dpush (DStack s, int x){
 		s->values[s->sp] = x;
 		s->sp++;
 	return 0;
-}
+} // needs update
 
 int Dpop (DStack s, int *x){
 	int r=0;
