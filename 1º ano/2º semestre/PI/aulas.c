@@ -1,42 +1,26 @@
 #include <stdio.h>
 
-/*
-int main() {
-   int x,y;
-    x=1; y=2;
-    x=x+1; y=x+y+5;
-    printf("%d %d\n",x,y);
- return 0;
-}
+// *x = o valor apontado por x
+// int *x = apontador x de inteiros
+// &x = endereço de x
 
-//
-int main() {
-   int n, i;
-   n=5;
-   i=0;
-   while (i<n) {
-     putchar ('#');
-     i++; }
-//
-int main() {
-   int n, i;
-   n=5;
-   for (i=0;i<n;i++) 
-   putchar ('#');
+
+/* Modificadores 
+    %d - inteiros
+    %f - reais
+    %c - carateres
+    %s - strings    
+
+   CPP - C PreProcessor
+   CC - C Compiler
+   Linker - ...
+
+Canais de input/output i/o
+
+ stdout - monitor
+ stderr - canal de erros, normalmente associado ao monitor
+ stdprn - impressora
+ stdin - canal de entrada, teclado
 */
- void replicate (int n, char c) {
-   for (;n>0;n--) 
-     putchar (c);
- }
-int main() {
-  int a = 5;
-  
-  replicate (a,'@');
-  
-   return 0;
-}
-
-
-
 
 
