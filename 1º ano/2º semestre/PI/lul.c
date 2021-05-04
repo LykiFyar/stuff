@@ -84,7 +84,7 @@ int main () {
 }
 
 miniteste 4 ---
-*/
+
 
 void bubble_sort(int list[], int n)
 {
@@ -126,8 +126,54 @@ int main() {
   return 0;
 }
 
+miniteste 5--
 
 
+typedef struct slist {
+  int valor;
+  struct slist * prox;
+} *LInt;
+
+LInt newLInt (int x, LInt xs) {
+  LInt r = malloc (sizeof(struct slist));
+  if (r!=NULL) {
+    r->valor = x;
+    r->prox = xs;
+  }
+  return r;
+}
 
 
+// Devolve o endereço da última célula da lista ou NULL se for vazia
 
+LInt last (LInt l) {
+  LInt a = l;
+  while (l) {
+    // opções corretas :
+    // if (!l->prox) return l;
+    // if (!l->prox) a = l;
+    // a = l;
+    l = l->prox;
+  }
+  return a;
+}
+
+
+// Apaga o último elemento de uma lista não vazia
+// e devolve o endereço da cabeça da lista resultante
+
+LInt init (LInt l) {
+  LInt a = NULL;
+  LInt b = l;
+  while (b->prox) {
+    a = b;
+    b = b->prox;
+  }
+  // opções:
+  // free(b); if (a) {a->prox = NULL; a = l;}   (V)
+  // free(b); if (a) a->prox = NULL; a = l;  (X)
+  // if (a) {free(b); a->prox = NULL; a = l;}   (X)
+  // if (a) {a->prox = NULL; a = l;} free(b);  (V)
+  return a;
+}
+*/
