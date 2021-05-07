@@ -91,6 +91,7 @@ Palavras acrescenta (Palavras l, char *p){
         return l;
     }
 }
+
 Palavras maisFreq (Palavras l){
     Palavras res = NULL;
     int max = 0;
