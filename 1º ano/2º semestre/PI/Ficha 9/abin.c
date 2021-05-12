@@ -20,7 +20,7 @@ ABin RandArvFromArray (int v[], int N) {
     return a;	
 }
 
-void dumpABin (ABin a, int N){  // TRY TODO - already made on codeboard
+void dumpABin (ABin a, int N){  // TRY TODO - already made on codeboard - usar queues por ex.
     if(a) {
         dumpABin(a->esq,N);
         printf("%d ", a->valor);
