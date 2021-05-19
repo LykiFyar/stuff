@@ -17,12 +17,12 @@ int main (){
   printf ("Primeira árvore de teste (%d elementos)\n", N);
   dumpABin (a1, N);
   
-  /*
+  
   printf ("Espinha\n");
-  constroiEspinha_sol (&a1);
+  constroiEspinha (&a1);
 
   dumpABin (a1, N);
-  
+  /* 
   printf ("Equilibrar espinha\n");
   equilibraEspinha_sol (&a1,N);
   dumpABin (a1, N);
