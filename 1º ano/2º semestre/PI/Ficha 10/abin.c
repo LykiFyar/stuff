@@ -115,9 +115,9 @@ ABin removeMenorAlt (ABin *a){
 int constroiEspinhaAux (ABin *a, ABin *ult){
     int r = 0;
     if(*a) {
-        constroiEspinhaAux(&((*a)->esq), ult);
+        r = constroiEspinhaAux(&((*a)->esq), ult);
         rodaDireita(a);
-        constroiEspinhaAux(&((*a)->dir), ult);
+        r = r + 1 + constroiEspinhaAux(&((*a)->dir), ult);
     }
     return r;
 }
