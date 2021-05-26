@@ -10,6 +10,6 @@ int while_loop(int x, int y, int n) {
 int main() {
     int a=4, b=2, c=3, x;
     x = while_loop(4,2,3);
-    printf("%d\n",x)
+    printf("%d\n",x);
     return x;
 }

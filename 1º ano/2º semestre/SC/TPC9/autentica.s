@@ -6,11 +6,13 @@
 autentica:
         pushl   %ebp
         movl    %esp, %ebp
+#       código "hacked" 
         movl    8(%ebp),%eax
         movl    (%eax),%eax
+#       código original em comentário
 #       movl    8(%ebp), %eax
-#       movl    (%eax), %eax
-#       cmpl    %eax, 12(%ebp)
+#       movl    (%eax), %eax    
+#       cmpl    %eax, 12(%ebp)  
 #       sete    %al
 #       movzbl  %al, %eax
         leave
