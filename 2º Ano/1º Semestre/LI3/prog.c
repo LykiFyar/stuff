@@ -2,11 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-struct user {
+typedef struct user {
     int public_repos;
     char* id;
-}
-user init_user(char* info){
+} USER;
+
+USER init_user(char* info){
     struct user u;
     u.public_repos = atoi(strsep(&info, ";"));
     u.id = strdup(strsep(&info, ";"));
