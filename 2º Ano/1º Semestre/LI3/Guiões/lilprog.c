@@ -19,14 +19,38 @@ typedef struct user {
     int following_list[10];
     int public_gists;
     int public_repos;
-    int is_valid;
     } USER;
 
+int* make_list(char* s) {
+    int* v, i;
+    if (*s == '[') {
+        i = 0;
+        while(*s != ']') {
+            v = realloc(v,sizeof((i+1)*int));
+            v[i] = atoi(strsep(&s, ";"));
+            i++;
+        }
+    }
+    else &v = NULL;
+    return &v;
+}
 
 USER init_user(char* info){
     struct user u;
     u.id = atoi(strsep(&info, ";"));
-
+    u.login = strdup(strsep(&info, ";"));
+    char* typeofuser = strsep(&info, ";");
+    if (strcmp(typeofuser,"Bot")) u.type = Bot;
+    else if (strcmp(typeofuser,"User")) u.type = User;
+        else if (strcmp(typeofuser,"Organization")) u.type = Organization;
+            else u.type = -1;
+    u.created_at = strdup(strsep(&info, ";"));
+    u.followers = atoi(strsep(&info, ";"));
+    u.follower_list = make_list(strdup(strsep(&info, ";")));
+    u.following = atoi(strsep(&info, ";"));
+    u.following_list = make_list(strdup(strsep(&info, ";")));
+    u.public_gists = atoi(strsep(&info, ";"));
+    u.public_repos = atoi(strsep(&info, ";"));
     return u;
 }
 
@@ -40,13 +64,7 @@ int main() {
         return 1;
     }
     fgets(buffer,200,data_file); // skip header
-    while(fgets(buffer,200,data_file)) {
-        users = realloc(users, (i+1)*sizeof(USER));
-        users[i] = init_user(data_file);
-        if (!users[i].is_valid) {
-            i--;
-        }
-        i++;
+    while(fgets(buffer,200,data_file)) { // needs review
         }
     return 0;
 }
