@@ -14,9 +14,9 @@ typedef struct user {
     TYPE type;
     char* created_at;
     int followers;
-    int follower_list[10];
+    int* follower_list;
     int following;
-    int following_list[10];
+    int* following_list;
     int public_gists;
     int public_repos;
     } USER;
@@ -25,14 +25,31 @@ int* make_list(char* s) {
     int* v, i;
     if (*s == '[') {
         i = 0;
-        while(*s != ']') {
-            v = realloc(v,sizeof((i+1)*int));
+        while(*s != ']' || *s) {
+            v = realloc(v,sizeof(int)*(i+1));
             v[i] = atoi(strsep(&s, ";"));
             i++;
         }
     }
-    else &v = NULL;
-    return &v;
+    return v;
+}
+
+void print_list(int v[], int N) {
+    int i = 0;
+    while (i<N) {
+        printf("%d;",v[i]);
+        i++;
+    }
+}
+
+void show_user(USER *users) {
+    while(users) {
+        printf("-------------\nUser id: %d\nUser login: %s\nType of user: %s\nAccount created at: %s\nFollowers: %d\nIDs of followers: ",(*users).id,(*users).login,(*users).type,(*users).created_at,(*users).followers);
+        print_list((*users).follower_list,(*users).followers);
+        printf("\nFollowing: %d\nIDs of following: ",(*users).following);
+        print_list((*users).following_list,(*users).following);
+        printf("s\nNumber of public gists: %d\nNumber of public repositories: %d\n",(*users).public_gists,(*users).public_repos);
+    }
 }
 
 USER init_user(char* info){
@@ -56,7 +73,7 @@ USER init_user(char* info){
 
 int main() {
     char buffer[200];
-    USER *users = NULL;
+    USER *users = malloc(sizeof(USER));
     int i=0;
     FILE *data_file = fopen("users.csv", "r");
     if(data_file == NULL) {
@@ -64,7 +81,14 @@ int main() {
         return 1;
     }
     fgets(buffer,200,data_file); // skip header
-    while(fgets(buffer,200,data_file)) { // needs review
-        }
+    while(fgets(buffer,200,data_file)) {
+        users = realloc(users, (i+1)*sizeof(USER));
+        users[i] = init_user(buffer);
+        i++;
+    }
+    fclose(data_file);
+    for(int j=0; j<100; j++) { 
+        show_user(users);
+    }
     return 0;
 }
