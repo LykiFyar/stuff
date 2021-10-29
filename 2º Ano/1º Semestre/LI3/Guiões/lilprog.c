@@ -33,6 +33,29 @@ int* make_list(char* s) {
     }
     return v;
 }
+char* for_print_type(TYPE type) {
+    char* s;
+    switch (type)
+    {
+    case Bot: {
+        s = "Bot";
+        break;
+    }
+    case User: {
+        s = "User";
+        break;
+    }
+    case Organization: {
+        s = "Organization";
+        break;
+    }
+    default: {
+        s = "UNKNOWN";
+        break;
+    }
+    }
+    return s;
+}
 
 void print_list(int v[], int N) {
     int i = 0;
@@ -44,7 +67,7 @@ void print_list(int v[], int N) {
 
 void show_user(USER *users) {
     while(users) {
-        printf("-------------\nUser id: %d\nUser login: %s\nType of user: %s\nAccount created at: %s\nFollowers: %d\nIDs of followers: ",(*users).id,(*users).login,(*users).type,(*users).created_at,(*users).followers);
+        printf("-------------\nUser id: %d\nUser login: %s\nType of user: %s\nAccount created at: %s\nFollowers: %d\nIDs of followers: ",(*users).id,(*users).login,for_print_type((*users).type),(*users).created_at,(*users).followers);
         print_list((*users).follower_list,(*users).followers);
         printf("\nFollowing: %d\nIDs of following: ",(*users).following);
         print_list((*users).following_list,(*users).following);
@@ -72,7 +95,7 @@ USER init_user(char* info){
 }
 
 int main() {
-    char buffer[200];
+    char buffer[10000];
     USER *users = malloc(sizeof(USER));
     int i=0;
     FILE *data_file = fopen("users.csv", "r");
@@ -80,8 +103,8 @@ int main() {
         printf("Error loading file\n");
         return 1;
     }
-    fgets(buffer,200,data_file); // skip header
-    while(fgets(buffer,200,data_file)) {
+    fgets(buffer,10000,data_file); // skip header
+    while(fgets(buffer,10000,data_file)) {
         users = realloc(users, (i+1)*sizeof(USER));
         users[i] = init_user(buffer);
         i++;
