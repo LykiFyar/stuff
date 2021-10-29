@@ -47,7 +47,7 @@ void show_user(USER *user) {
 
 USER init_user(char* info){
     struct user u;
-    int* followerlist, *followinglist;
+    int* followerlist = NULL, *followinglist = NULL;
     u.id = atoi(strsep(&info, ";"));
     u.login = strdup(strsep(&info, ";"));
     char* typeofuser = strsep(&info, ";");
