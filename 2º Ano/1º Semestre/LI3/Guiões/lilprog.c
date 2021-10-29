@@ -2,16 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef enum {
-    Bot = 0,
-    User = 1,
-    Organization = 2,
-} TYPE;
-
 typedef struct user {
     int id;
     char* login;
-    TYPE type;
+    char* type;
     char* created_at;
     int followers;
     int* follower_list;
@@ -21,40 +15,18 @@ typedef struct user {
     int public_repos;
     } USER;
 
-int* make_list(char* s) {
-    int* v, i;
+int* make_list(char* s, int* v) {
+    int i = 0;
     if (*s == '[') {
-        i = 0;
-        while(*s != ']' || *s) {
+        s += 1;
+        while(*s) {
             v = realloc(v,sizeof(int)*(i+1));
-            v[i] = atoi(strsep(&s, ";"));
+            v[i] = atoi(strsep(&s, ","));
             i++;
         }
     }
+    else v = NULL;
     return v;
-}
-char* for_print_type(TYPE type) {
-    char* s;
-    switch (type)
-    {
-    case Bot: {
-        s = "Bot";
-        break;
-    }
-    case User: {
-        s = "User";
-        break;
-    }
-    case Organization: {
-        s = "Organization";
-        break;
-    }
-    default: {
-        s = "UNKNOWN";
-        break;
-    }
-    }
-    return s;
 }
 
 void print_list(int v[], int N) {
@@ -65,32 +37,29 @@ void print_list(int v[], int N) {
     }
 }
 
-void show_user(USER *users) {
-    while(users) {
-        printf("-------------\nUser id: %d\nUser login: %s\nType of user: %s\nAccount created at: %s\nFollowers: %d\nIDs of followers: ",(*users).id,(*users).login,for_print_type((*users).type),(*users).created_at,(*users).followers);
-        print_list((*users).follower_list,(*users).followers);
-        printf("\nFollowing: %d\nIDs of following: ",(*users).following);
-        print_list((*users).following_list,(*users).following);
-        printf("s\nNumber of public gists: %d\nNumber of public repositories: %d\n",(*users).public_gists,(*users).public_repos);
-    }
+void show_user(USER *user) {
+    printf("-------------\nUser id: %d\nUser login: %s\nType of user: %s\nAccount created at: %s\nFollowers: %d\nIDs of followers: ",(*user).id,(*user).login,(*user).type,(*user).created_at,(*user).followers);
+    //print_list((*users).follower_list,(*users).followers);
+    printf("\nFollowing: %d\nIDs of following: ",(*user).following);
+    //print_list((*users).following_list,(*users).following);
+    printf("\nNumber of public gists: %d\nNumber of public repositories: %d\n",(*user).public_gists,(*user).public_repos);
 }
 
 USER init_user(char* info){
     struct user u;
+    int* followerlist, *followinglist;
     u.id = atoi(strsep(&info, ";"));
     u.login = strdup(strsep(&info, ";"));
     char* typeofuser = strsep(&info, ";");
-    if (strcmp(typeofuser,"Bot")) u.type = Bot;
-    else if (strcmp(typeofuser,"User")) u.type = User;
-        else if (strcmp(typeofuser,"Organization")) u.type = Organization;
-            else u.type = -1;
+    if (strcmp(typeofuser,"Bot") || strcmp(typeofuser,"User") || strcmp(typeofuser,"Organization")) u.type = strdup(typeofuser);
+    else u.type = "UNKNOWN";
     u.created_at = strdup(strsep(&info, ";"));
     u.followers = atoi(strsep(&info, ";"));
-    u.follower_list = make_list(strdup(strsep(&info, ";")));
+    u.follower_list = make_list(strdup(strsep(&info, "];")), followerlist);
     u.following = atoi(strsep(&info, ";"));
-    u.following_list = make_list(strdup(strsep(&info, ";")));
+    u.following_list = make_list(strdup(strsep(&info, "];")), followinglist);
     u.public_gists = atoi(strsep(&info, ";"));
-    u.public_repos = atoi(strsep(&info, ";"));
+    u.public_repos = atoi(info);
     return u;
 }
 
@@ -110,8 +79,8 @@ int main() {
         i++;
     }
     fclose(data_file);
-    for(int j=0; j<100; j++) { 
-        show_user(users);
+    for(int j=0; j<2; j++) { 
+        show_user(&(users[j]));
     }
     return 0;
 }
