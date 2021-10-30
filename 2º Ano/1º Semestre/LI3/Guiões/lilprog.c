@@ -17,21 +17,33 @@ typedef struct user {
     } USER;
 
 
-int* make_list(char s[], int* v) {
-    int i = 0;
+int* make_list(char *s, int* v) {
+    int i = 0, t;
+    char *c, *temp;
     if (*s == '[') {
         s += 1;
+        c = s;
         while(*s) {
-            v = realloc(v,(sizeof(int))*(i+1));
-            v[i] = atoi(strsep(&s, ","));
-            i++;
+            t = 0;
+            while(*c != ',' && *c != ']') {
+                c += 1;
+                t += 1;
+            }
+            if(strlen(s)) {
+                v = realloc(v,(sizeof(int))*(i+1));
+                temp = strndup(s,t);
+                v[i] = atoi(temp);
+                c += 1;
+                s = c;
+                i++;
+            }
         }
     }
     else v = NULL;
     return v;
 }
 
-void print_list(int v[], int N) {
+void print_list(int *v, int N) {
     int i = 0;
     while (i<N && v[i]) {
         printf("%d;",v[i]);
@@ -58,16 +70,18 @@ USER init_user(char* info){
 
     u.created_at = strdup(strsep(&info, ";"));
     u.followers = atoi(strsep(&info, ";"));
-    u.follower_list = make_list(strdup(strsep(&info, "];")), u.follower_list);
+    char *flwrlist = strsep(&info, ";");
+    u.follower_list = make_list(flwrlist, u.follower_list);
     u.following = atoi(strsep(&info, ";"));
-    u.following_list = make_list(strdup(strsep(&info, "];")), u.following_list);
+    char *flwglist = strdup(strsep(&info, ";"));
+    u.following_list = make_list(flwglist, u.following_list);
     u.public_gists = atoi(strsep(&info, ";"));
     u.public_repos = atoi(info);
     return u;
 }
 
 int main() {
-    char buffer[10000];
+    char buffer[100000];
     USER *users = malloc(sizeof(USER));
     int i=0;
     FILE *data_file = fopen("users.csv", "r");
@@ -75,18 +89,17 @@ int main() {
         printf("Error loading file\n");
         return 1;
     }
-    fgets(buffer,10000,data_file); // skip header
-    // while(fgets(buffer,10000,data_file)) {
-        while(i<13) {
-        fgets(buffer,10000,data_file);
+    fgets(buffer,100000,data_file); // skip header
+    while(fgets(buffer,100000,data_file)) {
         users = realloc(users, (i+1)*sizeof(USER));
         users[i] = init_user(buffer);
+        show_user(&(users[i]));
         i++;
         
     }
     fclose(data_file);
-    for(int j=0; j<100; j++) { 
-        show_user(&(users[j]));
-    }
+   // for(int j=0; j<3000000; j++) { 
+     //   show_user(&(users[j]));
+    //}
     return 0;
 }
