@@ -4,10 +4,10 @@
 #include <time.h>
 
 typedef enum {
-    Unknown,
-    User,
-    Bot,
-    Organization,    
+    Unknown = 1,
+    User = 2,
+    Bot = 3,
+    Organization = 4,    
 } TYPE;
 
 typedef struct user {
@@ -37,7 +37,7 @@ void print_type(TYPE t) {
     if (t == User) printf("User");
     else if (t == Bot) printf("Bot");
     else if (t == Organization) printf("Organization");
-    else printf("Unknown");
+    else printf("Unknown");  
 }
 
 struct tm convert_str2time(char* s) {
