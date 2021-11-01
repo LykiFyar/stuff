@@ -10,6 +10,11 @@ typedef enum {
     Organization = 4,    
 } TYPE;
 
+typedef enum {
+    NotValid = 0,
+    Valid = 1,
+} ISVALID;
+
 typedef struct user {
     int id;
     char* login;
@@ -21,8 +26,33 @@ typedef struct user {
     int* following_list;
     int public_gists;
     int public_repos;
-    int is_valid;
+    ISVALID is_valid;
 } USER;
+
+
+ISVALID validtime(struct tm t) {
+    int result = Valid;
+    time_t currenttime = time(&currenttime);
+    time_t convertedtime = mktime(&t);
+    time_t limiteinferior = 1112832000; // 7 de Abril de 2005 00:00:00 convertido com mktime(strptime)
+    if(convertedtime > currenttime || convertedtime < limiteinferior) result = NotValid;
+    return result;
+}
+
+ISVALID check_user_valid(USER u) {
+    ISVALID end = Valid;
+    if (u.id<0 ||
+        u.type == Unknown ||
+        validtime(u.created_at) == NotValid ||
+        u.followers < 0 ||
+        u.followers != (sizeof(u.follower_list)/sizeof(u.follower_list[0])) ||
+        u.following < 0 ||
+        u.following != (sizeof(u.following_list)/sizeof(u.following_list[0])) ||
+        u.public_gists < 0 ||
+        u.public_repos < 0 )
+        end = NotValid;
+    return end;
+}
 
 TYPE set_type(char* s) {
     TYPE t;
@@ -76,6 +106,8 @@ int* make_list(char *s, int* v) {
     return v;
 }
 
+
+
 void print_list(int *v, int N) {
     int i = 0;
     if (v) {
@@ -95,7 +127,7 @@ void show_user(USER *user) {
     print_list((*user).follower_list,(*user).followers);
     printf("\nFollowing: %d\nIDs of following: ",(*user).following);
     print_list((*user).following_list,(*user).following);
-    printf("\nNumber of public gists: %d\nNumber of public repositories: %d\n",(*user).public_gists,(*user).public_repos);
+    printf("\nNumber of public gists: %d\nNumber of public repositories: %d\nIs valid? : %d",(*user).public_gists,(*user).public_repos, (*user).is_valid);
 }
 
 USER init_user(char* info){
@@ -114,14 +146,14 @@ USER init_user(char* info){
     u.following_list = make_list(flwglist, u.following_list);
     u.public_gists = atoi(strsep(&info, ";"));
     u.public_repos = atoi(info);
-    u.is_valid = 0;
+    u.is_valid = check_user_valid(u);
     return u;
 }
 
 int main() {
     char buffer[3000000];
     USER *users = malloc(sizeof(USER));
-    int i=0;
+    int i=0, valids = 0, invalids = 0;
     FILE *data_file = fopen("users.csv", "r");
     if(data_file == NULL) {
         printf("Error loading file\n");
@@ -131,10 +163,13 @@ int main() {
     while(fgets(buffer,3000000,data_file)) {
         users = realloc(users, (i+1)*sizeof(USER));
         users[i] = init_user(buffer);
+        if (users[i].is_valid == Valid) valids += 1;
+        else if (users[i].is_valid == NotValid) invalids += 1;
         show_user(&(users[i]));
         i++;
         
     }
     fclose(data_file);
+    printf("Nº de users válidos: %d\nNº de users inválidos: %d\n",valids,invalids);
     return 0;
 }
