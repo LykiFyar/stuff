@@ -10,6 +10,11 @@ typedef enum {
     Organization = 4,    
 } TYPE;
 
+typedef struct {
+    int *list;
+    int counter;
+} LIST;
+
 typedef enum {
     NotValid = 0,
     Valid = 1,
@@ -21,9 +26,9 @@ typedef struct user {
     TYPE type;
     struct tm created_at;
     int followers;
-    int* follower_list;
+    LIST follower_list;
     int following;
-    int* following_list;
+    LIST following_list;
     int public_gists;
     int public_repos;
     ISVALID is_valid;
@@ -45,9 +50,9 @@ ISVALID check_user_valid(USER u) {
         u.type == Unknown ||
         validtime(u.created_at) == NotValid ||
         u.followers < 0 ||
-        u.followers != (sizeof(u.follower_list)/sizeof(u.follower_list[0])) ||
+        u.followers != u.follower_list.counter ||
         u.following < 0 ||
-        u.following != (sizeof(u.following_list)/sizeof(u.following_list[0])) ||
+        u.following != u.following_list.counter ||
         u.public_gists < 0 ||
         u.public_repos < 0 )
         end = NotValid;
@@ -56,9 +61,9 @@ ISVALID check_user_valid(USER u) {
 
 TYPE set_type(char* s) {
     TYPE t;
-    if (strcmp(s,"User")) t = User;
-    else if (strcmp(s,"Bot")) t = Bot;
-    else if (strcmp(s,"Organization")) t = Organization;
+    if (strcmp(s,"User") == 0) t = User;
+    else if (strcmp(s,"Bot") == 0) t = Bot;
+    else if (strcmp(s,"Organization") == 0) t = Organization;
     else t = Unknown;
     return t;
 }
@@ -80,30 +85,32 @@ void print_time(struct tm t) {
     printf("%04d-%02d-%02d %02d:%02d:%02d",t.tm_year + 1900,t.tm_mon + 1, t.tm_mday, t.tm_hour, t.tm_min, t.tm_sec);
 }
 
-int* make_list(char *s, int* v) {
+LIST make_list(char *s, LIST l) {
     int i = 0, t;
     char *c, *temp;
+    l.list = NULL;
+    l.counter = 0;
     if (*s == '[') {
         s += 1;
         c = s;
-        while(*s) {
+        while(*s && *s != ']') {
             t = 0;
             while(*c != ',' && *c != ']') {
                 c += 1;
                 t += 1;
             }
             if(strlen(s)) {
-                v = realloc(v,(sizeof(int))*(i+1));
+                l.list = realloc(l.list,(sizeof(int))*(i+1));
                 temp = strndup(s,t);
-                v[i] = atoi(temp);
+                l.list[i] = atoi(temp);
+                l.counter += 1;
                 c += 1;
                 s = c;
                 i++;
             }
         }
     }
-    else v = NULL;
-    return v;
+    return l;
 }
 
 
@@ -124,15 +131,14 @@ void show_user(USER *user) {
     printf("\nAccount created at: ");
     print_time((*user).created_at);
     printf("\nFollowers: %d\nIDs of followers: ",(*user).followers);
-    print_list((*user).follower_list,(*user).followers);
+    print_list((*user).follower_list.list,(*user).followers);
     printf("\nFollowing: %d\nIDs of following: ",(*user).following);
-    print_list((*user).following_list,(*user).following);
-    printf("\nNumber of public gists: %d\nNumber of public repositories: %d\nIs valid? : %d",(*user).public_gists,(*user).public_repos, (*user).is_valid);
+    print_list((*user).following_list.list,(*user).following);
+    printf("\nNumber of public gists: %d\nNumber of public repositories: %d\nIs valid? : %d\n",(*user).public_gists,(*user).public_repos, (*user).is_valid);
 }
 
 USER init_user(char* info){
     struct user u;
-    u.follower_list = NULL, u.following_list = NULL;
     u.id = atoi(strsep(&info, ";"));
     u.login = strdup(strsep(&info, ";"));
     char* typeofuser = strsep(&info, ";");
@@ -150,6 +156,38 @@ USER init_user(char* info){
     return u;
 }
 
+char* type2str(TYPE t) {
+    char* s;
+    if (t == User) s = "User";
+    else if (t == Bot) s = "Bot";
+    else if (t == Organization) s = "Organization";
+    return s;
+}
+
+char* list2str(LIST l) {
+    char* s = "[";
+    int i;
+    if(l.counter != 0) {
+        i = 0;
+        while(l.list[i]) {
+            // TODO
+        }
+    }
+    else s = "[]";
+    return s;
+}
+
+void fwriteuser(USER user) {
+    char* time;
+    strftime(time,20,"%4Y-%2m-%2d %2H:%2M:%2S",&(user.created_at));
+    fprintf("users-ok.csv","%d;%s;%s;%s;%d;%s;%d;%s;%d;%d\n",user.id,user.login,type2str(user.type),time,user.followers,"follower_list",user.following, "following_list", user.public_gists, user.public_repos);
+}
+
+
+void fwriteusers(USER* users, ISVALID value) {
+//    fwriteuser()
+}
+
 int main() {
     char buffer[3000000];
     USER *users = malloc(sizeof(USER));
@@ -161,15 +199,19 @@ int main() {
     }
     fgets(buffer,3000000,data_file); // skip header
     while(fgets(buffer,3000000,data_file)) {
+      /*  while (i<15) {         // para testes com poucos registos
+            fgets(buffer,3000000,data_file); */
         users = realloc(users, (i+1)*sizeof(USER));
         users[i] = init_user(buffer);
         if (users[i].is_valid == Valid) valids += 1;
         else if (users[i].is_valid == NotValid) invalids += 1;
-        show_user(&(users[i]));
+        // show_user(&(users[i]));
         i++;
         
     }
     fclose(data_file);
     printf("Nº de users válidos: %d\nNº de users inválidos: %d\n",valids,invalids);
+    fopen("users-ok.csv","w");
+    fwriteusers(users,Valid);
     return 0;
 }
