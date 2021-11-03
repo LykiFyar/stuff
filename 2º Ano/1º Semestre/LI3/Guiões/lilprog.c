@@ -161,37 +161,56 @@ char* type2str(TYPE t) {
     if (t == User) s = "User";
     else if (t == Bot) s = "Bot";
     else if (t == Organization) s = "Organization";
+    else s = "Unknown";
     return s;
 }
 
 char* list2str(LIST l) {
-    char* s = "[";
+    char* s = "[", *c = NULL;
     int i;
     if(l.counter != 0) {
         i = 0;
         while(l.list[i]) {
-            // TODO
+            c = sprintf(c,"%d",l.list[i]);
+            s = realloc(s,sizeof(s)+strlen(c)+1);
+            strcat(c," ");
+            strcat(s, c);
         }
+        s = realloc(s,sizeof(s)+1);
+        strcat(s,"]");
     }
     else s = "[]";
     return s;
 }
 
-void fwriteuser(USER user) {
-    char* time;
+void fwriteuser(USER user, FILE **stream) {
+    char* time = malloc(20);
     strftime(time,20,"%4Y-%2m-%2d %2H:%2M:%2S",&(user.created_at));
-    fprintf("users-ok.csv","%d;%s;%s;%s;%d;%s;%d;%s;%d;%d\n",user.id,user.login,type2str(user.type),time,user.followers,"follower_list",user.following, "following_list", user.public_gists, user.public_repos);
+    fprintf((*stream),"%d;%s;%s;%s;%d;%s;%d;%s;%d;%d\n",user.id,user.login,type2str(user.type),time,user.followers,"follower_list",user.following, "following_list", user.public_gists, user.public_repos);
 }
 
 
-void fwriteusers(USER* users, ISVALID value) {
-//    fwriteuser()
+void fwriteusers(USER* users, ISVALID value, int maxusers, FILE **stream) {
+    int i = 0;
+    while(i<maxusers) {
+        if(value == users[i].is_valid) fwriteuser(users[i], stream);
+        i++;
+    }
+}
+
+void fwriteusers2streams(USER* users, int maxusers, FILE **validstream, FILE **invalidstream) {
+    int i = 0;
+    while(i<maxusers) {
+        if(users[i].is_valid == Valid) fwriteuser(users[i], validstream);
+        else fwriteuser(users[i], invalidstream);
+        i++;
+    }
 }
 
 int main() {
     char buffer[3000000];
     USER *users = malloc(sizeof(USER));
-    int i=0, valids = 0, invalids = 0;
+    int i=0, valids = 0, invalids = 0, maxusers = 0;
     FILE *data_file = fopen("users.csv", "r");
     if(data_file == NULL) {
         printf("Error loading file\n");
@@ -205,13 +224,24 @@ int main() {
         users[i] = init_user(buffer);
         if (users[i].is_valid == Valid) valids += 1;
         else if (users[i].is_valid == NotValid) invalids += 1;
+        maxusers += 1;
         // show_user(&(users[i]));
         i++;
         
     }
     fclose(data_file);
     printf("Nº de users válidos: %d\nNº de users inválidos: %d\n",valids,invalids);
-    fopen("users-ok.csv","w");
-    fwriteusers(users,Valid);
+    /*FILE *fprintvalid = fopen("users-ok.csv","w");
+    fwriteusers(users,Valid,maxusers, &fprintvalid);
+    fclose(fprintvalid);
+    FILE *fprintinvalid = fopen("users-invalid.csv","w");
+    fwriteusers(users,NotValid,maxusers, &fprintinvalid);
+    fclose(fprintinvalid);
+    */
+    FILE *fprintvalid = fopen("users-ok.csv","w");
+    FILE *fprintinvalid = fopen("users-invalid.csv","w");
+    fwriteusers2streams(users,maxusers, &fprintvalid, &fprintinvalid);
+    fclose(fprintvalid);
+    fclose(fprintinvalid);
     return 0;
 }
