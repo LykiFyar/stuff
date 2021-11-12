@@ -164,7 +164,7 @@ char* type2str(TYPE t) {
     else s = "Unknown";
     return s;
 }
-
+/*  NON FUNCTIONAL
 char* list2str(LIST l) {
     char* s = "[", *c = NULL;
     int i;
@@ -182,11 +182,30 @@ char* list2str(LIST l) {
     else s = "[]";
     return s;
 }
+*/
+
+void fprintlist(LIST l, FILE **stream) {
+    int i = 0;
+    if(l.counter > 0) {
+        fprintf((*stream),"[%d", l.list[i]);
+        i++;
+        while(i<l.counter) {
+            fprintf((*stream),", %d", l.list[i]);
+            i++;
+        }
+        fprintf(*stream,"]");
+    }
+    else fprintf(*stream,"[]");
+}
 
 void fwriteuser(USER user, FILE **stream) {
     char* time = malloc(20);
     strftime(time,20,"%4Y-%2m-%2d %2H:%2M:%2S",&(user.created_at));
-    fprintf((*stream),"%d;%s;%s;%s;%d;%s;%d;%s;%d;%d\n",user.id,user.login,type2str(user.type),time,user.followers,"follower_list",user.following, "following_list", user.public_gists, user.public_repos);
+    fprintf((*stream),"%d;%s;%s;%s;%d;",user.id,user.login,type2str(user.type),time,user.followers);
+    fprintlist(user.follower_list,stream);
+    fprintf((*stream),";%d;",user.following);
+    fprintlist(user.following_list,stream);
+    fprintf((*stream),";%d;%d\n", user.public_gists, user.public_repos);
 }
 
 
