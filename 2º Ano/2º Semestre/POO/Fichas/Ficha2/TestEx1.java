@@ -2,6 +2,7 @@ package Ficha2;
 
 import java.util.Arrays;
 import java.util.Scanner;
+
 public class TestEx1 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -25,5 +26,6 @@ public class TestEx1 {
 
         
         System.out.println("O array com índices entre " + id1 + " e " + id2 + " é " + Arrays.toString(f.arrayEntre(a, id1, id2)));
+        input.close();
     }
 }

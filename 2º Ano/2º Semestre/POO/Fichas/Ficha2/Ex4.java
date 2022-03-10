@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 public class Ex4 {
     public int[] ordena(int[] a) {
-        return Arrays.sort(a);
+        int[] b = Arrays.copyOf(a,a.length);
+        Arrays.sort(b);
+        return b;
     }
 
     public int procuraBinaria(int[] a, int v) {
