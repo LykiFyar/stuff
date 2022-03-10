@@ -61,5 +61,6 @@ public class Ex1 {
                 System.out.println("Sábado");
                 break;
         }
+        input.close();
     }
 }
