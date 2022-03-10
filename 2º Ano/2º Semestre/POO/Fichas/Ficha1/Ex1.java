@@ -36,7 +36,7 @@ public class Ex1 {
         res += dia;
         }
 
-        int dsem = res/7;
+        int dsem = res%7;
 
         switch (dsem) {
             case 0:
@@ -46,7 +46,7 @@ public class Ex1 {
                 System.out.println("Segunda");
                 break;
             case 2:
-                System.out.println("Terça");
+                System.out.println("Terca");
                 break;
             case 3:
                 System.out.println("Quarta");
