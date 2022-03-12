@@ -1,0 +1,18 @@
+[RESOURCES]
+Operador 3
+Operador 1
+Operario 2
+[VARIABLES]
+2 rodas.NumberOut
+Chegada do travão.NumberOut
+Montagem 3.NumberIn
+Montagem 2.NumberIn
+Montagem 1.NumberIn
+Chegada do quadro.NumberOut
+Montagem 3.NumberOut
+Dispose 1.NumberOut
+Chegada da roda.NumberOut
+Montagem 2.NumberOut
+2 travoes.NumberOut
+Montagem 1.NumberOut
+Chegada da forqueta.NumberOut
