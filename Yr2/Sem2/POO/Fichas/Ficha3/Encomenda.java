@@ -1,91 +1,104 @@
 package Ficha3;
 
-/**
- * EXERCICIO 7
- * LINHA DE ENCOMENDA
- */
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+/** EXERCICIO 8 */
 
 public class Encomenda {
-    private String reference;
-    private String description;
-    private double price;
-    private int quantity;
-    private int tax;
-    private int discount;
+    private String name;
+    private int taxnum;
+    private String address;
+    private int ordernum;
+    private LocalDate date;
+    private List<LinhaDeEncomenda> orders;
 
     public Encomenda() {
-        reference = "";
-        description = "";
-        price = 0;
-        quantity = 0;
-        tax = 0;
-        discount = 0;
+        this.name = "";
+        this.taxnum = 0;
+        this.address = "";
+        this.ordernum = 0;
+        this.date = LocalDate.EPOCH;
+        this.orders = new ArrayList<>();
     }
 
-    public Encomenda(String ref, String desc, double prc, int quant, int tx, int disc) {
-        reference = ref;
-        description = desc;
-        price = prc;
-        quantity = quant;
-        tax = tx;
-        discount = disc;
+    public Encomenda(String newname, int newtaxnum, String newaddress, int newordernum, LocalDate newdate, List<LinhaDeEncomenda> neworders) {
+        this.name = newname;
+        this.taxnum = newtaxnum;
+        this.address = newaddress;
+        this.ordernum = newordernum;
+        this.date = newdate;
+        this.orders = new ArrayList<>(neworders.size());
+        for(LinhaDeEncomenda l: neworders) this.orders.add(l);
     }
 
     public Encomenda(Encomenda e) {
-        reference = e.getReference();
-        description = e.getDescription();
-        price = e.getPrice();
-        quantity = e.getQuantity();
-        tax = e.getTax();
-        discount = e.getDiscount();
+        name = e.getName();
+        taxnum = e.getTaxnum();
+        address = e.getAddress();
+        ordernum = e.getOrdernum();
+        date = e.getDate();
+        this.orders = e.getOrders();
     }
 
-    public String getReference() {
-        return reference;
+    public String getName() {
+        return name;
     }
 
-    public String getDescription() {
-        return description;
+    public int getTaxnum() {
+        return taxnum;
     }
 
-    public double getPrice() {
-        return price;
+    public String getAddress() {
+        return address;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public int getOrdernum() {
+        return ordernum;
+    }
+    public LocalDate getDate() {
+        return date;
+    }
+    public List<LinhaDeEncomenda> getOrders() {
+        List<LinhaDeEncomenda> res = new ArrayList<>();
+        for(LinhaDeEncomenda c : orders) res.add(c.clone());
+        return res;
     }
 
-    public int getTax() {
-        return tax;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getDiscount() {
-        return discount;
+    public void setTaxnum(int taxnum) {
+        this.taxnum = taxnum;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setOrdernum(int ordernum) {
+        this.ordernum = ordernum;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setOrders(List<LinhaDeEncomenda> orders) {
+        this.orders = new ArrayList<>();
+        for(int i = 0; i < orders.size(); i++) {
+            LinhaDeEncomenda l = orders.get(i);
+            this.orders.add(l.clone());
+        }
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null || this.getClass() != obj.getClass()) return false;
-        Encomenda e = (Encomenda) obj;
-        return ((reference == e.getReference()) && (description == e.getDescription()) && (price == e.getPrice()) && (quantity == e.getQuantity()) && (tax == e.getTax()) && (discount == e.getDiscount()));
-    }
-
-    @Override
-    public String toString() {
-        return "Referencia: " + reference + " Descrição: " + description + " Preço: " + price + " Quantidade: " + quantity + " Imposto: " + tax + " Desconto comercial: " + discount;
-    }
-
-    public Encomenda clone() {
-        return new Encomenda(this);
-    }
-
-    public double calculaValorLinhaEnc() {
-        return price - (price * (discount/100)) + (price * (tax/100));
-    }
-    
-    public double calculaValorDesconto() {
-        return price*(discount/100);
+    public boolean equals(Object o) {
+        if(this == o) return true;
+        if(o == null || o.getClass() != this.getClass()) return false;
+        Encomenda l = (Encomenda) o;
+        return(this.name == l.getName() && taxnum == l.getTaxnum() && address == l.getAddress() && ordernum == l.getOrdernum())
     }
 }
