@@ -99,6 +99,34 @@ public class Encomenda {
         if(this == o) return true;
         if(o == null || o.getClass() != this.getClass()) return false;
         Encomenda l = (Encomenda) o;
-        return(this.name == l.getName() && taxnum == l.getTaxnum() && address == l.getAddress() && ordernum == l.getOrdernum())
+        return(this.name == l.getName() && taxnum == l.getTaxnum() && address == l.getAddress() && ordernum == l.getOrdernum() && date == l.getDate() && this.getOrders().equals(l.getOrders()));
+    }
+
+    public double calculaValorTotal() {
+        double res = 0;
+        for(LinhaDeEncomenda l : orders) res += l.calculaValorLinhaEnc();
+        return res;
+    }
+
+    public int numeroTotalProdutos() {
+        int res = 0;
+        for(LinhaDeEncomenda l : orders) res += l.getQuantity();
+        return res;
+    }
+
+    public boolean existeProdutoEncomenda(String refProduto) {
+        for(LinhaDeEncomenda l : orders) 
+            if(l.getReference() == refProduto) return true;
+        return false;
+    }
+
+    public void adicionaLinha(LinhaDeEncomenda linha) {
+        this.orders.add(linha.clone());
+    }
+
+    public void removeProduto(String refProduto) {
+        for(LinhaDeEncomenda l : orders) {
+            if(l.getReference() == refProduto) this.orders.remove(l);
+        }
     }
 }
