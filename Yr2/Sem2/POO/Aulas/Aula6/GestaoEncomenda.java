@@ -1,4 +1,4 @@
-package Ficha5;
+package Aula6;
 import java.util.*;
 
 public class GestaoEncomenda {

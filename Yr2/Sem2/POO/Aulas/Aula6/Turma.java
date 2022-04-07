@@ -1,8 +1,9 @@
-package Ficha5;
+package Aula6;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Turma {
@@ -37,7 +38,6 @@ public class Turma {
 
     public List<Aluno> getAlunos(){
         //return this.alunos; -> assim estaria errado porque é preciso criar uma cópia
-        Collectors Colectors;
         return this.alunos
                    .stream()
                     /**.map(x->clone())
@@ -47,7 +47,7 @@ public class Turma {
                    })
                     OU ainda:**/
                    .map(Aluno::clone)
-                   .collect((Colectors.toList()));
+                   .collect((Collectors.toList()));
     }
 
     public void setAlunos (List <Aluno> nalunos){
@@ -78,7 +78,7 @@ public class Turma {
         StringBuilder sb= new StringBuilder();
 
         for(Aluno a: this.alunos){
-            s.append (a.toString()).append("\n");
+            sb.append (a.toString()).append("\n");
         }
 
         sb.append("Capacidade:").append(this.capacidade);
@@ -118,7 +118,7 @@ public class Turma {
         return (int) this.alunos
                 .stream()
                 .filter(a->a.getNota()>=10)
-                .count;
+                .count();
     }
 
     public double mediaAlunos(){

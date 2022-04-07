@@ -1,4 +1,4 @@
-package Ficha5;
+package Aula6;
 
 import java.util.*;
 
@@ -90,6 +90,10 @@ public class TurmaAlunos {
     public Aluno getAluno (String codAluno){
         if(this.alunos.containsKey(codAluno)){ return this.alunos.get(codAluno).clone();}
             else return null;
+    }
+
+    public boolean containsAluno(String codAluno) {
+        return this.alunos.containsKey(codAluno);
     }
 
     public void removeAluno (String codAluno){

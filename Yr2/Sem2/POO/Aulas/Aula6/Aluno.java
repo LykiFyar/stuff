@@ -1,4 +1,4 @@
-package Ficha5;
+package Aula6;
 
 
 public class Aluno implements Comparable<Aluno>{
