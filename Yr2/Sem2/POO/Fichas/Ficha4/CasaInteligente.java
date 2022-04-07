@@ -64,7 +64,7 @@ public class CasaInteligente {
     }
 
     //iv
-    public long qtEmEco() { // TODO
-        //return this.lampadas.stream().filter(l -> (l.getModo() == ECO)).count();
-    }
+    /*public long qtEmEco() { // TODO
+        return this.lampadas.stream().filter(l -> (l.getModo() == ECO)).count();
+    }*/
 }
