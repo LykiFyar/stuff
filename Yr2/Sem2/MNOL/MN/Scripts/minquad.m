@@ -24,7 +24,7 @@ SQR = Sgrau.normr^2 % calcula a soma do quadrado dos resíduos (erro)
 x0 = 29;
 fx0 = polyval(Pgrau, x0)
 
-% representação do polinómio (opcional)
+%% representação do polinómio (opcional)
 novo_x = 0:0.01:3.75;
 novo_f = polyval(Pgrau, novo_x); %avalia o novo_x em P2
 plot(x,f,'o', novo_x, novo_f, 'r')
