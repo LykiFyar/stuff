@@ -26,7 +26,7 @@ int main(int argc, char const *argv[]) {
         default: // Pai
             close(fildes[0]); // fechar o fd de leitura do pai (só queremos escrever no pipe)
             int read_res; // variável para guardar o nº de bytes lidos a cada chamada do read
-            while ((read_res = read(0, &buffer, 1024)) > 0) // lê do stdin
+            while ((read_res = read(0, &buffer, 1024)) > 0) // lê do stdin | Nota: CTRL + D envia EOF
                 write(fildes[1], buffer, read_res); // e escreve em fildes[1] (pipe)
             close(fildes[1]); // e fechamos por fim o fd de escrita do pai (para evitar o bloqueio e assim terminar o processo)
             wait(NULL);
