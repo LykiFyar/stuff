@@ -10,6 +10,7 @@ int main(int argc, char const *argv[]) {
     char buffer[20];
     
     int res = pipe(fildes);
+    if(res == -1) perror("Pipe is ded");
     int resf = fork();
 
     switch (resf){
