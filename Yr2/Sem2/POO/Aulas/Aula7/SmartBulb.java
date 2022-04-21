@@ -47,6 +47,11 @@ public class SmartBulb extends SmartDevice {
         this.tone = NEUTRAL;
     }
 
+    public SmartBulb(SmartBulb b) {
+        super(b);
+        this.tone = b.getTone();
+    }
+
     public void setTone(int t) {
         if (t>WARM) this.tone = WARM;
         else if (t<COLD) this.tone = COLD;
@@ -57,5 +62,25 @@ public class SmartBulb extends SmartDevice {
         return this.tone;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        SmartBulb s = (SmartBulb) o;
+        return (super.equals(s) && this.tone == s.tone);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("SmartBulb:{ ").append(super.toString());
+        sb.append("Tone: ").append(this.tone).append(" } ");
+        return sb.toString();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SmartBulb(this);
+    }
 }
 

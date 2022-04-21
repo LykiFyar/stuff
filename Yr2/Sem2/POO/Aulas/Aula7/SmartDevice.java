@@ -42,6 +42,11 @@ public class SmartDevice {
         this.on = b;
     }
 
+    public SmartDevice(SmartDevice s) {
+        this.id = s.getID();
+        this.on = s.getOn();
+    }
+
     public void turnOn() {
         this.on = true;
     }
@@ -61,11 +66,28 @@ public class SmartDevice {
     public String getID() {
         return this.id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if(o != null || o.getClass() != this.getClass()) return false;
+        if(o == null || o.getClass() != this.getClass()) return false;
         SmartDevice s = (SmartDevice) o;
         return(this.id == s.id && this.on == s.on);
-    } 
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Id: ").append(this.id).append("; ON? ").append(" ");
+        return sb.toString();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SmartDevice(this);
+    }
 }

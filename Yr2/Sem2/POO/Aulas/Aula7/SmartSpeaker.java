@@ -51,6 +51,12 @@ public class SmartSpeaker extends SmartDevice {
         this.channel = channel;
     }
 
+    public SmartSpeaker(SmartSpeaker s) {
+        super(s);
+        this.volume = s.getVolume();
+        this.channel = s.getChannel();
+    }
+
     public void volumeUp() {
         if (this.volume<MAX) this.volume++;
     }
@@ -71,4 +77,25 @@ public class SmartSpeaker extends SmartDevice {
         this.channel = c;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("SmartSpeaker:{ ").append(super.toString());
+        sb.append(" Volume: ").append(this.volume).append(" Channel: ");
+        sb.append(this.channel).append(" }");
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(o == null || o.getClass() != o.getClass()) return false;
+        SmartSpeaker s = (SmartSpeaker) o;
+        return (super.equals(s) && this.volume == s.volume && this.channel == s.channel);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new SmartSpeaker(this);
+    }
 }
