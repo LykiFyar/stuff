@@ -43,7 +43,7 @@ INSERT INTO `Colaborador` (`ID`, `perfil`, `nome`) VALUES (1, "Admin", "João Br
 INSERT INTO `Colaborador` VALUES (2, "Software Engineer", "John Crackow" );
 INSERT INTO `Colaborador` VALUES (3, "Data Scientist", "Clara" );
 INSERT INTO `Colaborador` VALUES (4, "Programmer", "Ricardo" );
-INSERT INTO `Colaborador` VALUES (5, "Designer", "Leonel" );
+INSERT INTO `Colaborador` VALUES (5, "Graphic Designer", "Leonel" );
 INSERT INTO `Colaborador` VALUES (6, "Programmer", "Vítor" );
 INSERT INTO `Colaborador` VALUES (7, "God Gamer", "Diogo" );
 INSERT INTO `Colaborador` VALUES (8, "Rager main", "Cristina" );
@@ -73,5 +73,8 @@ SELECT * FROM `Projeto`;
 
 -- Povoar Product Increment
 INSERT INTO `agiledb`.`product_increment` (`ID`,`descricao`,`data_inicio`,`data_fim`) VALUES (1, "-" , '2012-03-02', '2013-11-21');
-INSERT INTO `agiledb`.`product_increment` VALUES (2, "-" , '2015-03-02', '2013-11-21');
+INSERT INTO `agiledb`.`product_increment` (`ID`,`descricao`,`data_inicio`,`data_fim`) VALUES (2, "-" , '2015-03-02', '2013-11-21');
+
+-- SHOW TABLE Product Increment
+SELECT * FROM `Product_increment`
 
