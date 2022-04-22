@@ -143,3 +143,5 @@ SELECT C.nome FROM Colaborador AS C
     INNER JOIN Projeto AS P
     WHERE C.ID = EC.Colaborador_ID and EC.Equipa_idEquipa = E.idEquipa and E.Projeto_idProjeto = P.idProjeto and P.nome = "RideCare";
 
+
+
