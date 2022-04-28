@@ -41,8 +41,8 @@ public class Fitness {
         Comparator<Utilizador> c = (u1, u2) -> Double.compare(u1.getPeso(), u2.getPeso());
         TreeSet<Utilizador> r = new TreeSet<>(c);
         for (Utilizador u : users.values()) {
-            r.add(u.clone());
+            r.add(u);
         }
-        return r.first();
+        return r.first().clone();
     }
 }
