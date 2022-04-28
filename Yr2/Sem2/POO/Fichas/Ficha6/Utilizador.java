@@ -1,8 +1,10 @@
 package Ficha6;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Utilizador {
+public class Utilizador implements Comparable<Utilizador>{
 
     private static final int MALE = 0;
     private static final int FEMALE = 1;
@@ -18,6 +20,8 @@ public class Utilizador {
     private LocalDate birthdate;
     private String favsport;
 
+    private Map<String, Atividade> atividades;
+
     public Utilizador() {
         email = "";
         password = "";
@@ -27,9 +31,10 @@ public class Utilizador {
         peso = 0;
         birthdate = LocalDate.ofEpochDay(0);
         favsport = "";
+        atividades = new HashMap<>();
     }
 
-    public Utilizador(String nemail, String npassword, String newnome, int ngenero, int naltura, double npeso, LocalDate nbirthdate, String nfavsport) {
+    public Utilizador(String nemail, String npassword, String newnome, int ngenero, int naltura, double npeso, LocalDate nbirthdate, String nfavsport, Map<String, Atividade> m) {
         email = nemail;
         password = npassword;
         nome = newnome;
@@ -38,6 +43,9 @@ public class Utilizador {
         peso = npeso;
         birthdate = nbirthdate;
         favsport = nfavsport;
+        for (Atividade a : m.values()) {
+            atividades.put(a.getId(),a.clone())
+        }
     }
 
     public Utilizador(Utilizador u) {
@@ -139,4 +147,16 @@ public class Utilizador {
     protected Object clone() throws CloneNotSupportedException {
         return new Utilizador(this);
     }
+
+    @Override
+    public int compareTo(Utilizador u) {
+        if(this.calculaCalorias() < u.calculaCalorias()) return -1;
+        else if(this.calculaCalorias() > u.calculaCalorias()) return 1;
+        else this.nome.compareTo(u.getNome());
+    }
+
+    public double calculaCalorias() {
+        return this.atividades.values().stream().mapToDouble(a ->a.calorias()).sum();
+    }
+
 }

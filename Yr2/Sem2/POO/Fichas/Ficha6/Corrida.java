@@ -23,7 +23,9 @@ public class Corrida extends Atividade{
 
     public Corrida(Corrida c) {
         super(c);
-
+        distpercorrida = c.getDistpercorrida();
+        altimetria = c.getAltimetria();
+        percurso = c.getPercurso();
     }
 
     public int getDistpercorrida() {
@@ -68,8 +70,12 @@ public class Corrida extends Atividade{
         return sb.toString();
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() {
         return new Corrida(this);
+    }
+
+    @Override
+    public double calorias(Utilizador u) {
+        return distpercorrida*u.getPeso()*this.getTime()*(LocalDate.now().getYear() - u.getBirthdate().getYear())/50;
     }
 }
