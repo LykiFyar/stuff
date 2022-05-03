@@ -70,11 +70,9 @@ public class Corrida extends Atividade{
         return sb.toString();
     }
 
-    public Object clone() {
+    public Atividade clone() {
         return new Corrida(this);
     }
-
-    @Override
     public double calorias(Utilizador u) {
         return distpercorrida*u.getPeso()*this.getTime()*(LocalDate.now().getYear() - u.getBirthdate().getYear())/50;
     }

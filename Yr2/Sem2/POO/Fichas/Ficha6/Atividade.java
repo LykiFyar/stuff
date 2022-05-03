@@ -79,7 +79,7 @@ public abstract class Atividade {
         return (id.equals(a.id) && descricao.equals(a.descricao) && data == a.data && time == a.time);
    }
 
-    public abstract Object clone();
+    public abstract Atividade clone();
 
     public abstract double calorias();
 }

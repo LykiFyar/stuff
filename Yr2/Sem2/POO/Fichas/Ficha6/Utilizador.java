@@ -43,9 +43,7 @@ public class Utilizador implements Comparable<Utilizador>{
         peso = npeso;
         birthdate = nbirthdate;
         favsport = nfavsport;
-        for (Atividade a : m.values()) {
-            atividades.put(a.getId(),a.clone())
-        }
+        setAtividades(m);
     }
 
     public Utilizador(Utilizador u) {
@@ -57,6 +55,7 @@ public class Utilizador implements Comparable<Utilizador>{
         peso = u.getPeso();
         birthdate = u.getBirthdate();
         favsport = u.getFavsport();
+        setAtividades(u.atividades);
     }
 
     public String getEmail() {
@@ -123,6 +122,19 @@ public class Utilizador implements Comparable<Utilizador>{
         this.favsport = favsport;
     }
 
+    public Map<String, Atividade> getAtividades() {
+        Map<String, Atividade> at = new HashMap<>();
+        for(Atividade a : atividades.values()) {
+            at.put(a.getId(), a.clone());
+        }
+    }
+
+    public void setAtividades(Map<String, Atividade> atividades) {
+        for(Atividade a : atividades.values()) {
+            this.atividades.put(a.getId(),a.clone());
+        }
+    }
+
     @Override
     public String toString() {
         return "Utilizador: {\nEmail: " + email + "\nPassword: " + password + "\nNome: " + nome + "\nGénero: " + (genero == MALE ? "Male" : (genero == FEMALE ? "Female" : "Undefined")) + "\nAltura (cm): " + altura + "\nPeso (kg): " + peso + "\nData de Nascimento: " + birthdate.toString() + "\nDesporto Favorito: " + favsport;
@@ -144,7 +156,7 @@ public class Utilizador implements Comparable<Utilizador>{
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Utilizador clone() {
         return new Utilizador(this);
     }
 
@@ -156,7 +168,10 @@ public class Utilizador implements Comparable<Utilizador>{
     }
 
     public double calculaCalorias() {
-        return this.atividades.values().stream().mapToDouble(a ->a.calorias()).sum();
+        return this.atividades.values().stream().mapToDouble(a -> a.calorias()).sum();
     }
 
+    public void adicionaAtividade(String email, Atividade a) {
+        atividades.put(email, a);
+    }
 }

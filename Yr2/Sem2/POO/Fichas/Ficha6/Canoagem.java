@@ -77,7 +77,7 @@ public class Canoagem extends Atividade {
     }
 
     @Override
-    public Object clone() {
+    public Atividade clone() {
         return new Canoagem(this);
     }
 
@@ -99,5 +99,10 @@ public class Canoagem extends Atividade {
                 .append("\nDistancia percorrida: ").append(distancia)
                 .append("\nNumero de voltas: ").append(voltas).append("\n}\n");
         return sb.toString();
+    }
+
+    @Override
+    public double calorias() {
+        return distancia * this.getTime() * (LocalDate.now().getYear() - u.getBirthdate().getYear()) / 4;
     }
 }
