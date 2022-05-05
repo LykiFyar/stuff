@@ -1,8 +1,9 @@
 package Ficha6;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Abdominal extends Atividade{
+public class Abdominal extends Atividade implements Serializable {
     private String tipo;
     private int reps;
 
@@ -64,7 +65,7 @@ public class Abdominal extends Atividade{
     }
 
     @Override
-    public double calorias() {
+    public double calorias(Utilizador u) {
         return this.getTime() * reps * 0.6;
     }
 }

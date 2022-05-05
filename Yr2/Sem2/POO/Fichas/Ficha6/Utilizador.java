@@ -1,10 +1,13 @@
 package Ficha6;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Utilizador implements Comparable<Utilizador>{
+public class Utilizador implements Comparable<Utilizador>, Serializable {
 
     private static final int MALE = 0;
     private static final int FEMALE = 1;
@@ -127,6 +130,7 @@ public class Utilizador implements Comparable<Utilizador>{
         for(Atividade a : atividades.values()) {
             at.put(a.getId(), a.clone());
         }
+        return at;
     }
 
     public void setAtividades(Map<String, Atividade> atividades) {
@@ -137,7 +141,13 @@ public class Utilizador implements Comparable<Utilizador>{
 
     @Override
     public String toString() {
-        return "Utilizador: {\nEmail: " + email + "\nPassword: " + password + "\nNome: " + nome + "\nGénero: " + (genero == MALE ? "Male" : (genero == FEMALE ? "Female" : "Undefined")) + "\nAltura (cm): " + altura + "\nPeso (kg): " + peso + "\nData de Nascimento: " + birthdate.toString() + "\nDesporto Favorito: " + favsport;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Utilizador: {\nEmail: ").append(email).append("\nPassword: ")
+                .append(password).append("\nNome: ").append(nome).append("\nGénero: ").append(genero == MALE ? "Male" : (genero == FEMALE ? "Female" : "Undefined"))
+                .append("\nAltura (cm): ").append(altura).append("\nPeso (kg): ").append(peso)
+                .append("\nData de Nascimento: ").append(birthdate.toString()).append("\nDesporto Favorito: ").append(favsport)
+                .append(this.atividades.toString());
+        return sb.toString();
     }
 
     @Override
@@ -164,14 +174,22 @@ public class Utilizador implements Comparable<Utilizador>{
     public int compareTo(Utilizador u) {
         if(this.calculaCalorias() < u.calculaCalorias()) return -1;
         else if(this.calculaCalorias() > u.calculaCalorias()) return 1;
-        else this.nome.compareTo(u.getNome());
+        else return this.nome.compareTo(u.getNome());
     }
 
     public double calculaCalorias() {
-        return this.atividades.values().stream().mapToDouble(a -> a.calorias()).sum();
+        return this.atividades.values().stream().mapToDouble(a -> a.calorias(this)).sum();
     }
 
     public void adicionaAtividade(String email, Atividade a) {
         atividades.put(email, a);
+    }
+
+    // Fase 4
+    public void extrairInfoAtividades(String path) throws IOException {
+        PrintWriter p = new PrintWriter(path);
+        p.println(this.toString());
+        p.flush();
+        p.close();
     }
 }

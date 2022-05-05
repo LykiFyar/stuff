@@ -1,13 +1,16 @@
 package Ficha6;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Canoagem extends Atividade {
+public class Canoagem extends Atividade implements FazMetros, Serializable {
     private String boat;
     private int wind;
     private String direcao;
     private int distancia;
     private int voltas;
+
+    private int pontosPorMetro;
 
 
     public Canoagem() {
@@ -17,15 +20,17 @@ public class Canoagem extends Atividade {
         direcao = "";
         distancia = 0;
         voltas = 0;
+        pontosPorMetro = 0;
     }
 
-    public Canoagem(String id, String descricao, LocalDate date, int time, String nboat, int nwind, String ndirecao, int ndistancia, int nvoltas) {
+    public Canoagem(String id, String descricao, LocalDate date, int time, String nboat, int nwind, String ndirecao, int ndistancia, int nvoltas, int pontos) {
         super(id, descricao,date,time);
         boat = nboat;
         wind = nwind;
         direcao = ndirecao;
         distancia = ndistancia;
         voltas = nvoltas;
+        pontosPorMetro = pontos;
     }
 
     public Canoagem(Canoagem c) {
@@ -35,6 +40,7 @@ public class Canoagem extends Atividade {
         direcao = c.getDirecao();
         distancia = c.getDistancia();
         voltas = c.getVoltas();
+        pontosPorMetro = c.getPontosPorMetro();
     }
 
     public String getBoat() {
@@ -76,6 +82,22 @@ public class Canoagem extends Atividade {
         this.voltas = voltas;
     }
 
+
+    @Override
+    public int getPontosPorMetro() {
+        return pontosPorMetro;
+    }
+
+    @Override
+    public void setPontosPorMetro(int pontosPorMetro) {
+        this.pontosPorMetro = pontosPorMetro;
+    }
+
+    @Override
+    public int getTotalPontos() {
+        return pontosPorMetro * wind * 3 / 2 ;
+    }
+
     @Override
     public Atividade clone() {
         return new Canoagem(this);
@@ -86,7 +108,7 @@ public class Canoagem extends Atividade {
         if(this == o) return true;
         if(o == null || o.getClass() != this.getClass()) return false;
         Canoagem c = (Canoagem) o;
-        return (super.equals(c) && boat.equals(c.getBoat()) && wind == c.getWind() && direcao.equals(c.getDirecao()) && distancia == c.getDistancia() && voltas == c.getVoltas());
+        return (super.equals(c) && boat.equals(c.getBoat()) && wind == c.getWind() && direcao.equals(c.getDirecao()) && distancia == c.getDistancia() && voltas == c.getVoltas() && pontosPorMetro == c.getPontosPorMetro());
     }
 
     @Override
@@ -97,12 +119,13 @@ public class Canoagem extends Atividade {
                 .append("\nVelocidade do Vento: ").append(wind)
                 .append("\nDirecao do vento: ").append(direcao)
                 .append("\nDistancia percorrida: ").append(distancia)
-                .append("\nNumero de voltas: ").append(voltas).append("\n}\n");
+                .append("\nNumero de voltas: ").append(voltas)
+                .append("\nPontos por metro: ").append(pontosPorMetro).append(" }\n");
         return sb.toString();
     }
 
     @Override
-    public double calorias() {
-        return distancia * this.getTime() * (LocalDate.now().getYear() - u.getBirthdate().getYear()) / 4;
+    public double calorias(Utilizador u) {
+        return distancia * this.getTime() * (LocalDate.now().getYear() - u.getBirthdate().getYear()) * 0.25;
     }
 }

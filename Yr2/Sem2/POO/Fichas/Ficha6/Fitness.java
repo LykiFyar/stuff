@@ -2,10 +2,11 @@ package Ficha6;
 
 import jdk.jshell.execution.Util;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Fitness {
+public class Fitness implements Serializable {
     private Map<String, Utilizador> users;
 
 
@@ -81,7 +82,7 @@ public class Fitness {
         // TODO
     }
 
-    public void adiciona(String email, Set<Atividade>) {
+    public void adiciona(String email, Set<Atividade> set) {
         // TODO
     }
 
@@ -101,7 +102,7 @@ public class Fitness {
         // TODO
     }
 
-
+// Fase 2
     public Set<Utilizador> ordenarUtilizadores() {
         Set<Utilizador> r = new TreeSet<>();
 
@@ -140,4 +141,38 @@ public class Fitness {
         }
         return r.first().clone();
     }
+
+
+    // Fase 3
+
+    public List<FazMetros> daoPontos() {
+        List<FazMetros> l = new ArrayList<>();
+        for(Utilizador u : users.values()) {
+            for(Atividade a : u.getAtividades().values()) {
+                if(a instanceof FazMetros) l.add( (FazMetros) a);
+            }
+        }
+        return l;
+    }
+
+    // Fase 4
+    // ex2
+    public void guardaFitness(String filename) throws FileNotFoundException, IOException {
+        FileOutputStream fos = new FileOutputStream(filename);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this);
+        oos.flush();
+        oos.close();
+    }
+
+    // Utilizar o static de forma a obter um Fitness sem ser necessário criar um Fitness antes
+    public static Fitness lerFitness(String filename) throws FileNotFoundException, IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream(filename);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        Fitness f = (Fitness) ois.readObject();
+        ois.close();
+        return f;
+    }
+
+
 }

@@ -1,8 +1,9 @@
 package Ficha6;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Atividade {
+public abstract class Atividade implements Serializable {
     private String id;
     private String descricao;
     private LocalDate data;
@@ -81,5 +82,5 @@ public abstract class Atividade {
 
     public abstract Atividade clone();
 
-    public abstract double calorias();
+    public abstract double calorias(Utilizador u);
 }
