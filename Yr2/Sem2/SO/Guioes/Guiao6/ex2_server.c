@@ -15,7 +15,7 @@ int main(int argc, char const *argv[]) {
     int bytes_read = 0;
 
 
-    if((fd = open("log", O_WRONLY | O_CREAT)) == -1) {
+    if((log = open("log", O_WRONLY | O_CREAT)) == -1) {
         perror("Error: open log");
         return -1;
     }
