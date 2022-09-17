@@ -1,0 +1,91 @@
+--
+-- Sistemas de Bases de Dados Relacionais
+-- Álgebra Relacional
+-- Utilização da Ferramenta RelaX - Relational Algebra Calculator
+-- Ref. https://dbis-uibk.github.io/relax/landing
+--
+-- Base de Dados Exemplo
+-- Avaliação de alunos numa instituição de ensino
+-- Belo, O., 2020
+
+-- Definição da base de dados
+-- Esquemas das tabelas e registos
+-- 
+aluno = {nr nome genero localidade curso
+	1 ana f braga 1
+	2 carlos m vila_verde 2
+	3 joao m braga 2
+	4 francisca f barcelos 1
+	5 sonia f famalicao 1
+	6 pedro m guimaraes 1
+    7 rui m taipas 2
+    8 joana f prado 3
+    9 maria f povoa_lanhoso 3
+    10 ramiro m braga 2
+    11 sonia f guimaraes 1
+    12 helena f ponte_lima 1
+    13 paula f trofa 3
+    14 xavier m caminha 1
+    15 miguel m fafe 2
+    16 luis m braga 4
+}
+
+atleta = {aluno, modalidade, escalao
+	1 futsal 1
+	2 andebol 2
+	19 basquetebol 3
+	14 basquetebol 3
+	3 futsal 1
+	6 tenis 3
+	16 tenis 3
+	11 squash 2
+	4 atletismo 2 
+}
+
+curso = {id designacao sigla grau duracao
+	1 mestrado_integrado_engenharia_informatica miei mestre 5
+	2 licenciatura_ciencias_computacao lcc licenciado 3
+	3 licenciatura_matematica lmat licenciado 3
+	4 mestrado_economia mec mestre 2
+}
+
+disciplina = {id designacao responsavel
+	1 engenharia_software 1
+	2 engenharia_requisitos 2
+	3 programacao_web 3
+	4 programacao_funcional 1
+	5 sistemas_analiticos 1
+	6 bases_dados 1
+}
+
+professor = {id nome departamento
+	1 josefino_pedras sistemas_informacao
+	2 sofia_cantinho sistemas_informacao
+	3 carlos_reis matematica
+	4 paulo_amrtins economia
+	5 antonio_pascoal informatica
+	6 josefina_canto informatica
+	7 patricia_rodrigues sistemas_informacao
+	8 osvaldo_queiroz informatica
+}
+
+notas = {aluno disciplina nota data 
+    1 1 15 20200901
+    1 2 10 20200902
+    2 1 18 20200903
+    3 2 14 20200904
+    4 1 13 20200901
+    4 2 14 20200902
+    4 3 17 20200903
+    5 2 16 20200902
+    6 1 11 20200902
+	6 1 10 20200901
+	7 2 13 20200904
+	7 3 17 20200906
+	8 4 18 20200907
+	8 6 12 20200901
+	10 6 14 20200902
+	11 4 12 20200904
+	13 2 17 20200907
+	16 5 17 20200907
+}
