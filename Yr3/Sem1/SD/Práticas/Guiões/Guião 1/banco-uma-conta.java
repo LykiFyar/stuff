@@ -15,6 +15,7 @@ class Bank {
   // Our single account, for now
   private Account savings = new Account(0);
 
+
   // Account balance
   public int balance() {
     return savings.balance();
@@ -26,11 +27,13 @@ class Bank {
   }
 }
 
-class ex2 { // Como os threads atuam concorrentemente, há a possibilidade de 2 threads lerem/depositarem um mesmo valor, nunca obtendo o 1M desejado.
+class ex2 { // Como os threads atuam concorrentemente, há a possibilidade de 2 threads lerem/escreverem um mesmo valor, nunca obtendo o 1M desejado.
+
   public static void main(String[] args) {
     final int N = 10;
     final int dep = 1000;
     final int value = 100;
+
     Bank b = new Bank();
 
     Thread[] t = new Thread[N];
@@ -85,18 +88,3 @@ class ex3 {
     System.out.println("Final savings = " + b.balance());
   }
 }
-
-/*
-  class Deposit implements Runnable {
-
-    public void run() {
-      final int val = 100;
-      final long I = 1000;
-
-      for(long i = 0; i < I; i++) b.deposit(val);
-
-      System.out.println("Final savings = " + b.balance());
-    }
-  }
-
- */
