@@ -17,4 +17,4 @@ myfilter a [] = []
 myfilter a (x:xs) | x a = (x : myfilter a xs) 
                   | otherwise = myfilter a xs
 
--- EX5
+-- EX6
