@@ -31,7 +31,7 @@ class Graph:
         self.m_nodes = []   # lista de nodos do grafo
         self.m_directed = directed   # se o grafo é direcionado ou nao
         self.m_graph = {}   #  dicionario para armazenar os nodos, arestas  e pesos
-
+        self.m_h = {} # heurísticas
 
 
     ##############################
@@ -66,6 +66,16 @@ class Graph:
         # se o grafo for nao direcionado, colocar a aresta inversa
         if not self.m_directed:
             self.m_graph[node2].add((node1, weight))
+            
+     
+     
+    ###############################
+    # add_heuristica
+    ###############################    
+    def add_heuristica(self, n, estima):
+        n1 = Node(n)
+        if n1 in self.m_nodes:
+            self.m_h[n] = estima
 
     ################################
     # Encontrar nodo pelo nome
@@ -134,6 +144,8 @@ class Graph:
                     return resultado
         path.pop()  # se nao encontra remover o que está no caminho......
         return None
+
+
 
     ###########################
     # desenha grafo  modo grafico
