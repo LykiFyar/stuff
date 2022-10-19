@@ -1,5 +1,7 @@
 # Ficha 3
 
+### Biblioteca
+
 #### "Registar Requisição de livro"
 
 Cenários: 1,2,3
@@ -43,13 +45,13 @@ FLUXO DE EXCEPÇÃO 4 [livro não pode ser requisitado] (passo 4)
 
 **TODO**
 
-"Registar Entrega do Livro"
+#### "Registar Entrega do Livro"
 
 Cenários: 4,5
 
 Pré-condição: Funcionário está autenticado, Utente apresenta o livro
 
-Pós.condição: Sistema fica com novo registo de requisição e o livro fica no estado "livre"
+Pós-condição: Sistema fica com novo registo de requisição e o livro fica no estado "livre"
 
 FLUXO NORMAL:
 
@@ -71,3 +73,31 @@ FLUXO ALTERNATIVO 1 [livro está a ser entregue com atraso] (passo 2)
 FLUXO DE EXCEPÇÃO 2 [Utente não paga multa] (passo 2.3)
 
     2.3.1 Funcionário retém livro
+
+### Cobrança automática de portagens
+
+#### "Registar passagem de viatura"
+
+Cenários: Cenário 1
+
+Pré-condição: True
+
+Pós-condição: O sistema fica com mais um registo de passagem
+
+FLUXO NORMAL:
+
+    1. Pórtico comunica nº de identificador, data/hora e nº de pórtico
+    2. Sistema valida que identificador está registado
+    3. Sistema cria registo com nº de identificaador, data/hora e nº de pórtico
+
+FLUXO ALTERNATIVO 1 [identificador não registado] (passo 2)
+
+    2.1 Sistema comunica que identificador não faz parte da base de dados
+    2.2 Pórtico envia fotografia para posterior análise
+    2.3 SIstema cria registo com fotografia, data/hora e nº de pórtico
+
+FLUXO ALTERNATIVO 2 [pórtico não conseguiu ler identificador] (passo 1)
+
+    1.1 Pórtico envia fotografia para posterior análise
+    1.2 Sistema cria registo com fotografia, data/hora e nº de pórtico
+
