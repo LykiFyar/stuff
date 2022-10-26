@@ -4,7 +4,7 @@
 #Inteligência Artificial
 #2022/23
 
-#Draft Ficha 1
+#Draft Ficha 2
 
 # Classe nodo para definiçao dos nodos
 # Cada nodo tem um nome

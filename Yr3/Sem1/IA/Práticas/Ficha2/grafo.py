@@ -4,7 +4,7 @@
 #Inteligência Artificial
 #2022/23
 
-#Draft Ficha 1
+#Draft Ficha 2
 
 
 
@@ -23,7 +23,7 @@ from nodo import Node
 #Definição da classe grafo:
 #Um grafo tem uma lista de nodos,
 #um dicionário:  nome_nodo -> lista de tuplos (nome_nodo,peso)
-#para representar as arestas 
+#para representar as arestas
 #uma flag para indicar se é direcionado ou não
 class Graph:
     # Construtor da classe
@@ -31,7 +31,8 @@ class Graph:
         self.m_nodes = []   # lista de nodos do grafo
         self.m_directed = directed   # se o grafo é direcionado ou nao
         self.m_graph = {}   #  dicionario para armazenar os nodos, arestas  e pesos
-        self.m_h = {} # heurísticas
+        self.m_h={}         # dicionário para armazenar heuristica para cada nodo
+
 
 
     ##############################
@@ -66,16 +67,6 @@ class Graph:
         # se o grafo for nao direcionado, colocar a aresta inversa
         if not self.m_directed:
             self.m_graph[node2].add((node1, weight))
-            
-     
-     
-    ###############################
-    # add_heuristica
-    ###############################    
-    def add_heuristica(self, n, estima):
-        n1 = Node(n)
-        if n1 in self.m_nodes:
-            self.m_h[n] = estima
 
     ################################
     # Encontrar nodo pelo nome
@@ -145,10 +136,8 @@ class Graph:
         path.pop()  # se nao encontra remover o que está no caminho......
         return None
 
-
-
     ###########################
-    # desenha grafo  modo grafico
+    # Desenha grafo  modo grafico
     #########################
     def desenha(self):
         ##criar lista de vertices
@@ -173,3 +162,154 @@ class Graph:
 
         plt.draw()
         plt.show()
+
+
+
+
+    #############################################
+    # Adiciona heuristica a nodo
+    #############################################
+
+    def add_heuristica(self, n, estima):
+            n1 = Node(n)
+            if n1 in self.m_nodes:
+                self.m_h[n] = estima
+
+    ###################################################
+    # Devolve vizinhos de um nó
+    ###################################################
+
+    def getNeighbours(self, nodo):
+        lista = []
+        for (adjacente, peso) in self.m_graph[nodo]:
+            lista.append((adjacente, peso))
+        return lista
+
+    #############################################
+    # Pesquisa gulosa
+    #############################################
+
+    def greedy(self, start, end):
+        # open_list é uma lista de nodos visitados, mas com vizinhos
+        # que ainda não foram todos visitados, começa com o  start
+        # closed_list é uma lista de nodos visitados
+        # e todos os seus vizinhos também já o foram
+        open_list = set([start])
+        closed_list = set([])
+
+        # parents é um dicionário que mantém o antecessor de um nodo
+        # começa com start
+        parents = {}
+        parents[start] = start
+
+        while len(open_list) > 0:
+            n = None
+
+            # encontraf nodo com a menor heuristica
+            for v in open_list:
+                if n == None or self.m_h[v] < self.m_h[n]:
+                    n = v
+
+            if n == None:
+                print('Path does not exist!')
+                return None
+
+            # se o nodo corrente é o destino
+            # reconstruir o caminho a partir desse nodo até ao start
+            # seguindo o antecessor
+            if n == end:
+                reconst_path = []
+
+                while parents[n] != n:
+                    reconst_path.append(n)
+                    n = parents[n]
+
+                reconst_path.append(start)
+
+                reconst_path.reverse()
+
+                return (reconst_path, self.calcula_custo(reconst_path))
+
+            # para todos os vizinhos  do nodo corrente
+            for (m, weight) in self.getNeighbours(n):
+                # Se o nodo corrente nao esta na open nem na closed list
+                # adiciona-lo à open_list e marcar o antecessor
+                if m not in open_list and m not in closed_list:
+                    open_list.add(m)
+                    parents[m] = n
+
+
+            # remover n da open_list e adiciona-lo à closed_list
+            # porque todos os seus vizinhos foram inspecionados
+            open_list.remove(n)
+            closed_list.add(n)
+
+        print('Path does not exist!')
+        return None
+
+    def Astar(self, start, end):
+        # open_list é uma lista de nodos visitados, mas com vizinhos
+        # que ainda não foram todos visitados, começa com o  start
+        # closed_list é uma lista de nodos visitados
+        # e todos os seus vizinhos também já o foram
+        open_list = set([start])
+        closed_list = set([])
+
+        g = {}
+
+        g[start] = 0
+
+
+        # parents é um dicionário que mantém o antecessor de um nodo
+        # começa com start
+        parents = {}
+        parents[start] = start
+
+        while len(open_list) > 0:
+            n = None
+
+            # encontraf nodo com a menor heuristica
+            for v in open_list:
+                if n == None or g[v] + self.m_h[v] < g[n] +  self.m_h[n]:
+                    n = v
+
+            if n == None:
+                print('Path does not exist!')
+                return None
+
+            # se o nodo corrente é o destino
+            # reconstruir o caminho a partir desse nodo até ao start
+            # seguindo o antecessor
+            if n == end:
+                reconst_path = []
+
+                while parents[n] != n:
+                    reconst_path.append(n)
+                    n = parents[n]
+
+                reconst_path.append(start)
+
+                reconst_path.reverse()
+
+                return (reconst_path, self.calcula_custo(reconst_path))
+
+            # para todos os vizinhos  do nodo corrente
+            for (m, weight) in self.getNeighbours(n):
+                # Se o nodo corrente nao esta na open nem na closed list
+                # adiciona-lo à open_list e marcar o antecessor
+                if m not in open_list and m not in closed_list:
+                    open_list.add(m)
+                    parents[m] = n
+            
+            
+            # TODO
+
+
+
+            # remover n da open_list e adiciona-lo à closed_list
+            # porque todos os seus vizinhos foram inspecionados
+            open_list.remove(n)
+            closed_list.add(n)
+
+        print('Path does not exist!')
+        return None

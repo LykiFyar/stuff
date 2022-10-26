@@ -4,7 +4,8 @@
 #Inteligência Artificial
 #2022/23
 
-#Draft Ficha 1
+#Draft Ficha 2
+
 
 
 #Importar classes nodo e grafo
@@ -18,46 +19,49 @@ def main():
     g = Graph()
 
     #Adicionar vertices ao grafo g
-    g.add_edge("elvas", "alandroal",40)
-    g.add_edge("elvas", "arrailos",50)
-    g.add_edge("elvas", "borba",15)
-    g.add_edge("borba", "estremoz",15)
-    g.add_edge("alandroal", "redondo", 25)
-    g.add_edge("arrailos", "alcácer", 90)
-    g.add_edge("redondo", "monsaraz",30)
-    g.add_edge("alcácer", "palmela", 85)
-    g.add_edge("estremoz","évora",40)
-    g.add_edge("évora","montemor",20)
-    g.add_edge("montemor","vendas novas",15)
-    g.add_edge("vendas novas","lisboa",50)
-    g.add_edge("monsaraz","barreiro",120)
-    g.add_edge("barreiro","palmela",25)
-    g.add_edge("barreiro","baixa da banheira",5)
+
+    g.add_edge("elvas", "borba", 15)
+    g.add_edge("borba", "estremoz", 15)
+    g.add_edge("estremoz", "evora", 40)
+    g.add_edge("evora", "montemor", 20)
+    g.add_edge("montemor", "vendasnovas", 15)
+    g.add_edge("vendasnovas", "lisboa", 50)
+    g.add_edge("elvas", "arraiolos", 50)
+    g.add_edge("arraiolos", "alcacer", 90)
+    g.add_edge("alcacer", "palmela", 35)
     g.add_edge("palmela", "almada", 25)
+    g.add_edge("palmela", "barreiro", 25)
+    g.add_edge("barreiro", "palmela", 30)
     g.add_edge("almada", "lisboa", 15)
-    g.add_edge("baixa da banheira", "moita", 7)
+    g.add_edge("elvas", "alandroal", 40)
+    g.add_edge("alandroal", "redondo", 25)
+    g.add_edge("redondo", "monsaraz", 30)
+    g.add_edge("monsaraz", "barreiro", 120)
+    g.add_edge("barreiro", "baixadabanheira", 5)
+    g.add_edge("baixadabanheira", "moita", 7)
     g.add_edge("moita", "alcochete", 20)
     g.add_edge("alcochete", "lisboa", 20)
-    
-    g.add_heuristica("elvas", 270)
-    g.add_heuristica("alandroal",180)
-    g.add_heuristica("redondo",170)
-    g.add_heuristica("monsaraz",120)
-    g.add_heuristica("arrailos",220)
-    g.add_heuristica("alcácer",140)
-    g.add_heuristica("borba",250)
-    g.add_heuristica("estremoz",145)
-    g.add_heuristica("évora",95)
-    g.add_heuristica("montemor",70)
-    g.add_heuristica("palmela",85)
-    g.add_heuristica("barreiro",30)
-    g.add_heuristica("baixa da banheira",33)
-    g.add_heuristica("moita",35)
-    g.add_heuristica("alcochete",26)
-    g.add_heuristica("almada",25)
-    g.add_heuristica("vendas novas",45)
-    g.add_heuristica("lisboa",0)
 
+    #Adicionar as heuristicas a cada nodo
+
+    g.add_heuristica("elvas", 270)
+    g.add_heuristica("borba", 250)
+    g.add_heuristica("estremoz", 145)
+    g.add_heuristica("evora", 95)
+    g.add_heuristica("montemor", 70)
+    g.add_heuristica("vendasnovas", 45)
+    g.add_heuristica("arraiolos", 220)
+    g.add_heuristica("alcacer", 140)
+    g.add_heuristica("palmela", 85)
+    g.add_heuristica("almada", 25)
+    g.add_heuristica("alandroal", 180)
+    g.add_heuristica("redondo", 170)
+    g.add_heuristica("monsaraz", 120)
+    g.add_heuristica("barreiro", 30)
+    g.add_heuristica("baixadabanheira", 33)
+    g.add_heuristica("moita", 35)
+    g.add_heuristica("alcochete", 26)
+    g.add_heuristica("lisboa", 0)
 
 
     #cosntrução de menu
@@ -68,6 +72,7 @@ def main():
         print("3-Imprimir  nodos de Grafo")
         print("4-Imprimir arestas de Grafo")
         print("5-DFS")
+        print("6-Pesquisa Gulosa")
         print("0-Saír")
 
         saida = int(input("introduza a sua opcao-> "))
@@ -93,6 +98,12 @@ def main():
             inicio=input("Nodo inicial->")
             fim = input("Nodo final->")
             print(g.procura_DFS( inicio, fim, path=[], visited=set()))
+            l = input("prima enter para continuar")
+        elif saida == 6:
+            # Efetuar  pesquisa de caminho entre nodo inicial e final com Gulosa
+            inicio = input("Nodo inicial->")
+            fim = input("Nodo final->")
+            print(g.greedy(inicio,fim))
             l = input("prima enter para continuar")
         else:
             print("Opção inválida...")
