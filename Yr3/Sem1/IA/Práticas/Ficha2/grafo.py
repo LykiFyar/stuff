@@ -302,9 +302,6 @@ class Graph:
                     parents[m] = n
             
             
-            # TODO
-
-
 
             # remover n da open_list e adiciona-lo à closed_list
             # porque todos os seus vizinhos foram inspecionados
