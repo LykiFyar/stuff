@@ -100,18 +100,16 @@ class Balde():
 
     # Devolve o estado resultante de despejar o balde 1 no balde 2
     def despeja12(self, nodo):
-        
-        # TODO - corrigir este e despeja21
-        
-        
+
         n_1 = int(nodo[1])
         n_2 = int(nodo[3])
         
         if self.balde2 < n_1 + n_2:
-            n_1 -= (self.balde2 - n_1)
+            falta = self.balde2 - n_2
             n_2 = self.balde2
+            n_1 = n_1 - falta
         else: 
-            n_2 += n_1
+            n_2 = n_2 + n_1
             n_1 = 0
         
         res = "(" + str(n_1) + "," + str(n_2) + ")"
@@ -126,12 +124,13 @@ class Balde():
         n_1 = int(nodo[1])
         n_2 = int(nodo[3])
         
-        if self.balde2 < n_1 + n_2:
-            n_2 -= (self.balde1 - n_2)
-            n_1 = self.balde1
-        else: 
-            n_1 += n_2
+        if n_1 + n_2 <= self.balde1:
+            n_1 = n_1 + n_2
             n_2 = 0
+        else: 
+            falta2 = self.balde1 - n_1
+            n_1 = self.balde1
+            n_2 = n_2 - falta2
         
         res = "(" + str(n_1) + "," + str(n_2) + ")"
         
