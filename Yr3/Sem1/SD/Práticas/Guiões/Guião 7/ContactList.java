@@ -17,8 +17,7 @@ class ContactList extends ArrayList<Contact> {
         ContactList l = new ContactList();
         int size = in.readInt();
         for(int i = 0; i < size; i++) {
-            Contact c = Contact.deserialize(in);
-            l.add(c.clone());
+            l.add(Contact.deserialize(in));
         }
         return l;
     }

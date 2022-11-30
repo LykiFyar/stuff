@@ -34,10 +34,15 @@ class ContactManager {
 
     public ContactList getContacts() {
         ContactList cs = new ContactList();
-        for(Contact c : contacts.values()) {
-            cs.add(c.clone());
+        l.lock();
+        try {
+            for(Contact c : contacts.values()) {
+                cs.add(c.clone());
+            }
+            return cs;
+        } finally {
+            l.unlock();
         }
-        return cs;
     }
 }
 
@@ -55,10 +60,12 @@ class ServerWorker implements Runnable {
     public void run() {
         try {
             // EX 4
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             ContactList cs = manager.getContacts();
-            cs.serialize(new DataOutputStream(socket.getOutputStream()));
-
+            cs.serialize(out);
+            out.flush();
             //
+
             DataInputStream in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
 
             boolean flag = true;

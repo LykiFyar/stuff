@@ -2,6 +2,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.locks.ReadWriteLock;
 
 class Contact {
     private String name;
@@ -70,7 +71,6 @@ class Contact {
         return builder.toString();
     }
 
-    @Override
     protected Contact clone() {
         return new Contact(this.name, this.age, this.phoneNumber, this.company, this.emails);
     }

@@ -26,7 +26,8 @@ public class Client {
         DataOutputStream out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
 
         // EX 4
-        ContactList contacts = ContactList.deserialize(new DataInputStream(socket.getInputStream()));
+        DataInputStream ins = new DataInputStream(socket.getInputStream());
+        ContactList contacts = ContactList.deserialize(ins);
         for(Contact c : contacts) {
             System.out.println(c.toString());
         }
