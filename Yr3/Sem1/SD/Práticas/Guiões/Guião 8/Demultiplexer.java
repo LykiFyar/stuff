@@ -55,14 +55,14 @@ public class Demultiplexer implements AutoCloseable{
 
     public void start() {
         new Thread(() -> {
-            TaggedConnection.Frame frame;
+            TaggedConnection.Frame frame = null;
             while(true) {
                 try {
                     frame = connection.receive();
                 } catch (IOException e) {
                     exception = false;
                     endAll();
-                    throw new RuntimeException(e);
+                    System.exit(0);
                 }
                 maplock.lock();
 
@@ -88,7 +88,10 @@ public class Demultiplexer implements AutoCloseable{
     }
 
     public byte[] receive(int tag) throws IOException, InterruptedException {
+        maplock.lock();
+        if(!map.containsKey(tag)) map.put(tag, new DataQueue());
         DataQueue currqueue = map.get(tag);
+        maplock.unlock();
         try {
             currqueue.l.lock();
             while (currqueue.queue.size() == 0 && exception) {
