@@ -1,4 +1,6 @@
 module Ficha1 where
+import Cp
+import System.nub
 
 -- FICHA 1
 -- EX3
