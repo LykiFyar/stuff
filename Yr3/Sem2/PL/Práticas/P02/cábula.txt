@@ -1,0 +1,13 @@
+# Extract tgz file
+tar xzf .tgz
+
+# Word count
+wc
+
+grep -E '(author|music|lyrics).+Zeca Afonso' musica/*
+
+rg -I '(author)(.+)' -r '$2' musica/*|sort|uniq -c
+
+rg 'M' myheart.csv | rg '1$' | wc
+
+awk -F, '$2=="M" && $6==1 {print}' myheart.csv
