@@ -14,7 +14,7 @@ public class TestEx4 {
             System.out.println("Introduza o proximo inteiro");
             a[i] = input.nextInt();
         }
-        Ficha2.Ex4 f = new Ficha2.Ex4();
+        Ex4 f = new Ex4();
         // Alínea a
         System.out.println("O array " + Arrays.toString(a) + " Ordenado e " + Arrays.toString(f.ordena(a)));
         // Alínea b

@@ -3,9 +3,9 @@ package Ficha2;
 public class Ex1 {
     public int minimo(int[] a) {
         int min = Integer.MAX_VALUE;
-        for(int i = 0; i < a.length; i++) {
-            if(a[i] < min) {
-                min = a[i];
+        for (int j : a) {
+            if (j < min) {
+                min = j;
             }
         }
         return min;

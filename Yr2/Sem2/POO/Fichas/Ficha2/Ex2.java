@@ -17,6 +17,5 @@ public class Ex2 {
     public int mediaUC(int[][] a, int index) {
         return somaUC(a, index)/5;
     }
-
     
 }
