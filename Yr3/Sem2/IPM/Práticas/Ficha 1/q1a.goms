@@ -1,2 +1,25 @@
-Mental
-
+** selecionar ficheiro
+* Mover mão para o rato - H
+Hands to mouse (400 ms)
+***
+Mental preparation (1200 ms)
+* Apontar para o ficheiro - P
+Point to file (1100 ms)
+* Premir botão do rato - B
+Click file icon (200 ms) * clicar 0,10 s, largar 0,10 s = 0,20 s
+** selecionar opção Delete do Menu
+Mental preparation (1200 ms)
+* Selecionar opção File - P
+Point to Menu (1100 ms) 
+* Pressionar o botão do Rato - B
+Click (100 ms) 
+** Mental preparation * regra 0, retirado pela regra 1 - é previsível
+* Arrastar rato até à opção Apagar - P
+Point to Delete (1100 ms) 
+* Pressionar botão do rato -B
+Click (100 ms)
+* Mover a mão para o teclado - H
+Hands to keyboard (400 ms)
+﻿**** em resumo opção - arrastar ficheiro para caixote do lixo: HPMBPBH -> 4,4s
+**** em resumo opção sem M - apagar ficheiro através de menu: HPBBPBPBH -> 4,5s
+**** em resumo opção com M﻿ - apagar ficheiro através de menu: HMPBBMPBPBH -> 6,9s

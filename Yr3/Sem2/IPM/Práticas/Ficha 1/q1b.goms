@@ -1,0 +1,20 @@
+** selecionar ficheiro
+* Mover mão para o rato - H
+Hands to mouse (400 ms)
+***
+Mental preparation (1200 ms)
+* Apontar para o ficheiro - P
+Point to file (1100 ms)
+* Premir botão do rato - B
+Click file icon (200 ms) * clicar 0,10 s, largar 0,10 s = 0,20 s
+** utilizar atalho Ctrl+D 
+* Mãos para o teclado - H
+Hands to keyboard (400 ms)
+* carregar teclas ctrl + D
+* Mental preparation (1200 ms) * regra 0, regra 1 -> é previsível
+* Carregar nas teclas - K
+Keystroke CTRL+D  (560 ms) * 2 keystrokes ctrl + d
+﻿**** em resumo opção - arrastar ficheiro para caixote do lixo: HPMBPBH -> 4,4s
+**** em resumo opção - apagar ficheiro através de menu: HMPBBMPBPBH -> 6,9s
+**** em resumo opção sem M - apagar ficheiro através de atalho:  HPBHKK-> 2,7 s
+**** em resumo opção com M - apagar ficheiro através de atalho: HMPBHKK-> 3,9s

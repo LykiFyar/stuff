@@ -1,8 +1,17 @@
-Hands to mouse
-Mental preparation
-Point to file icon
+* 1.Mover mão para o rato - H
+Hands to mouse (400 ms) 
+**** incluir o operador M
+Mental (1200 ms)
+* 2.Apontar para o ficheiro - P
+Point to file icon (1100 ms)
+* 3.Premir botão do rato - B
 Click file icon (100 ms)
-Point to trash
+* 4.Arrastar para o caixote do lixo - P
+Point to trash (1100 ms)
+* 5.Largar botão do rato - B
 Click trash (100 ms)
-Hands to keyboard
+* 6.Mover a mão para o teclado - H
+Hands to keyboard (400 ms)
+**** em resumo sem o operador M: HPBPBH -> 3200ms
+﻿**** em resumo com o operador M: HPMBPBH -> 4400ms
 
