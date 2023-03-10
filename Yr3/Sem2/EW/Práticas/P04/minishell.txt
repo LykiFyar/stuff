@@ -1,0 +1,9 @@
+C:A4238;José Alberto Azevedo Rodrigues;#
+C:A4156;Paulo Jorge Dias Domingues; #
+C:A2232;Maria Ermelinda;gitlink=htpp://damaria.com
+E:A4238:tpc3=1;tpc5=1;gitlink=htpp://example.com
+E:A4156:tpc2=1;tpc3=1;tpc4=1
+R:alunos
+R:A2232
+D:A2232
+
