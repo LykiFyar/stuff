@@ -103,7 +103,7 @@ exports.studentFormPage = function(d){
                         <label>TPC8</label>
                     </fieldset>  
                     <br/>
-                    <button class="w3-btn w3-purple w3-mb-2" type="submit">Register</button>
+                    <button class="w3-btn w3-purple w3-mb-2" formaction="/" type="submit">Register</button>
                 </form>
 
                 <footer class="w3-container w3-purple">

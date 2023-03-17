@@ -1,0 +1,7 @@
+extends layout 
+
+block content
+    h1 Student Record Updated: #{a.id}
+    pre= JSON.stringify(a)
+    address 
+        a(href='/') Back to Students
