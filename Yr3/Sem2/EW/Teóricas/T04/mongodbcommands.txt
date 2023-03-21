@@ -1,0 +1,4 @@
+Alterar registos
+    db.students.updateMany({_id:$regex:/^A11/}, {$set: {tpc1: '1'}})
+Seleção:
+    db.students.find({_id:{$regex: /^A11/}})
