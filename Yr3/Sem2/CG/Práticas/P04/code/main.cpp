@@ -339,9 +339,9 @@ int main(int argc, char **argv) {
 	glutSpecialFunc(processSpecialKeys);
 
 	// init GLEW
-#ifndef __APPLE__
+
 	glewInit();
-#endif
+
 
 
 //  OpenGL settings
