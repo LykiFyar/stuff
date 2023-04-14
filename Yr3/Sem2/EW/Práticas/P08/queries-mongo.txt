@@ -1,0 +1,21 @@
+Listar todos os produtos duma categoria:
+
+db.listas.aggregate([{$unwind: "$produtos"}, 
+    {$match: {"produtos.categoria": "Peixe"}}, 
+    {$project: {"produtos.designacao":1, _id:0}}])
+
+var pipeline = [{ $unwind: "$produtos" }, { $match: { "produtos.categoria": "Peixe" } }, { $project: { "produtos.designacao": 1, _id: 0 } }]
+db.listas.aggregate(pipeline)
+db.listas.explain("executionStats").aggregate(pipeline)
+
+Acrescentar um objeto numa lista interna:
+
+db.listas.updateOne({ "_id": ObjectId("6435b7d19b58f324f06a8ea5") },
+    { $push: { "produtos": {designacao: "Badejo", categoria: "Peixe", 
+                            quantidade: {valor: "3", unidade: "Kg"}  } } })
+
+Apagar um objeto duma lista interna:
+
+db.listas.updateOne({ "_id": ObjectId("6435b7d19b58f324f06a8ea5") }, 
+            { $pull: {"produtos": {designacao: "Badejo"}}})
+

@@ -1,0 +1,278 @@
+{
+    "designacao": "Lista de compras para o confinamento 2", 
+    "data": "2021-01-18",
+    "produtos": [
+      {
+        "designacao": "Courguettes",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Nabos",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Cenouras",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 8 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Cebolas",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 10 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Batata",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " Kg "
+        }
+      },
+      {
+        "designacao": "Laranja",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 2 ",
+          "unidade": " Kg"
+        }
+      },
+      {
+        "designacao": "Kiwis",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 6 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Pêras",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 5 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Diospiros",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Bananas",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 8 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Tangerinas",
+        "categoria": "Frutas e Legumes",
+        "quantidade": {
+          "valor": " 12",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Robalo",
+        "categoria": "Peixe",
+        "quantidade": {
+          "valor": " 1 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Postas de Salmão",
+        "categoria": "Peixe",
+        "quantidade": {
+          "valor": " 5 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Douradas",
+        "categoria": "Peixe",
+        "quantidade": {
+          "valor": " 2 ",
+          "unidade": " unidade"
+        }
+      },
+      {
+        "designacao": "Carne picada",
+        "categoria": "Carne",
+        "quantidade": {
+          "valor": " 400 ",
+          "unidade": " g "
+        }
+      },
+      {
+        "designacao": "Bifes de perú",
+        "categoria": "Carne",
+        "quantidade": {
+          "valor": " 600 ",
+          "unidade": " g "
+        }
+      },
+      {
+        "designacao": "Pá de Porco",
+        "categoria": "Carne",
+        "quantidade": {
+          "valor": " 1 ",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Óleo",
+        "categoria": "Condimentos",
+        "quantidade": {
+          "valor": " 1",
+          "unidade": " l "
+        }
+      },
+      {
+        "designacao": "Azeite",
+        "categoria": "Condimentos",
+        "quantidade": {
+          "valor": " 3",
+          "unidade": " l "
+        }
+      },
+      {
+        "designacao": "Frasco de ketchup",
+        "categoria": "Condimentos",
+        "quantidade": {
+          "valor": " 1",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Frasco de Maionese",
+        "categoria": "Condimentos",
+        "quantidade": {
+          "valor": " 1",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Broa",
+        "categoria": "Padaria",
+        "quantidade": {
+          "valor": " 500",
+          "unidade": " g "
+        }
+      },
+      {
+        "designacao": "Bijous",
+        "categoria": "Padaria",
+        "quantidade": {
+          "valor": " 12",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Pão da Avó",
+        "categoria": "Padaria",
+        "quantidade": {
+          "valor": " 1",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Embalagem de SKIP",
+        "categoria": "Limpeza",
+        "quantidade": {
+          "valor": " 1 ",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Detergente Lava-Tudo",
+        "categoria": "Limpeza",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " l "
+        }
+      },
+      {
+        "designacao": "Arroz",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 2 ",
+          "unidade": " Kg "
+        }
+      },
+      {
+        "designacao": "Arroz",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 1 ",
+          "unidade": " Kg "
+        }
+      },
+      {
+        "designacao": "Açúcar",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 1 ",
+          "unidade": " Kg "
+        }
+      },
+      {
+        "designacao": "Sal",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 0.5 ",
+          "unidade": " Kg "
+        }
+      },
+      {
+        "designacao": "Cardeno A4",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 2 ",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Bloco A5",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Lápis",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 2",
+          "unidade": " unidade "
+        }
+      },
+      {
+        "designacao": "Canetas",
+        "categoria": "Outros",
+        "quantidade": {
+          "valor": " 3 ",
+          "unidade": " unidade "
+        }
+      }
+    ]
+}
