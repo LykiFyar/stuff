@@ -1,0 +1,14 @@
+PL {
+    aulas {
+        $(date +\m-\d) {
+            db = "Diário de bordo aula 5"
+            ex1.py 
+            }
+        04-12 {
+
+        }
+    }
+    DOC {
+
+    }
+}

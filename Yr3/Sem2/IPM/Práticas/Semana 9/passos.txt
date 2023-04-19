@@ -1,0 +1,22 @@
+1) Carregar no botão Start
+2) Carregar no rectângulo do meio para selecionar o campeonato
+3) Carregar nas setas para navegar até ao campeonato pretendido
+4) Carregar no botão Select para selecionar o carro
+5) Carregar na imagem do carro para selecionar
+5) Carregar nas setas para navegar até ao carro pretendido
+6) Carregar no botão Search para pesquisar o carro pretendido
+7) Carregar no icone filtro para filtrar os carros por categoria
+9) Carregar no filtro para selecionar a categoria pretendida
+10) Carregar no filtro selecionado para remover o filtro
+11) Caregar no botão x para fechar a janela de filtros
+12) Carregar no botão Select para selecionar o condutor
+13) Carregar na imagem do condutor para selecionar
+14) Carregar nas setas para navegar até ao condutor pretendido
+15) Carregar no botão Search para pesquisar o condutor pretendido
+17) Carregar no Botão Start para iniciar a corrida
+18) Carregar no botão Retire para sair do campeonato
+19) Carregar no botão Yes para confirmar a saída para o menu principal
+20) Carregar no botão No para cancelar a saída para o menu principal
+21) Carregar no botão Championship results para ver os resultados do campeonato
+22) Carregar no botão Select Championship para selecionar outro campeonato
+23) Carregar no botão Quit para sair do jogo
