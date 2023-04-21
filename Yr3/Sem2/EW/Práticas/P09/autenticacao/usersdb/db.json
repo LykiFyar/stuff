@@ -1,0 +1,15 @@
+{
+    "users": [
+      {
+        "id":"A4140",
+        "email": "jcr@di.uminho.pt",
+        "password": "fixe" 
+      },
+      {
+        "id":"A123",
+        "email": "A123@alunos.uminho.pt",
+        "password": "a1"
+      }
+    ]
+}
+  
