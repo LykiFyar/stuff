@@ -1,0 +1,17 @@
+1 - Quantos exames estão registados?
+    db.exames.countDocuments() ou db.exames.count()
+
+2 - Quantos exames tiveram um resultado válido?
+    db.exames.find({resultado:true}).count()
+
+3 - Qual a distribuição dos exames por género?
+    db.exames.aggregate([{$project: {"género":1}}, {$group: {_id:"$género", "count":{$count:{}}}}])
+
+4 - Qual a distribuição dos exames por modalidade?
+    db.exames.aggregate([{$project: {"modalidade":1}}, {$group: {_id:"$modalidade", "count":{$count:{}}}}])
+
+5 - Quantos atletas federados do "GDGoma" fizeram EMD?
+    db.exames.find({clube:"GDGoma", federado:true}).count()
+
+6 - Quantos atletas do género feminino que praticam Triatlo fizeram EMD?
+    db.exames.find({"género":"F", modalidade:"Triatlo"}).count()
