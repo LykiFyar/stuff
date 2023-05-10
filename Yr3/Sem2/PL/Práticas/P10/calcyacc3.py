@@ -7,7 +7,7 @@ import math
 mem = {}
 
 
-precedences = [
+precedence = [
     ('right', '='),
     ('left', '+', '-'),
     ('left', '/', '*', '%'),
