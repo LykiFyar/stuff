@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UC xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="p1.xsd">
+    <Informação>
+        <Nome>Processamento de Linguagens</Nome>
+        <Código>8206N5</Código>
+        <Regime_Funcionamento>Semestral</Regime_Funcionamento>
+        <Número_ECTS>5.0</Número_ECTS>
+        <Áreas_Cientificas>
+            <Área>Informática de Base</Área>
+        </Áreas_Cientificas>
+        <Tipo_Ensino>Presencial</Tipo_Ensino>
+        <Tempo_Trabalho>
+            <Teóricas>30 horas</Teóricas>
+            <Práticas>30 horas</Práticas>
+        </Tempo_Trabalho>
+        <Língua_Intrução>Português</Língua_Intrução>
+        <Modular>Não</Modular>
+        <Conselho_Pedagógico>Escola de Engenharia</Conselho_Pedagógico>
+        <Cursos>
+            <Curso>Licenciatura em Engenharia Informática (Ano - 3)</Curso>
+        </Cursos>
+        <Objetivos_Ensino>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Apresentar a noção de linguagem formal e caracterizar o conceito de processamento de linguagens, estabelecendo os objectivos, as tarefas dum processador, as exigências que lhe são impostas e as técnicas de desenvolvimento (face às restrições e à complexidade do problema).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Apresentar os conceitos de expressão regular de gramática e de autómato e a sua aplicação ao desenvolvimento de Processadores de Linguagens (PL's).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introduzir formalismos para especificação da sintaxe e da semântica das linguagens e estudar a implementação dos analisadores que se podem derivar desses formalismos.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Tornar os alunos aptos a desenvolver Processadores de Linguagens segundo os métodos da Tradução Dirigida pela Sintaxe (TDS), recorrendo ao uso de ferramentas para geração automática dos ditos Processadores.</p>
+        </Objetivos_Ensino>
+        <Resultados_Aprendizagem>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Trabalhar com métodos, técnicas e ferramentas para a especificação formal de linguagens e para a construção automática de processadores de linguagens;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Compreender as tarefas de processamento de linguagens, os algoritmos associados e as estruturadas de dados necessárias para a contrução de um compilador;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Desenvolver processadores para linguagens de domínio especifico e linguagens de programação simples.</p>
+        </Resultados_Aprendizagem>
+    </Informação>
+    <Programa>
+        <Programa_Sucinto>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I. Introdução ao Processamento de Linguagens:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.1 Conceitos básicos: Linguagem e Gramática.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.2 Caracterização de Processador de Linguagens: objectivos; tarefas; requisitos.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.3 Processamento de Texto (Filtragem) com base em Regras de Produção (regras Condição-Acão) recorrendo a Expresses Regulares.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">II. Análise Léxica especificada via Expressões Regulares (ER) ou Gramáticas Regulares (GR); Autómatos Reativos:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">II.1 Uso do Gerador flex.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III. Análise Sintáctica especificada via Gramáticas Independentes de Contexto (GIC):</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III.1 Parsing Top-Down: Recursivo-descendente (RD) e LL(1).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III.2 Parsing Bottom-Up: LR(0), SLR(1), LALR(1).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">IV. Análise Semântica e Transformação (reação) especificada via Gramáticas Tradutoras (GT) ---Tradução Dirigida pela Sintaxe:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">IV.1 Uso do Gerador yacc.</p>
+        </Programa_Sucinto>
+        <Programa_Detalhado>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I. Introdução ao Processamento de Linguagens:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.1 Conceitos básicos: Linguagem e Gramática.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.2 Caracterização de Processador de Linguagens: objectivos; tarefas; requisitos.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">I.3 Processamento de Texto (Filtragem) com base em Regras de Produção (regras Condição-Acão) recorrendo a Expresses Regulares.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">II. Análise Léxica especificada via Expressões Regulares (ER) ou Gramáticas Regulares (GR); Autómatos Reativos:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">II.1 Uso do Gerador flex.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III. Análise Sintáctica especificada via Gramáticas Independentes de Contexto (GIC):</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III.1 Parsing Top-Down: Recursivo-descendente (RD) e LL(1).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">III.2 Parsing Bottom-Up: LR(0), SLR(1), LALR(1).</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">IV. Análise Semântica e Transformação (reação) especificada via Gramáticas Tradutoras (GT) ---Tradução Dirigida pela Sintaxe:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">IV.1 Uso do Gerador yacc.</p>
+        </Programa_Detalhado>
+    </Programa>
+    <Docentes>
+        <Docente>
+            <Nome>José João Antunes Guimarães Dias Almeida</Nome>
+            <Email>jj@di.uminho.pt</Email>
+            <Telefone>604479</Telefone>
+            <Escola>Escola de Engenharia</Escola>
+            <Gabinete>Departamento de Informática</Gabinete>
+            <Horário_Atendimento></Horário_Atendimento>
+        </Docente>
+        <Docente Coordenador="true">
+            <Nome>José Carlos Leite Ramalho</Nome>
+            <Email>jcr@di.uminho.pt</Email>
+            <Telefone>604479</Telefone>
+            <Escola>Escola de Engenharia</Escola>
+            <Gabinete>Departamento de Informática</Gabinete>
+            <Horário_Atendimento></Horário_Atendimento>
+        </Docente>
+        <Docente>
+            <Nome>Pedro Manuel Rangel Santos Henriques</Nome>
+            <Email>prh@di.uminho.pt</Email>
+            <Telefone>604469</Telefone>
+            <Escola>Escola de Engenharia</Escola>
+            <Gabinete>Departamento de Informática</Gabinete>
+            <Horário_Atendimento></Horário_Atendimento>
+        </Docente>
+    </Docentes>
+    <Horários>
+        <Teóricos>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">quinta das 14h às 16h, sala 0.0.7</p>
+        </Teóricos>
+        <Práticos>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Turno 1: segunda das 15h às 17h, sala 7.1.09</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Turno 2: terça das 15h às 17h, sala 7.1.09</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Turno 3: terça das 13h às 15h, sala 7.1.09</p>
+        </Práticos>
+    </Horários>
+    <Bibliografia>
+        <Bibliografia_Essencial>
+            <bibitem type="" id="b1">
+                <citkey></citkey>
+                <citation>R. G. Crespo, "Processadores de Linguagens: da concepÁ„o ‡ implementaÁ„o", IST-Press, 1998;</citation>
+            </bibitem>
+            <bibitem type="" id="b2">
+                <citkey></citkey>
+                <citation>Aho &amp; Sethi &amp; Ullman, "Compiler Principles, Techniques and Tools", Addison-Wesley, 1986;</citation>
+            </bibitem>
+            <bibitem type="" id="b3">
+                <citkey></citkey>
+                <citation>William Waite &amp; Carter, "An Introduction to Compiler Construction", HarperCollin College Publishers, 1993;</citation>
+            </bibitem>
+        </Bibliografia_Essencial>
+    </Bibliografia>
+    <Informação_Complementar>
+        <Metodologia>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Este curso é dividido em aulas teóricas e práticas.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Nas aulas teóricas, o assunto de processamento de linguagens é abordado apresentando as suas motivações, conceitos, definições, métodos e justificações.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Nas aulas práticas, são feitos exercícios de consolidicação, em papel (especificação de casos práticos) e no computador, usando ferramentas específicas para resolver os problemas propostos.</p>
+        </Metodologia>
+        <Informação_Adicional>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Não disponível</p>
+        </Informação_Adicional>
+        <Material_Apoio>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Não disponível</p>
+        </Material_Apoio>
+    </Informação_Complementar>
+    <Metodologias_Avaliação>
+        <Metodologia>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007"></p>
+        </Metodologia>
+        <Informação_Adicional>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007"></p>
+        </Informação_Adicional>
+        <Avaliação>
+            <Fator>2 trabalhos práticos</Fator>
+            <Percentagem>50</Percentagem>
+        </Avaliação>
+        <Avaliação>
+            <Fator>Exame final</Fator>
+            <Percentagem>50</Percentagem>
+        </Avaliação>
+    </Metodologias_Avaliação>
+    <Datas_Importantes>
+        <Data>
+            <Data>???</Data>
+            <Descrição>Entrega do 1º trabalho prático</Descrição>
+        </Data>
+        <Data>
+            <Data>???</Data>
+            <Descrição>Entrega do 2º trabalho prático 2</Descrição>
+        </Data>
+        <Data>
+            <Data>???</Data>
+            <Descrição>Exame final</Descrição>
+        </Data>
+    </Datas_Importantes>
+    <Avisos>
+        <Aviso>
+            <Título>Bem-vindos</Título>
+            <Data>2013-02-22</Data>
+            <Descrição>
+                <p xmlns="http://xml.di.uminho.pt/paragraph2007">Bem-vindos!</p>
+            </Descrição>
+        </Aviso>
+    </Avisos>
+    <Exames>
+        <p xmlns="http://xml.di.uminho.pt/paragraph2007"></p>
+    </Exames>
+    <Sumários>
+        <Aulas_Teóricas>
+            <Aula>
+                <Data>2013-02-22</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Apresentação</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">A aula foi dividida em duas partes.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Uma primeira parte onde se apresentou a disciplina: temática, metodologia de trabalho, método de avaliação e funcionamento das aulas teórico-práticas.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">E, uma segunda parte, onde se introduziram os primeiros conceitos: processador, linguagem, hierarquia de linguagens, algoritmos de reconhecimento, etc.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Empiricamente desenvolveu-se um exercício de reconhecimento de uma pequena e simples linguagem regular.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>128</Inscritos>
+                    <Assistiram>80</Assistiram>
+                    <Ausentes>48</Ausentes>
+                </Assiduidade>
+            </Aula>
+        </Aulas_Teóricas>
+        <Aulas_Práticas>
+            <Aula>
+                <Data>2013-02-22</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios com Expressões Regulares</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Durante a aula prática resolveram-se vários exercícios da ficha1 e que visavam treinar o aluno na expecificação de pequenas linguagens regulares usando expressões regulares.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>34</Inscritos>
+                    <Assistiram>34</Assistiram>
+                    <Ausentes>0</Ausentes>
+                </Assiduidade>
+            </Aula>
+        </Aulas_Práticas>
+    </Sumários>
+</UC>

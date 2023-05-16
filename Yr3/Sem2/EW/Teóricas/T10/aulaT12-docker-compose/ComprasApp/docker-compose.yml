@@ -1,0 +1,55 @@
+version: "3"
+services:
+  app:
+    container_name: comprasApp
+    build: ./Interface
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - comprasnet
+
+  data_server:
+    container_name: compras_data_server
+    build: ./Compras
+    restart: always
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/compras2023
+    ports:
+      - "8001:8001"
+    depends_on:
+      - mongodb
+    networks:
+      - comprasnet
+
+  mongodb:
+    container_name: compras-mongodb
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - comprasData:/data/db
+    networks:
+      - comprasnet
+
+  auth_server:
+    container_name: compras_auth_server
+    build: ./auth-server-2023
+    restart: always
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/compras2023
+    ports:
+      - "8002:8002"
+    depends_on:
+      - mongodb
+    networks:
+      - comprasnet
+      
+networks:
+  comprasnet:
+    name: comprasnet
+    driver: bridge
+volumes:
+  comprasData:
+  

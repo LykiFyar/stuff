@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+    <html>
+    <head></head>
+    <body class="w3-light-grey">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://kit.fontawesome.com/83260f98e0.js" crossorigin="anonymous"></script>
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+    <div class="w3-row-padding">
+    <div class="w3-third">
+    <div class="w3-white w3-text-grey w3-card-4">
+    <div class="w3-display-container">
+    <div class="w3-container w3-teal">
+    <h2>{{ title }}</h2>
+    </div>
+    <div class="w3-bar-block w3-teal">
+    <a href="informacao.html" class="w3-bar-item w3-button">Informação</a>
+    <a href="programa.html" class="w3-bar-item w3-button">Programa</a>
+    <a href="docentes.html" class="w3-bar-item w3-button">Docentes</a>
+    <a href="bibliografia.html" class="w3-bar-item w3-button">Bibliografia</a>
+    <a href="informacao_comp.html" class="w3-bar-item w3-button">Informação Complementar</a>
+    <a href="metodologia.html" class="w3-bar-item w3-button">Metodologia de Avaliação</a>
+    </div>
+    <div class="w3-margin-left" style="max-width:1400px;">
+    <h4><b class="w3-text-grey"><i class="fas fa-user-tie fa-fw w3-margin-right w3-large w3-text-teal"></i>Docentes</b></h4>
+    {% for i in range(0, len_doc, 3) %}
+    <p><t class="w3-text-teal">Nome: </t>{{ docentes[i] }}</p>
+    <p><t class="w3-text-teal">Gabinete: </t>{{ docentes[i+1] }}</p>
+    <p><t class="w3-text-teal">Email: </t>{{ docentes[i+2] }}</p>
+    <hr>
+    {% endfor %}
+    <h4><b class="w3-text-grey"><i class="fas fa-clock fa-fw w3-margin-right w3-large w3-text-teal"></i>Horário</b></h4>
+    <p class="w3-text-teal">Aulas Teóricas:</p>
+    <ul>
+    {% for horario in horarios_t %}
+    <li>{{ horario }}</li>
+    {% endfor %}
+    </ul>
+    <p class="w3-text-teal">Aulas Práticas:</p>
+    <ul>
+    {% for horario in horarios_p %}
+    <li>{{ horario }}</li>{% endfor %}
+    </ul>
+    <hr>
+    <h4><b class="w3-text-grey"><i class="fas fa-file fa-fw w3-margin-right w3-large w3-text-teal"></i>Avaliação</b></h4>
+    <ul>
+    {% for i in range(0, len_aval, 2) %}
+    <li>{{ avaliacao[i] }} ({{ avaliacao[i+1] }}%)</li>
+    {% endfor %}
+    </ul><hr>
+    <h4><b class="w3-text-grey"><i class="fas fa-calendar fa-fw w3-margin-right w3-large w3-text-teal"></i>Datas Importantes</b></h4>
+    <ul>
+    {% for i in range(0, len_dat, 2) %}
+    <li>{{ datas[i] }} - {{ datas[i+1] }}</li>
+    {% endfor %}
+    </ul><hr>
+    </div></div></div></div><div class="w3-twothird">
+<div class="w3-bar w3-teal">
+    <a href="avisos.html" class="w3-bar-item w3-button">Avisos</a>
+    <a href="exames.html" class="w3-bar-item w3-button">Exames</a>
+    <a href="sumarios.html" class="w3-bar-item w3-button">Sumários</a>
+    </div>
+    <div class="w3-container w3-card w3-white w3-margin-bottom">
+    <h3 class="w3-text-teal">Programa Sucinto</h3>
+        {% for prog in prog1 %}
+        <p>{{ prog }}</p>
+        {% endfor %}
+        <hr>
+        <h3 class="w3-text-teal">Programa Detalhado</h3>
+        {% for prog in prog2 %}
+        <p>{{ prog }}</p>
+        {% endfor %}
+        </div>
+        </div>
+        </div>
+        </div>
+        </body>
+        </html>
+        

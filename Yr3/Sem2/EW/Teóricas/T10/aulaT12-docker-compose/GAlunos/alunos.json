@@ -1,0 +1,292 @@
+{
+  "alunos": [
+    {
+      "id": "A91755",
+      "nome": "João Paulo Machado Abreu",
+      "gitlink": "https://github.com/joaoabreu5/PL2023"
+    },
+    {
+      "id": "A94731",
+      "nome": "Sandro Manuel Fernandes Duarte",
+      "gitlink": "https://github.com/Duasandr/EngWeb2023.git"
+    },
+    {
+      "id": "A96106",
+      "nome": "Miguel Silva Pinto",
+      "gitlink": "https://github.com/Miguelcj1/EngWeb2023"
+    },
+    {
+      "id": "A94913",
+      "nome": "José Manuel de Antunes Carvalho",
+      "gitlink": "https://github.com/JoseBambora/EngWeb2023"
+    },
+    {
+      "id": "A97755",
+      "nome": "Orlando José da Cunha Palmeira",
+      "gitlink": "https://github.com/orlandopalmeira/EngWeb2023"
+    },
+    {
+      "id": "A96834",
+      "nome": "Simão Oliveira Alvim Barroso",
+      "gitlink": "https://github.com/simaobarroso/EW2023"
+    },
+    {
+      "id": "A97496",
+      "nome": "Miguel Ângelo Silva Senra",
+      "gitlink": "https://github.com/MiguelSenra/EW2023"
+    },
+    {
+      "id": "A97613",
+      "nome": "Pedro Miguel Castilho Martins",
+      "gitlink": "https://github.com/Katilho/EngWeb2023"
+    },
+    {
+      "id": "A95114",
+      "nome": "Emanuel Lopes Monteiro da Silva",
+      "gitlink": "https://github.com/EmanuelsGiT/EngWeb2023"
+    },
+    {
+      "id": "A97031",
+      "nome": "Miguel Filipe Cidade da Silva",
+      "gitlink": "https://github.com/MiguelCidadeSilva/EngWeb2023"
+    },
+    {
+      "id": "A91924",
+      "nome": "Mateus Medeiros Pereira",
+      "gitlink": "https://github.com/Cavalex/EngWeb2023"
+    },
+    {
+      "id": "A97393",
+      "nome": "Gabriela Santos Ferreira da Cunha",
+      "gitlink": "https://github.com/gabrielasfc/EngWeb2023"
+    },
+    {
+      "id": "A96455",
+      "nome": "Nuno Guilherme Cruz Varela",
+      "gitlink": "https://github.com/GVarelaa/EngWeb2023"
+    },
+    {
+      "id": "A95019",
+      "nome": "João Pedro Antunes Gonçalves",
+      "gitlink": "https://github.com/jpgoncalves13/EngWeb2023.git"
+    },
+    {
+      "id": "A97777",
+      "nome": "Millena de Freitas Santos",
+      "gitlink": "https://github.com/freitasmillena/EngWeb2023"
+    },
+    {
+      "id": "A97503",
+      "nome": "Dinis Gonçalves Estrada",
+      "gitlink": "https://github.com/DinisEstrada/EngWeb2023",
+      "tpc6": "1",
+      "tpc7": "1",
+      "tpc8": "1"
+    },
+    {
+      "id": "A96834",
+      "nome": "Simão Oliveira Alvim Barroso",
+      "gitlink": "https://github.com/simaobarroso/EngWeb2023"
+    },
+    {
+      "id": "A96766",
+      "nome": "Guilherme Geraldes Sampaio",
+      "gitlink": "https://github.com/gweebg/EngWeb2023.git"
+    },
+    {
+      "id": "A96794",
+      "nome": "Ricardo Alves Oliveira",
+      "gitlink": "https://github.com/RicAlvesO/EngWeb2023"
+    },
+    {
+      "id": "A97540",
+      "name": "Ana Rita Moreira Vaz",
+      "gitlink": "https://github.com/ritavaz02/EngWeb2023",
+      "tpc1": "1",
+      "tpc2": "1"
+    },
+    {
+      "id": "A97257",
+      "nome": "João Miguel Ferreira Loureiro",
+      "gitlink": "https://github.com/jmfl27/EngWeb2023"
+    },
+    {
+      "id": "A97496",
+      "nome": "Miguel Ângelo Silva Senra",
+      "gitlink": "https://github.com/MiguelSenra/EngWeb2023"
+    },
+    {
+      "id": "A95085",
+      "nome": "João Gonçalo de Faria Melo",
+      "gitlink": "https://github.com/goncalo-melo/EngWeb2023.git"
+    },
+    {
+      "id": "A96215",
+      "nome": "João António Redondo Martins",
+      "gitlink": "https://github.com/jmartins9/EngWeb2023"
+    },
+    {
+      "id": "A97541",
+      "nome": "Gonçalo Semelhe Sousa Braga",
+      "gitlink": "https://github.com/goncalobraga27/EngWeb2023"
+    },
+    {
+      "id": "A95076",
+      "nome": "Pedro Marcelo Bogas Oliveira",
+      "gitlink": "https://github.com/Pedro95076/EngWeb2023"
+    },
+    {
+      "id": "A97368",
+      "nome": "João Pedro Vilas Boas Braga",
+      "gitlink": "https://github.com/LykiFyar/EngWeb2023"
+    },
+    {
+      "id": "A96569",
+      "nome": "Telmo José Pereira Maciel",
+      "gitlink": "https://github.com/telmomaciel9/EngWeb2023"
+    },
+    {
+      "id": "A91755",
+      "nome": "João Paulo Machado Abreu",
+      "gitlink": "https://github.com/joaoabreu5/EngWeb2023"
+    },
+    {
+      "id": "A94942",
+      "nome": "Miguel Velho Raposo",
+      "gitlink": "https://github.com/MiguelRaposo/EngWeb2023"
+    },
+    {
+      "id": "A97158",
+      "nome": "Marta Isabel da Silva e Sá",
+      "gitlink": "https://github.com/findingmarta/EngWeb2023.git"
+    },
+    {
+      "id": "A97141",
+      "nome": "Tiago Luís Pereira Ferreira",
+      "gitlink": "https://github.com/ederzito88/EngWeb2023"
+    },
+    {
+      "id": "A97746",
+      "nome": "Ricardo Lopes Lucena",
+      "gitlink": "https://github.com/Lucena02/EngWeb2023"
+    },
+    {
+      "id": "A96681",
+      "nome": "Luís Manuel Fernandes Pereira",
+      "gitlink": "https://github.com/lumafepe/EngWeb2023"
+    },
+    {
+      "id": "A95125",
+      "nome": "Hugo dos Santos Martins",
+      "gitlink": "https://github.com/hugomartins22/EngWeb2023"
+    },
+    {
+      "id": "A97270",
+      "nome": "José Eduardo da Cunha Rocha",
+      "gitlink": "https://github.com/Eduard0Rocha/EngWeb2023.git"
+    },
+    {
+      "id": "A95844",
+      "nome": "Duarte Gonçalves Parente",
+      "gitlink": "https://github.com/duarteparente/EngWeb2023"
+    },
+    {
+      "id": "A95522",
+      "nome": "José António Alves de Matos Moreira",
+      "gitlink": "https://github.com/josemoreira15/EngWeb2023"
+    },
+    {
+      "id": "A97642",
+      "nome": "José Rafael Cruz Ferreira",
+      "gitlink": "https://github.com/rafa2002/EngWeb2023.git"
+    },
+    {
+      "id": "A97018",
+      "nome": "Telmo Leonel Silva Oliveira",
+      "gitlink": "https://github.com/Telmo2002/EngWeb2023.git"
+    },
+    {
+      "id": "E10391",
+      "nome": "Mercurio Verde Hopson",
+      "gitlink": "https://github.com/MercurioV/EngWeb2023.git"
+    },
+    {
+      "id": "A97223",
+      "nome": "João Paulo Peixoto Castro",
+      "gitlink": "https://github.com/joaocasr/EngWeb2023"
+    },
+    {
+      "id": "A96626",
+      "nome": "João Carlos Fernandes Novais",
+      "gitlink": "https://github.com/JoaoNovais181/EngWeb2023"
+    },
+    {
+      "id": "A94870",
+      "nome": "Rafael Picão Ferreira Correia",
+      "gitlink": "https://github.com/rafaelcorreia94870/EngWeb2023"
+    },
+    {
+      "id": "A96075",
+      "nome": "João Bernardo Teixeira Escudeiro",
+      "gitlink": "https://github.com/jbtescudeiro16/EngWeb2023"
+    },
+    {
+      "id": "A95354",
+      "nome": "Gonçalo Martins dos Santos",
+      "gitlink": "https://github.com/goncalosantos3/EngWeb2023"
+    },
+    {
+      "id": "A96361",
+      "nome": "Vasco Manuel Araújo Andrade de Oliveira",
+      "gitlink": "https://github.com/Vasco2002/EngWeb2023.git"
+    },
+    {
+      "id": "A96394",
+      "nome": "Ricardo Silva Machado Araújo",
+      "gitlink": "https://github.com/ricardoaraujoo/EngWeb2023"
+    },
+    {
+      "id": "A97652",
+      "nome": "João Pedro Dias Faria",
+      "gitlink": "https://github.com/joaofaria19/EngWeb2023"
+    },
+    {
+      "id": "A97698",
+      "nome": "Miguel de Sousa Braga",
+      "gitlink": "https://github.com/MiguelBraga2/EngWeb2023"
+    },
+    {
+      "id": "a96434",
+      "nome": "Francisca Quintas Monteiro de Barros",
+      "gitlink": "https://github.com/fbarros86/EngWeb2023"
+    },
+    {
+      "id": "A97027",
+      "nome": "Artur Jorge Castro Leite",
+      "gitlink": "https://github.com/ARTurleite6/EngWeb2023",
+      "tpc3": "1",
+      "tpc4": "1",
+      "tpc5": "1"
+    },
+    {
+      "id": "A96141",
+      "nome": "Ricardo Cardoso Sousa",
+      "gitlink": "https://github.com/admetaq/EngWeb2023"
+    },
+    {
+      "id": "A96561",
+      "nome": "Rodrigo Manuel Matos Pereira",
+      "gitlink": "https://github.com/eivarin/EngWeb2023"
+    },
+    {
+      "id": "A96326",
+      "nome": "Bernard Ambrosio Georges",
+      "gitlink": "https://github.com/BernardGeorges/EngWeb2023.gi"
+    },
+    {
+      "id": "A95323",
+      "nome": "Henrique Ribeiro Fernandes",
+      "gitlink": "https://github.com/0HenriqueFernandes0/EngWeb2023.git"
+    }
+  ]
+}

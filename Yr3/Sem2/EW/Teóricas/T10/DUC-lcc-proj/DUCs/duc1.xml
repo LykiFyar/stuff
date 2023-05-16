@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<UC xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="p1.xsd">
+    <Informação>
+        <Nome>Desenvolvimento de Aplicações WEB</Nome>
+        <Código>H507T3</Código>
+        <Regime_Funcionamento>Semestral</Regime_Funcionamento>
+        <Número_ECTS>5.0</Número_ECTS>
+        <Áreas_Cientificas>
+            <Área>Informática</Área>
+        </Áreas_Cientificas>
+        <Tipo_Ensino>Presencial</Tipo_Ensino>
+        <Tempo_Trabalho>
+            <Teóricas>15 horas</Teóricas>
+            <Práticas>30 horas</Práticas>
+        </Tempo_Trabalho>
+        <Língua_Intrução>Português</Língua_Intrução>
+        <Modular>Não</Modular>
+        <Conselho_Pedagógico>Escola de Engenharia</Conselho_Pedagógico>
+        <Cursos>
+            <Curso>Mestrado em Engenharia Informática (Ano - 1)</Curso>
+            <Curso>Mestrado Integrado em Engenharia Informática (Ano - 4)</Curso>
+        </Cursos>
+        <Objetivos_Ensino>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">O objetivo desta unidade curricular é preparar os alunos para o desenvolvimento de aplicações Web segundo o modelo MVC ("Model View Controller") e usando as tecnologias mais emergentes.</p>
+        </Objetivos_Ensino>
+        <Resultados_Aprendizagem>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">No final desta UC os alunos deverão demonstrar as seguintes competências:</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Perante um problema ser capaz de dividir e identificar as suas componentes relativas ao modelo, à interface e ao controlo;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Demonstrar e ser capaz de tomar decisões na implementação do modelo: ficheiros XML, CSV ou JSON, bases de dados relacionais, bases de dados não relacionais;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Demonstrar e ser capaz de desenvolver interfaces simples recorrendo ao twitter bootstrap ou ao W3.css;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Demonstrar e ser capaz de desenvolver interfaces complexas, por exemplo reativas, recorrendo a frameworks como o Angular, React, Vue ou Blaze;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Demonstrar e ser capaz de implementar o controlo através do desenvolvimento de servidores HTTP em NodeJS;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Desenvolver autonomia na pesquisa e estudo da literatura e informação da área;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Desenvolver as competências necessárias ao trabalho em equipe.</p>
+        </Resultados_Aprendizagem>
+    </Informação>
+    <Programa>
+        <Programa_Sucinto>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">1. Especificação de modelos de dados: XML (schemas, xpath, xslt), JSON, CSV, Bases de dados relacionais (revisões), Bases de dados não relacionais (orientadas ao documento, orientadas a grafos);</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">2. Especificação de interfaces Web simples: HTML, CSS, frameworks CSS (bootstrap, w3.css);</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">3. Sincronização da interface com AJAX;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">4. Especificação de interfaces Web complexas: JavaScript, Vue, Angular, React;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">5. Implementação de servidores HTTP com o NodeJS;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">6. Autenticação de utilizadores com o Passport: local, facebook e google;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">7. Implementação de interfaces às bases de dados ORM/ODM;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">8. Geração automática de aplicações Web com o Express;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">9. Geração de aplicações Web com combinação de componentes Yeoman;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">10. "Deploy" de aplicações na cloud;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">11. Sincronização do desenvolvimento da aplicação com o seu deployment.</p>
+        </Programa_Sucinto>
+        <Programa_Detalhado>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">1. Especificação de modelos de dados: XML (schemas, xpath, xslt), JSON, CSV, Bases de dados relacionais (revisões), Bases de dados não relacionais (orientadas ao documento, orientadas a grafos);</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">2. Especificação de interfaces Web simples: HTML, CSS, frameworks CSS (bootstrap, w3.css);</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">3. Sincronização da interface com AJAX;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">4. Especificação de interfaces Web complexas: JavaScript, Vue, Angular, React;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">5. Implementação de servidores HTTP com o NodeJS;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">6. Autenticação de utilizadores com o Passport: local, facebook e google;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">7. Implementação de interfaces às bases de dados ORM/ODM;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">8. Geração automática de aplicações Web com o Express;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">9. Geração de aplicações Web com combinação de componentes Yeoman;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">10. "Deploy" de aplicações na cloud;</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">11. Sincronização do desenvolvimento da aplicação com o seu deployment.</p>
+        </Programa_Detalhado>
+    </Programa>
+    <Docentes>
+        <Docente Coordenador="true">
+            <Nome>José Carlos Leite Ramalho</Nome>
+            <Email>jcr@di.uminho.pt</Email>
+            <Telefone>604479</Telefone>
+            <Escola>Escola de Engenharia</Escola>
+            <Gabinete>Departamento de Informática</Gabinete>
+            <Horário_Atendimento></Horário_Atendimento>
+        </Docente>
+    </Docentes>
+    <Horários>
+        <Teóricos>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">terça das 9h às 11h, sala 3.1.02</p>
+        </Teóricos>
+        <Práticos>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Turno 1: sexta das 11h às 13h, sala 2.2.09</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Turno 2: quarta das 11h às 13h, sala 2.2.07</p>
+        </Práticos>
+    </Horários>
+    <Bibliografia>
+        <Bibliografia_Essencial>
+            <bibitem type="" id="b1">
+                <citkey></citkey>
+                <citation>Guias e manuais disponíveis em: https://nodejs.org/en/docs</citation>
+            </bibitem>
+            <bibitem type="" id="b2">
+                <citkey></citkey>
+                <citation>Documentação sobre o MongoDB: http://docs.mongodb.com</citation>
+            </bibitem>
+            <bibitem type="" id="b3">
+                <citkey></citkey>
+                <citation>XML &amp; XSL : da teoria à prática / José Carlos Ramalho, Pedro Henriques. - XVII, 319 p. : il. ; 24 cm, ISBN 972-722-347-8, BGUM 681.3.062 - R</citation>
+            </bibitem>
+        </Bibliografia_Essencial>
+    </Bibliografia>
+    <Informação_Complementar>
+        <Metodologia>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">A metodologia de ensino da UC é composta por uma componente teórica e uma componente prática. No início de cada aula são introduzidos os conceitos teóricos que são depois aplicados em pequenos projetos práticos. Em cada aula são desenvolvidos vários projetos práticos demonstrando a aplicação dos conceitos teóricos.</p>
+        </Metodologia>
+        <Informação_Adicional>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Não disponível</p>
+        </Informação_Adicional>
+        <Material_Apoio>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Não disponível</p>
+        </Material_Apoio>
+    </Informação_Complementar>
+    <Metodologias_Avaliação>
+        <Metodologia>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- A avaliação da aprendizagem envolve vários elementos com diferentes pesos na média final: um projeto final a realizar em equipe (até 3 elementos) e que tem um peso de 40%, um teste individual com peso de 30%, vários trabalhos de casa que no seu total terão um peso de 20% e a avaliação contínua da aula com um peso de 10%.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- A classificação final é calculada pela ponderação dos diversos instrumentos de avaliação.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- É considerado aprovado o aluno cuja classificação final seja superior ou igual a 10 (dez) valores.</p>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">- Para o cálculo da classificação final podem-se estabelecer notas mínimas, sendo que, para instrumentos de avaliação de cariz prático, esta nota mínima não pode ser inferior a 10 (dez) valores.</p>
+        </Metodologia>
+        <Informação_Adicional>
+            <p xmlns="http://xml.di.uminho.pt/paragraph2007">Não disponível</p>
+        </Informação_Adicional>
+        <Avaliação>
+            <Fator>8 Trabalhos de casa</Fator>
+            <Percentagem>20</Percentagem>
+        </Avaliação>
+        <Avaliação>
+            <Fator>1 Projeto em grupo até 3 elementos (nota mínima de 8 val.)</Fator>
+            <Percentagem>30</Percentagem>
+        </Avaliação>
+        <Avaliação>
+            <Fator>1 Teste escrito (nota mínima de 8 val.)</Fator>
+            <Percentagem>40</Percentagem>
+        </Avaliação>
+        <Avaliação>
+            <Fator>Fator JCR</Fator>
+            <Percentagem>10</Percentagem>
+        </Avaliação>
+    </Metodologias_Avaliação>
+    <Datas_Importantes>
+        <Data>
+            <Data>30 de Maio</Data>
+            <Descrição>Teste escrito</Descrição>
+        </Data>
+        <Data>
+            <Data>26 de Junho a 1 de Julho</Data>
+            <Descrição>Defesa do projeto</Descrição>
+        </Data>
+    </Datas_Importantes>
+    <Avisos>
+        <Aviso>
+            <Título>Início das aulas</Título>
+            <Data>2019-02-14</Data>
+            <Descrição>
+                <p xmlns="http://xml.di.uminho.pt/paragraph2007">Venham preparados para trabalhar...</p>
+            </Descrição>
+        </Aviso>
+    </Avisos>
+    <Exames>
+        <p xmlns="http://xml.di.uminho.pt/paragraph2007">
+            <xref target="atp2022-normal.pdf">
+                Enunciado do Teste de avaliação (5 de Janeiro de 2023)
+            </xref>
+        </p>
+        <p xmlns="http://xml.di.uminho.pt/paragraph2007">
+            <xref target="teste.py">
+                Ficheiro Python com uma possível resolução
+            </xref>
+        </p>
+        <p xmlns="http://xml.di.uminho.pt/paragraph2007">
+            <xref target="ATP2022-avaliacao.pdf">
+                Resultados do Teste (5 de Janeiro de 2023)
+            </xref>
+        </p>
+    </Exames>
+    <Sumários>
+        <Aulas_Teóricas>
+            <Aula>
+                <Data>2019-09-24</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Apresentação e primeiros conceitos</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Apresentação e discussão da UC e respetivo método de avaliação.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução ao HTML e aos seus elementos básicos.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução ao XML.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Apresentação das ferramentas a utilizar durante o semestre.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>42</Assistiram>
+                    <Ausentes>6</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-01</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>XML e tecnologias associadas</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução às linguagens de anotação.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Especificação de linguagens de anotação: os DTDs.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>47</Assistiram>
+                    <Ausentes>1</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-08</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Geração de websites a partir de datasets estáticos</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Geração de múltiplos outputs com o XSLT.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Geração de índices de navegação.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-15</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Introdução ao desenvolvimento web com nodejs</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Primeiros servidores em node: hello world...</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Criação de servidores web e tratamento de pedidos.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-22</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Tratamento e gestão de pedidos HTTP numa aplicação</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Tratamento de pedidos HTML: GET e POST.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Caraterísticas e diferenças entre GET e POST.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Quando usar um e outro.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-29</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Geração de aplicações web com o módulo Express</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Geração de aplicações web: estrutura, conceitos (interface, roteadores, configuração).</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">O conceito de middleware no pipeline de eecução.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-11-05</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Persistência de dados em Mongo</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">MongoDB como suporte à persistência de dados.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Como criar bases de dados e manipulá-las: a linguagem de query do Mongo.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-11-12</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Construção de APIs de dados</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução à especificação de modelos e controladores.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Anatomia de uma API de dados.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-11-19</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Gestão de ficheiros</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução ao upload e download de ficheiros.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-11-26</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Introdução à autenticação</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução à problemática da autenticação: identificar um utilizador e distinguir o seu nível de acesso.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Autenticação em aplicações web com 1 servidor/serviço.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+        </Aulas_Teóricas>
+        <Aulas_Práticas>
+            <Aula>
+                <Data>2019-09-24</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Primeiros exercícios</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Construção duma página em HTML.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Criação dum documento XML.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>42</Assistiram>
+                    <Ausentes>6</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-01</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios sobre DTDs</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">1. O poema de Álvaro de Campos;</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">2. O livro de receitas da minha avó.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>47</Assistiram>
+                    <Ausentes>1</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-08</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios sobre geração de websites</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">O arquivo sonoro de Ernesto Veiga de Oliveira.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-15</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Primeiros exercícios com nodejs</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">A gestão de alunos numa UC.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-22</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Uma aplicação web para gerir listas de compras.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-29</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Gestão do dataset de filmes americanos: listagem, consulta e inserção.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Lista de compras revisitada.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Persistência dos dados em ficheiros JSON.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-11-05</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios com Mongo</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">A gestão de alunos revisitada.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Introdução ao upload de ficheiros.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-12</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios: construção de APIs de dados</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Os compositores musicais.</p>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Consumo da API de dados do CLAV.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-19</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios com ficheiros</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Uma aplicação para gerir imagens de cartoons.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+            <Aula>
+                <Data>2019-10-26</Data>
+                <Docente>José Carlos Leite Ramalho</Docente>
+                <Título>Exercícios sobre autenticação básica</Título>
+                <Sumário>
+                    <p xmlns="http://xml.di.uminho.pt/paragraph2007">Proteção da aplicação sobre os compositores musicais.</p>
+                </Sumário>
+                <Assiduidade>
+                    <Inscritos>48</Inscritos>
+                    <Assistiram>45</Assistiram>
+                    <Ausentes>3</Ausentes>
+                </Assiduidade>
+            </Aula>
+        </Aulas_Práticas>
+    </Sumários>
+</UC>

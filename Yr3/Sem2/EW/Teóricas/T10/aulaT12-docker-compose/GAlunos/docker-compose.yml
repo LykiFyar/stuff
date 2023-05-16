@@ -1,0 +1,26 @@
+version: "3"
+services:
+  app:
+    container_name: alunosApp
+    build: ./AppAlunos
+    restart: always
+    ports:
+      - "13001:7777"
+    networks:
+      - alunosnet
+  data_server:
+    container_name: alunos_data_server
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - alunosnet
+networks:
+  alunosnet:
+    name: alunosnet
+    driver: bridge
+
+
+
+    
+  

@@ -1,0 +1,30 @@
+version: "3"
+services:
+  appalunos:
+    container_name: app_alunos
+    build: .
+    restart: always
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/EngWeb2023
+    ports:
+      - "13001:7777"
+    depends_on:
+      - mongodb
+    networks:
+      - alunosnet
+  mongodb:
+    container_name: mongodb_container
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - alunosnet
+networks:
+  alunosnet:
+    name: alunosnet
+    driver: bridge
+
+
+
+    
+  
