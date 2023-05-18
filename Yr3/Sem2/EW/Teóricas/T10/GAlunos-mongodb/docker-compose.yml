@@ -16,7 +16,7 @@ services:
     container_name: mongodb_container
     image: mongo
     ports:
-      - "27017:27017"
+      - "13002:27017"
     networks:
       - alunosnet
 networks:
