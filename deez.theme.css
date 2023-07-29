@@ -9,14 +9,14 @@
  * @BDEditor Clear Vision
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=gg+sans:wght@100;300;400;500;700&display=swap');
 @import url('https://clearvision.github.io/ClearVision-v6/main.css');
 
 :root {
-  --main-color: #D53307;
+  --main-color: #C52A00;
   --hover-color: #A72401;
   --success-color: #2AB173;
-  --danger-color: #982929;
+  --danger-color: #E10000;
   --url-color: #0464C5;
   --undefined: 0;
   --background-image: url('https://i.imgur.com/lBD5mgA.jpg');
@@ -65,7 +65,7 @@
   --dnd-color: #DB0000;
   --streaming-color: #5101D9;
   --offline-color: #818181;
-  --main-font: Mukta;
+  --main-font: gg sans;
   --code-font: Consolas;
   --channels-width: 220px;
   --members-width: 240px;
