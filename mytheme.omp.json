@@ -1,77 +1,70 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
-      {
-        "alignment": "right",
-        "segments": [
-          {
-            "background": "#003543",
-            "foreground": "#ffffff",
-            "properties": {
-              "template": " \uf64f {{ .CurrentDate | date .Format }} "
-            },
-            "style": "plain",
-            "type": "time"
-          },
-          {
-            "background": "#83769c",
-            "foreground": "#ffffff",
-            "properties": {
-              "always_enabled": true,
-              "template": " \ufa1e{{ .FormattedMs }} "
-            },
-            "style": "plain",
-            "type": "executiontime"
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.UserName}} \u2794 📁{{.Folder}}",
+  "blocks": [
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#003543",
+          "template": " \uf64f {{ .CurrentDate | date .Format }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#83769c",
+          "template": " \ufa1e{{ .FormattedMs }} ",
+          "properties": {
+            "always_enabled": true
           }
-        ],
-        "type": "rprompt"
-      },
-      {
-        "alignment": "left",
-        "segments": [
-          {
-            "background": "#ff2c2c",
-            "foreground": "#ffffff",
-            "properties": {
-              "display_host": false,
-              "template": "{{if .Root}} \uf0e7 {{.UserName}} {{else}} {{.UserName}} {{end}}"
-            },
-            "style": "diamond",
-            "trailing_diamond": "\ue0b0",
-            "type": "session"
-          },
-          {
-            "background": "#ff7424",
-            "foreground": "#ffffff",
-            "powerline_symbol": "\ue0b0",
-            "properties": {
-              "folder_icon": "\uf115",
-              "folder_separator_icon": " \ue0b1 ",
-              "max_depth": 2,
-              "style": "agnoster_short",
-              "template": " {{ .Path }} "
-            },
-            "style": "powerline",
-            "type": "path"
-          },
-          {
-            "background": "#68ff7c",
-            "foreground": "#193549",
-            "powerline_symbol": "\ue0b0",
-            "properties": {
-              "template": " {{ .HEAD }} "
-            },
-            "style": "powerline",
-            "type": "git"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "foreground": "#ffffff",
+          "background": "#ff2c2c",
+          "trailing_diamond": "\ue0b0",
+          "template": "{{if .Root}} \uf0e7 {{.UserName}} {{else}} {{.UserName}} {{end}}",
+          "properties": {
+            "display_host": false
           }
-        ],
-        "type": "prompt"
-      }
-    ],
-    "console_title": true,
-    "console_title_style": "template",
-    "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.UserName}} \u2794 📁{{.Folder}}",
-    "final_space": true,
-    "version": 1
-  }
-  
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#ff7424",
+          "template": " {{ .Path }} ",
+          "properties": {
+            "folder_icon": "\uf115",
+            "folder_separator_icon": " \ue0b1 ",
+            "max_depth": 2,
+            "style": "agnoster_short"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#193549",
+          "background": "#68ff7c",
+          "template": " {{ .HEAD }} "
+        }
+      ]
+    }
+  ]
+}
