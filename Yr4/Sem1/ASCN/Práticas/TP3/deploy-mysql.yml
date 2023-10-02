@@ -1,0 +1,58 @@
+- hosts: db
+  vars:
+    # Shared Swap database settings
+    app_db_name: swap 
+    app_db_user: teste
+    #Careful this should be using VAULT!!!!
+    app_db_password: 123456 
+    # bind ip for DB - Using Inventory file content
+    app_db_ip: "{{ groups['db'][0] }}"
+    # client ip - Using Inventory file content
+    app_user_ip: "{{ groups['app'][0] }}"
+    #DB settings
+    db_packages:
+      - mysql-server
+      - python3-mysqldb
+
+  tasks:
+  - name: Install Mysql packages
+    become: yes
+    apt:
+      name: "{{ item }}"
+      state: latest
+    loop: "{{ db_packages }}"
+
+  - name: Change MySQL bind-address
+    become: yes
+    lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf
+      regexp='bind-address\s*=\s*127\.0\.0\.1\s*'
+      line='bind-address   = {{ app_db_ip }}'
+      state=present
+      backrefs=yes
+    
+  - name: restart mysql
+    become: yes
+    service:
+      name: mysql
+      state: restarted
+
+  - name: Create Swap database
+    become: yes
+    mysql_db: name={{ app_db_name }} state=present
+
+  - name: Cleanup users with same name accounts
+    become: yes
+    mysql_user:
+      name: "{{ app_db_user }}"
+      host_all: yes
+      state: absent
+
+  - name: Create database user with password and all database privileges and 'WITH GRANT OPTION'
+    become: yes
+    mysql_user:
+      name: "{{ app_db_user }}"
+      password: "{{ app_db_password }}"
+      priv: '*.*:ALL,GRANT'
+      host: "{{ app_user_ip }}"
+      state: present
+
