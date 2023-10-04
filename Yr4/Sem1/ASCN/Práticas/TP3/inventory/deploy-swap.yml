@@ -1,0 +1,8 @@
+- name: Deploy Swap
+  hosts: all
+  remote_user: vagrant 
+
+  roles:
+  - app
+  - db
+  - seed_app
