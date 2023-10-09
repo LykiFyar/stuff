@@ -1,0 +1,12 @@
+- name: Deploy DB
+  hosts: db
+  become: yes
+  roles:
+  - db
+  - seed_app
+
+- name: Deploy Swap
+  hosts: app
+  become: yes
+  roles:
+  - app

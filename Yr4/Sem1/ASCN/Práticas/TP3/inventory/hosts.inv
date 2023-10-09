@@ -1,5 +1,0 @@
-[app]
-192.168.56.101 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
-[db]
-192.168.56.102 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
-

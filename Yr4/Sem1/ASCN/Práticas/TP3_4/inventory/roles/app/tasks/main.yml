@@ -1,0 +1,71 @@
+- name: Install dependencies
+  block: 
+    - name: Add php repo
+      apt_repository:
+          repo: 'ppa:ondrej/php'
+    - name: apt update
+      apt:
+        update_cache: yes
+    - name: Install php
+      apt: 
+        name: 
+          - php7.4
+          - php7.4-fpm
+          - php7.4-zip
+          - php7.4-mbstring
+          - php7.4-tokenizer
+          - php7.4-mysql
+          - php7.4-gd
+          - php7.4-xml
+          - php7.4-bcmath
+          - php7.4-intl
+          - php7.4-curl
+        state: present
+    - name: Install nodejs, composer and npm
+      apt: 
+        pkg:
+          - nodejs
+          - composer
+          - npm
+
+- name: Clone Swap directory
+  block:
+  - name: Clone repo
+    git:
+      repo: 'https://github.com/Hackathonners/swap'
+      dest: /home/vagrant/swap
+      clone: yes
+
+- name: Install required packages with composer
+  command: composer install
+  args:
+    chdir: /home/vagrant/swap
+
+- name: Install Swap with npm
+  npm:
+    path: '/home/vagrant/swap'
+
+- name: Change environmental variables
+  template:
+    src: /home/vagrant/inventory/roles/app/templates/env_example
+    dest: /home/vagrant/swap/.env
+
+- name: Generate application key
+  command: php artisan key:generate
+  args:
+    chdir: /home/vagrant/swap
+
+- name: Run database migrations
+  command: php artisan migrate
+  args:
+    chdir: /home/vagrant/swap
+
+- name: Seed the database
+  command: php artisan db:seed
+  args:
+    chdir: /home/vagrant/swap
+
+- name: Start Swap
+  shell: nohup php artisan serve --host=0.0.0.0 > app_out.log 2>&1 &
+  args:
+    chdir: /home/vagrant/swap
