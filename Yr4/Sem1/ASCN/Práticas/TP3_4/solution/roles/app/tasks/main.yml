@@ -1,0 +1,57 @@
+---
+- name: Add php repository from PPA and install its signing key on Ubuntu target
+  become: yes
+  apt_repository:
+    repo: ppa:ondrej/php
+
+- name: Update system packages
+  become: yes
+  apt:
+    update_cache: yes
+    upgrade: no
+
+- name: Install app packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ app_packages }}"
+
+- name: Clone app repository
+  git:
+    repo: https://github.com/Hackathonners/swap.git
+    dest: ~/swap
+
+- name: Create app configuration file
+  template: src=env_example dest=~/swap/.env
+
+- name: Install app dependencies with composer
+  composer:
+    command: install
+    working_dir: ~/swap
+
+- name: Install app dependencies with npm
+  npm:
+    path: ~/swap
+    state: present
+
+- name: Generate app key
+  shell: php artisan key:generate
+  args:
+    chdir: ~/swap
+
+- name: Migrate app database
+  shell: php artisan migrate
+  args:
+    chdir: ~/swap
+
+#The killall should be improved to a safer command
+- name: Clean previous app servers
+  shell: killall -9 php7.4 && killall -9 php
+  ignore_errors: yes
+
+#a more correct approach to this would be to register the service in systemd
+- name: Start app server
+  shell: nohup php artisan serve --host=0.0.0.0 > app_out.log 2>&1 &
+  args:
+    chdir: ~/swap
