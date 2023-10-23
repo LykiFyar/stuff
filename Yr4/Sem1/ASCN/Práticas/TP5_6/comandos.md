@@ -14,3 +14,6 @@ show databases
 
 # Docker SWAP APP
 
+docker build . -t swap_image
+
+docker run --net ASCNswapTP5 -p 8000:8000 --name swap_app swap_image
