@@ -1,5 +1,5 @@
 Number_Workers = 2 #number Workers to launch
-IP_RANGE= "192.168.56" #Change me if needed!
+IP_RANGE= "192.168.182" #Change me if needed!
 PUBLIC_KEY_PATH = "~/.ssh/id_rsa.pub" #Change me if needed!
 READ_PUBLIC_KEY = File.read(File.expand_path(PUBLIC_KEY_PATH)).strip
 

@@ -1,0 +1,35 @@
+---
+# Deployment for Swap
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swap-deployment
+  labels:
+    app: swap
+spec:
+  selector:
+    matchLabels:
+      app: swap
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: swap
+    spec:
+      containers:
+      - name: swap
+        image: ascnuminho/swap # Vai buscar ao docker hub a imagem
+        env: # The variables below could be set on a ConfigMap object
+        - name: DB_HOST
+          value: mysql-service # deve estar o nome do serviço
+        - name: DB_DATABASE
+          value: swap
+        - name: DB_USERNAME
+          value: swapuser
+        - name: DB_PASSWORD
+          value: "123456" # Use Secret object in real usage
+        - name: MIGRATE
+          value: "true"
+        ports:
+        - containerPort: 8000

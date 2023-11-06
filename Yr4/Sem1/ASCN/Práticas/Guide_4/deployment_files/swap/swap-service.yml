@@ -1,0 +1,16 @@
+---
+# Service for exposing Swap
+apiVersion: v1
+kind: Service
+metadata:
+  name: swap-service # logical name of the service, which will also become the DNS name of the service when it is created.
+  labels:
+    app: swap
+spec:
+  type: NodePort
+  selector:
+    app: swap
+  ports:
+    - targetPort: 8000 # port that containers are listening on
+      port: 8000 # port number exposed internally in the cluster
+      nodePort: 30007 # port number exposed externally on the cluster nodes
