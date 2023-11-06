@@ -120,25 +120,40 @@ run Scenario6 {
 
 check OP1 {
 	// Users can only have notifications of subscribed events
+	always (notifications in subscriptions)
 
+	// always (all u : User, e : Event) | u->e in notifications implies u->e in subscriptions
 }
 
 check OP2 {
 	// Its not possible to read notifications before some event is subscribed
-
+	all u : User | (some e : Event | subscribe[u,e]) releases not read[u]
 }
 
 check OP3 {
 	// Unsubscribe undos subscribe
 
+	// all u : User, e, e1 : Event | always ((subscribe[u,e]; unsubscribe[u,e]) implies notifications'' = notifications and subscriptions'' = subscriptions
+
+
+		all u : User, e : Event | always {
+		(subscribe[u,e]; unsubscribe[u,e] implies
+		(u1->e1 in notifications'' iff u1->e1 in notifications)
+			and
+		(u1-> e2 in notifications iff u1->e1 in subscriptions)
+ 	}	
 }
 
 check OP4 {
 	// Notify is idempotent
+	all e : Event | always ((occur[e]; occur[e]) implies 
+		notifications ' = notifications' and subscriptions'' = subscriptions'
 
+	// all e : Event | always ((occur[e]; occur[e]) implies (occur[e]; stutter))
 }
 
 check OP5 {
 	// After reading the notifications it is only possible to read again after some notification on a subscribed event occurs
-
+	all u : User | always (read[u] implies
+		after ((some e : u.subscriptions | occur[e]) realizes not read[u]))
 }
