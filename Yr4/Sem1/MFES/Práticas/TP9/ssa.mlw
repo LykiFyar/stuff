@@ -1,0 +1,49 @@
+
+
+(* 
+Recall the "logic encoding of a program exercise from Ficha 3. 
+Encode the following program in the Why3 logic, following the 
+single-assignment - conditional normal form workflow.
+
+  z = 0 ;
+  x = x + y ;
+  if (y >= 0) {
+    y = x - y ;
+    x = x - y ;  
+  }
+  else {
+    z = x - y;
+    x = y;
+    y = 0; 
+  }
+  z = x + y + z;
+
+Write goals that allow you to answer the following questions. 
+Inspect counterexamples whenever possible.
+
+(a) If the initial value of y is positive, then the program swaps the values of x and y
+(b) The final value of y is never negative
+(c) The final value of z is the sum of the initial values of x and y
+(d) The final value of x is always negative
+
+*)
+
+
+
+module Program_SACNF
+
+  
+  use int.Int
+
+  constant x0 :int constant x1 :int constant x2 :int constant x3 :int constant x4 :int
+  constant ... 
+
+  axiom ... 
+  
+  goal sanity_check : false
+
+  goal ... 
+
+end
+
+

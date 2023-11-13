@@ -1,0 +1,110 @@
+
+(*
+    Recall the office assignment puzzle from Ficha 1, where 
+    4 people are distributed by 3 offices, such that:
+    - each person is assigned a single office
+    - Nuno and Pedro do not share an office
+    - If Ana has an office just for herself, then so does Pedro
+    - Offices accomodate at most two people
+    
+    Recall that, if running Why3 with an appropriate SMT solver, 
+    in the following you will be able to inspect counter-examples 
+    when adequate. 
+
+    
+    1. Model the problem by defining an appropriate predicate 
+       and writing a set of axioms.
+       In order to express the third requirement above, define 
+       a predicate "alone" expressing that someone is the only 
+       occupier of an office.
+       
+    2. Show that the axioms are not inconsistent by writing an 
+       appropriate goal.
+       
+    3. Find out if the following properties follow from the axioms:
+        - If Maria is assigned office One, then she will be
+            the only occupier of that office.
+        - If Ana and Nuno share an office, then Maria and Pedro will 
+            equally have to share an office. 
+    
+    4. Finally, formulate and prove a goal stating that 
+        at most one office may be empty. For this, first write a predicate 
+        expressing that an office is empty (i.e. not assigned to anyone). 
+        
+    5. Produce an alternative formalization using, instead of a predicate, 
+        a logic function that gives the unique office assigned to 
+        each person. Repeat all the previous steps with this formalization.
+    
+*) 
+
+
+
+module Offices
+
+  type office = One | Two | Three
+  type person = Ana | Nuno | Pedro | Maria
+
+  predicate hasOffice (person) (office)
+
+  axiom A1 : forall p : person. exists o : office. hasOffice p o
+
+  axiom A2 : forall p: person, a1 a2 : office.
+        hasOffice p a1 /\ hasOffice p a2 -> a1 = a2
+ 
+  axiom B : forall a1 a2 : office.
+        hasOffice Nuno a1 /\ hasOffice Pedro a2 -> a1 <> a2
+  
+  predicate alone (p:person) = forall o : office, p1 : person.
+                                hasOffice p o /\ hasOffice p1 o -> p1 = p
+
+  axiom C : alone Ana -> alone Pedro
+
+  axiom D : forall p1 p2 p3 : person, o : office.
+            hasOffice p1 o /\ hasOffice p2 o /\ hasOffice p3 o ->
+                p1 = p2 \/ p1 = p3 \/ p2 = p3
+
+
+  goal SAT : false
+  
+  goal gA : hasOffice Maria One -> alone Maria
+  
+  goal gB : forall o : office. hasOffice Ana o /\ hasOffice Nuno o ->
+            exists o1 : office. hasOffice Maria o1 /\ hasOffice Pedro o1
+  
+
+  predicate empty (o:office) = forall p : person. not hasOffice p o 
+  
+  lemma atMostOneEmpty :  forall a1 a2 : office. empty a1 /\ empty a2 -> a1=a2
+
+end 
+
+
+
+
+module Offices_Fn 
+
+  type office = One | Two | Three
+  type person = Ana | Nuno | Pedro | Maria
+
+  function office (person) : office
+
+  axiom ...
+  
+  
+  predicate alone (p:person) = ...
+
+  axiom ...
+
+
+  goal ...
+
+
+  predicate empty (o:office) = 
+  
+  lemma atMostOneEmpty : ...
+
+end 
+
+
+
+
