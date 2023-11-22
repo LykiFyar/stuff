@@ -1,0 +1,84 @@
+
+(* 
+    Write appropriate definitions and specifications for
+    functions split and merge, used by the merge sort 
+    algorithm defined below in the module. 
+    
+    Note that the verification of mergesort relies only 
+    on the specifications ("contracts") of the auxiliary 
+    functions, and not on their code. As such, it is crucial
+    to include in them every aspect required for the
+    verification conditions of the sorting algorithm
+    to be successfully discharged.
+    
+    Note also that although Why3 is capable of automatically 
+    proving the termination of functions with simple recursive
+    patterns, that does not apply to the mergesort function. 
+    We thus include in the contract the variant "length l", 
+    which is valid since the function is recursively called 
+    on lists that are shorter than l. 
+*)    
+
+
+
+module MergeSort
+
+  use int.Int
+  use list.List
+  use list.Length
+  use list.Permut
+  use list.Append
+  use list.SortedInt
+
+(*Cons = constructor*)
+(*o ensures verifica se o resultado é uma permutação da lista original*)
+  let rec function split (l :list int) : (list int, list int)
+    ensures { let (l1,l2) = result in permut l (l1++l2) }
+    ensures {let (l1, l2) = result in length l < 2 \/ 
+                (length l >= 2 /\ length l1 < length l /\ length l2 < length l)}
+                
+  = match l with 
+    |  Nil -> (Nil, Nil)
+    |  Cons x Nil -> (l, Nil)
+    |  Cons x (Cons y t) -> let (l1, l2) = split t
+                                in (Cons x l1, Cons y l2)
+  end
+
+
+  let rec function merge (l1 l2 :list int) : list int
+    requires { sorted l1 /\ sorted l2 }
+    ensures  { sorted result } 
+    ensures {permut result (l1++l2)}
+  = match l1, l2 with
+      | Nil, _ -> l2
+      | _, Nil -> l1
+      | (Cons x l1'), (Cons y l2') -> if x<=y
+                                            then Cons x (merge l1' l2)
+                                            else Cons y (merge l1 l2')
+  end
+
+
+  
+  let rec function mergesort (l :list int)
+    ensures { sorted result } 
+    ensures { permut l result } 
+    variant { length l }
+  =
+    match l with
+    | Nil -> Nil
+    | Cons x Nil -> Cons x Nil
+    | _ ->   let (l1,l2) = split l
+             in merge (mergesort l1) (mergesort l2)
+    end
+
+
+
+
+  predicate is_a_sorting_algorithm (f: list int -> list int) = 
+    forall al :list int. permut al (f al) /\ sorted (f al)
+
+  goal is_a_sorting_algorithm : is_a_sorting_algorithm mergesort
+
+
+
+end
