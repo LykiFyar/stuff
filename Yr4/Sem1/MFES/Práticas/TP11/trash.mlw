@@ -1,0 +1,90 @@
+module Trash
+
+  use int.Int
+  use set.Fset
+  
+(*
+sig Item {}
+var sig Accessible in Item {}
+var sig Trashed in Item {}
+*)
+  
+  type item = int
+  clone set.SetImp with type elt = item
+  
+  type stateT = { accessible: set ; trashed : set }
+     invariant  { is_empty (inter accessible trashed) }
+  by { accessible = empty() ; trashed = empty() } 
+
+  val state : stateT  
+
+
+     
+(*
+pred create[i : Item] {
+	i not in Accessible + Trashed
+	Accessible' = Accessible + i
+	Trashed' = Trashed 
+}
+*)
+     
+  let create (i : item) 
+    requires { (not mem i state.accessible) /\ (not mem i state.trashed) }
+    ensures  { state.accessible = add i (old state.accessible)  }
+    ensures  { state.trashed = old state.trashed }
+  =
+    add i state.accessible
+
+
+
+(*
+pred delete[i : Item] {
+	i in Accessible
+	Accessible' = Accessible - i
+	Trashed' = Trashed + i
+}
+*)
+
+  let delete (i : item)
+    requires { mem i state.accessible }
+    ensures  { state.accessible = remove i (old state.accessible) }
+    ensures  { state.trashed = add i (old state.trashed)}
+  =
+    remove i state.accessible ;
+    add i state.trashed
+
+
+
+(*
+pred restore[i : Item] {
+	i in Trashed
+	Accessible' = Accessible + i
+	Trashed' = Trashed - i
+}
+*)
+  let restore (i : item)
+    requires { mem i state.trashed }
+    ensures  { state.accessible = add i (old state.accessible) }
+    ensures  { state.trashed = remove i (old state.trashed)}
+  =
+    add i state.accessible ;
+    remove i state.trashed
+    
+    
+    
+(*
+pred empty {
+	some Trashed
+	no Trashed'
+	Accessible' = Accessible
+}
+*)
+  let empty ()
+    requires { not (is_empty state.trashed) }
+    ensures  { is_empty state.trashed }
+    ensures  { state.accessible = old state.accessible }
+  =
+    clear state.trashed
+
+
+end

@@ -1,0 +1,74 @@
+module Label
+
+  use int.Int
+
+
+(*
+sig Item {
+    var labels : set Label
+}
+sig Label {}
+*)
+
+  type item = int
+  type labl = int
+  
+  clone set.SetImp with type elt = (item,labl)
+
+  type rel = set
+
+  val copy (r:rel) : rel
+    ensures { result == r }       
+
+  type stateT = { labels : rel }
+
+  val state : stateT
+
+
+
+(*
+pred affix [i : Item, l : Label] {
+	l not in i.labels
+	labels' = labels + i->l
+}
+*)
+
+  let affix (i:item) (l:labl)
+    requires { not mem (i,l) state.labels }
+    ensures  {  }
+  =
+    ...    
+  
+  
+  
+(*
+pred detach [i : Item, l : Label] {
+	l in i.labels
+	labels' = labels - i->l
+}
+*)
+
+  let detach (i:item) (l:labl)
+    requires { ... }
+    ensures  { ... }
+  =
+    ...    
+
+
+
+(*
+pred clear [i : Item] {
+	some i.labels
+	labels' = labels - i->Label
+}
+*)
+
+  let clear (i:item)
+    requires { exists l:labl . mem (i,l) state.labels }
+    ensures  { forall l:labl . not mem (i,l) state.labels }
+    ensures  { forall j:item , l:labl . j<> i -> (mem (j,l) state.labels <-> mem (j,l) (old state.labels)) }
+  =
+    ...    
+
+
+end
