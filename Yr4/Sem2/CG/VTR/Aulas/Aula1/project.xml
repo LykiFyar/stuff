@@ -1,0 +1,45 @@
+<project name="Simple">
+    <assets>
+        <scenes>
+            <scene name="rb" param="UNITIZE">
+                    <file name="models/rainbowBench.obj"/> 
+            </scene>
+        </scenes>
+        <viewports>
+            <viewport name="MainVP">
+                <CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+            </viewport>
+        </viewports>
+        <cameras>
+            <camera name="MainCam">
+                <viewport name="MainVP" />
+                <POSITION x="1.46" y="1.05" z="1.75" />
+                <LOOK_AT_POINT x="0" y="0" z="0" />
+            </camera>
+        </cameras>
+        <lights>
+            <light name="Sun">
+                <DIRECTION x="-2" y="-1" z="-2" />
+            </light>
+        </lights>
+        <materialLibs>
+            <materialLib filename="matlib.xml" />
+        </materialLibs>
+    </assets>
+    <pipelines>
+        <pipeline name="simple">
+            <pass class="default" name="pass1">
+                <scenes>
+                    <scene name="rb" />
+                </scenes>
+                <camera name="MainCam" />
+                <lights>
+                    <light name="Sun" />
+                </lights>
+                <materialMaps>
+                    <map fromMaterial="*"/>
+                </materialMaps>
+            </pass>
+        </pipeline>
+    </pipelines>
+</project>
