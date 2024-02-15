@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<project name="Simple" >
+	<assets>
+        <attributes>
+            <attribute type="RENDERER" name="Shininess" data="FLOAT" value="128" />
+        </attributes>
+		<scenes>
+			<scene name="teapot" param="SWAP_YZ UNITIZE">
+				<file name="teapot.3ds"/>
+			</scene>
+
+			<scene name="al" param="UNITIZE">
+				<file name="al.obj"/>
+			</scene>
+		</scenes>
+		
+		<viewports>
+			<viewport name="MainViewport">
+				<CLEAR_COLOR r="1.0" g="1.0" b="1.0" />
+			</viewport>
+		</viewports>		
+
+		<cameras>
+			<camera name="MainCamera" >
+				<viewport name="MainViewport" />
+                <POSITION x="1.46" y="1.05" z="1.75"  />
+                <LOOK_AT_POINT x = "0" y="0" z="0" />
+                <NEAR value = "0.01" />
+			</camera>
+		</cameras>
+		
+		<lights>
+			<light name="Sun">
+				<DIRECTION x="2" y="1" z="2" />
+				<COLOR r="0.9" g="0.9" b="0.9" />
+			</light>
+		</lights>
+
+        <!-- adding a material lib -->
+		<materialLibs>
+			<materialLib filename="simple.mlib"/>
+		</materialLibs>
+
+
+	</assets>
+	
+	<pipelines>
+		<pipeline name="simple" default="true">
+			<pass class="default" name="pass1">
+				<scenes>
+					<scene name="al" />
+				</scenes>
+				<camera name="MainCamera" />
+				<lights>
+					<light name="Sun" />
+				</lights>
+                <injectionMaps>
+                    <map toMaterial="*">
+                        <shader fromLibrary="simple" fromMaterial="simple" />
+                    </map>
+                </injectionMaps>
+			</pass>
+		</pipeline>
+	</pipelines>
+
+</project>

@@ -1,17 +1,29 @@
 <materialLib name="Simple">
+
     <shaders>
-        <shader name="V1" vs="shaders/simple.vert" ps="shaders/simple.frag"/>
+        <shader name="V1"
+            vs = "shaders/simple.vert"
+            ps = "shaders/simple.frag"/>
     </shaders>
+
     <materials>
         <material name="V1">
+            <color>
+                <DIFFUSE r="1" g="0" b="0" a="1" />
+            </color>
             <shader name="V1">
                 <values>
-                    <valueof uniform="m_pvm"
-                             type="RENDERER"
-                             context="CURRENT"
-                             component="PROJECTION_VIEW_MODEL" />
+                    <valueof uniform = "m_pvm"
+                                type = "RENDERER"
+                                context = "CURRENT"
+                                component = "PROJECTION_VIEW_MODEL"/>
+                    <valueof uniform= "diffuse"
+                            type="COLOR"
+                            context="CURRENT"
+                            component="DIFFUSE"/>
                 </values>
             </shader>
         </material>
+
     </materials>
 </materialLib>

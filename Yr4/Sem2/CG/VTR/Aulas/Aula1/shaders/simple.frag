@@ -1,7 +1,10 @@
-#version 460
+#version 450
+
+uniform vec4 diffuse;
 
 out vec4 outputF;
 
 void main() {
-    outputF = vec4(0.0, 0.0, 1.0, 1.0);
+
+    outputF = diffuse;
 }
