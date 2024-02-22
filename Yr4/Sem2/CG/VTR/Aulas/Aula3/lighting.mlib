@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<materialLib name="lighting" >
+
+    <shaders>
+        <shader name="lighting" 
+                        vs="shaders/lighting.vert"
+                        ps="shaders/lighting.frag" />
+        <shader name="fireball" 
+                        vs="shaders/fireball.vert"
+                        ps="shaders/fireball.frag" />
+        <shader name="lamp" 
+                        vs="shaders/lamp.vert"
+                        ps="shaders/lamp.frag" />
+    </shaders>
+
+
+    <materials>
+        <material name="lighting" >
+            <shader name="lighting" >
+                <values>
+                    <valueof uniform="l_dir" type="LIGHT"
+                            component="DIRECTION" id="0" />
+                    <valueof uniform="m_pvm" type="RENDERER"
+                            component="PROJECTION_VIEW_MODEL" />
+                    <valueof uniform="diffuse" type="COLOR"
+                            component = "DIFFUSE" />
+                    <valueof uniform="m_normal" type="RENDERER"
+                            component = "NORMAL" />
+                    <valueof uniform="m_view" type="RENDERER"
+                            component="VIEW" />
+                    <valueof uniform="specular" type="COLOR"
+                            component="SPECULAR"/>
+                    <valueof uniform="m_viewModel" type="RENDERER"
+                            component="VIEW_MODEL"/>
+                </values>
+            </shader>
+        </material>
+
+        <material name="fireball" >
+                <shader name="fireball" >
+                    <values>
+                        <valueof uniform="l_pos" type="LIGHT"
+                                component="POSITION" id="1"/>
+                        <valueof uniform="m_pvm" type="RENDERER"
+                                component="PROJECTION_VIEW_MODEL" />
+                        <valueof uniform="diffuse" type="COLOR"
+                                component = "DIFFUSE" />
+                        <valueof uniform="m_normal" type="RENDERER"
+                                component = "NORMAL" />
+                        <valueof uniform="m_view" type="RENDERER"
+                                component="VIEW" />
+                        <valueof uniform="m_model" type="RENDERER"
+                                component="MODEL" />
+                        <valueof uniform="specular" type="COLOR"
+                                component="SPECULAR"/>
+                        <valueof uniform="m_viewModel" type="RENDERER"
+                                component="VIEW_MODEL"/>
+                        </values>
+                </shader>
+        </material>
+        <material name="lamp" >
+                <shader name="lamp" >
+                    <values>
+                        <valueof uniform="l_pos" type="LIGHT"
+                                component="POSITION" id="2"/>
+                        <valueof uniform="l_cutoff" type="LIGHT"
+                                component="SPOT_CUTOFF" id="2"/>
+                        <valueof uniform="l_sdir" type="LIGHT"
+                                component="SPOT_DIRECTION" id="2"/>
+                        <valueof uniform="m_pvm" type="RENDERER"
+                                component="PROJECTION_VIEW_MODEL" />
+                        <valueof uniform="diffuse" type="COLOR"
+                                component = "DIFFUSE" />
+                        <valueof uniform="m_normal" type="RENDERER"
+                                component = "NORMAL" />
+                        <valueof uniform="m_view" type="RENDERER"
+                                component="VIEW" />
+                        <valueof uniform="specular" type="COLOR"
+                                component="SPECULAR"/>
+                        <valueof uniform="m_viewModel" type="RENDERER"
+                                component="VIEW_MODEL"/>
+                        <valueof uniform="m_model" type="RENDERER"
+                                component="MODEL" />
+                        </values>
+                </shader>
+        </material>
+
+  </materials>
+</materialLib>
