@@ -1,0 +1,64 @@
+<project name="texturing" >
+
+    <assets>
+        <attributes>
+            <attribute name="width" type="COLOR" data="FLOAT" value="0.5"/>
+            <attribute name="gap" type="COLOR" data="FLOAT" value="0.1"/>
+            <attribute name="div" type="COLOR" data="INT" value="5"/>
+            <attribute name="secondary_color" type="COLOR" data="VEC4" x="0.5" y="0.5" z="0.5"/>
+            <attribute name="factor" type="COLOR" data="FLOAT" value="0.5"/>
+        </attributes>
+        <scenes>
+            <scene name="teapot" filename="models/Teapot.3ds" param="UNITIZE SWAP_YZ"/>
+            <scene name="cube" filename="models/cube2.obj" param="UNITIZE"/>
+        </scenes>
+
+        <viewports>
+            <viewport name="mainV" >
+                <CLEAR_COLOR x="1.0" y="1.0" z="1.0" /> 
+            </viewport>
+        </viewports>
+
+        <cameras>
+            <camera name="mainC" >
+                <viewport name="mainV" />
+                <POSITION x="0" y="0" z="5" />
+                <NEAR value="0.01" />
+            </camera>
+        </cameras>
+
+        <materialLibs>
+            <materialLib filename = "texture.mlib" />
+        </materialLibs>
+
+    </assets>
+
+    <pipelines>
+        <pipeline name="texturing" >
+            <pass class="default" name="p1" >
+                <scenes>
+                    <scene name="teapot" />
+                </scenes>
+                <camera name="mainC" />
+                <materialMaps>
+                    <map fromMaterial="*"
+                            toLibrary="texturing" toMaterial="textured" />
+                </materialMaps>
+
+            </pass>
+
+        </pipeline>
+    </pipelines>
+
+    <interface>
+        <window label="Texture Project">
+            <var label="div" type="COLOR" context="texturing::textured" component="div" def="min=1 max=20" />
+            <var label="width" type="COLOR" context="texturing::textured" component="width" def="min=0 max=1" />
+            <var label="factor" type="COLOR" context="texturing::textured" component="factor" def="min=0 max=5" />
+            <var label="gap" type="COLOR" context="texturing::textured" component="gap" def="min=0 max=1" />
+            <var label="diffuse" type="COLOR" context="texturing::textured" component="DIFFUSE" mode="COLOR"/>
+            <var label="secondary_diffuse" type="COLOR" context="texturing::textured" component="secondary_color" mode="COLOR"/>
+
+        </window>
+    </interface>
+</project>

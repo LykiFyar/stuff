@@ -1,0 +1,48 @@
+<materialLib name="texturing">
+
+    <textures>
+        <texture name="teapot" filename="textures/teapot.jpg" mipmap="true"/>
+        <texture name="crate" filename="textures/crate.jpg" mipmap="true"/>
+        <texture name="coloredline" filename="textures/coloredLine.jpg" mipmap="true"/>
+        <texture name="mixline" filename="textures/mixLine.jpg" mipmap="true"/>
+
+    </textures>
+    <shaders>
+        <shader name="texture" vs="shaders/texture.vert"
+                            ps="shaders/texture.frag" />
+    </shaders>
+
+    <materials>
+
+        <material name="textured">
+            <shader name="texture" >
+                <values>
+                    <valueof uniform = "m_pvm" type="RENDERER"
+                                component="PROJECTION_VIEW_MODEL"/>
+                    <valueof uniform="tex" type="TEXTURE_BINDING"
+                            component="UNIT" id="0"/>
+                    <valueof uniform="width" type="COLOR"
+                            component="width"/>
+                    <valueof uniform="factor" type="COLOR"
+                            component="factor"/>
+                    <valueof uniform="gap" type="COLOR"
+                            component="gap"/>
+                    <valueof uniform="div" type="COLOR"
+                            component="div"/>
+                    <valueof uniform="secondary_diffuse" type="COLOR"
+                            component="secondary_color"/>
+                    <valueof uniform="diffuse" type="COLOR"
+                            component="DIFFUSE"/>
+                </values>
+
+            </shader>
+            <textures>
+                <texture name="coloredline" UNIT="0"/>
+            </textures>
+        </material>
+
+    </materials>
+
+
+
+</materialLib>    
