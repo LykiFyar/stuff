@@ -1,65 +1,65 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "console_title_template": "{{if .Root}} ⚡ {{end}}{{.UserName}} ➔ 📁{{.Folder}}",
   "blocks": [
     {
+      "type": "rprompt",
       "alignment": "right",
       "segments": [
         {
-          "background": "#003543",
-          "foreground": "#ffffff",
+          "type": "time",
           "style": "plain",
-          "type": "time"
+          "foreground": "#ffffff",
+          "background": "#003543"
         },
         {
-          "background": "#83769c",
+          "type": "executiontime",
+          "style": "plain",
           "foreground": "#ffffff",
+          "background": "#83769c",
           "properties": {
             "always_enabled": true
-          },
-          "style": "plain",
-          "type": "executiontime"
+          }
         }
-      ],
-      "type": "rprompt"
+      ]
     },
     {
+      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "background": "#ff2c2c",
+          "type": "session",
+          "style": "diamond",
           "foreground": "#ffffff",
+          "background": "#ff2c2c",
+          "trailing_diamond": "\ue0b0",
           "properties": {
             "display_host": false
-          },
-          "style": "diamond",
-          "trailing_diamond": "\ue0b0",
-          "type": "session"
+          }
         },
         {
-          "background": "#ff7424",
-          "foreground": "#ffffff",
+          "type": "path",
+          "style": "powerline",
           "powerline_symbol": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#ff7424",
           "properties": {
             "folder_icon": "\uf115",
             "folder_separator_icon": " \ue0b1 ",
             "max_depth": 2,
             "style": "agnoster_short"
-          },
-          "style": "powerline",
-          "type": "path"
+          }
         },
         {
-          "background": "#68ff7c",
-          "foreground": "#193549",
-          "powerline_symbol": "\ue0b0",
+          "type": "git",
           "style": "powerline",
-          "type": "git"
+          "powerline_symbol": "\ue0b0",
+          "foreground": "#193549",
+          "background": "#68ff7c"
         }
-      ],
-      "type": "prompt"
+      ]
     }
-  ],
-  "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.UserName}} \u2794 📁{{.Folder}}",
-  "final_space": true,
-  "version": 1
+  ]
 }
