@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<materialLib name="Texture">
+	<textures>
+		<texture name="earth" filename="textures/earthDay.jpg" mipmap="true"/>
+		<texture name="spec" filename="textures/earthSpec.jpg" mipmap="true"/>
+		<texture name="night" filename="textures/earthLights.jpg" mipmap="true"/>
+		<texture name="clouds" filename="textures/earthClouds.jpg" mipmap="true"/>
+	</textures>
+
+	<shaders>
+		<shader name="textured" >
+			<vs>
+				<file name ="shaders/texture.vert"/>
+			</vs>
+			<ps>
+				<file name="shaders/texture.frag"/>
+				<file name="shaders/noise.frag"/>
+			</ps>
+		</shader>
+	</shaders>
+	
+	<materials>
+		<material name="textured">
+			<shader name="textured">
+				<values>
+					<valueof uniform="m_pvm" 
+							 type="RENDERER" 
+							 component="PROJECTION_VIEW_MODEL" />
+					 
+					<valueof uniform="m_viewModel" 
+							 type="RENDERER"  
+							 component="VIEW_MODEL" />
+					 
+					<valueof uniform="m_view" 
+							 type="RENDERER" 
+							 component="VIEW" />
+					 
+					<valueof uniform="m_normal" 
+							 type="RENDERER" 
+							 component="NORMAL" />
+					 
+					<valueof uniform="l_dir"
+							 type="LIGHT" 
+							 component="DIRECTION" id="0"/>
+					<valueof uniform="texEarth"
+							 type="TEXTURE_BINDING"
+							 component="UNIT" id="0"/>
+					<valueof uniform="texSpec"
+							 type="TEXTURE_BINDING"
+							 component="UNIT" id="1"/>
+					<valueof uniform="texNight"
+							 type="TEXTURE_BINDING"
+							 component="UNIT" id="2"/>
+					<valueof uniform="texClouds"
+							 type="TEXTURE_BINDING"
+							 component="UNIT" id="3"/>
+					 
+				</values>
+			</shader>
+			<textures>
+				<texture name="earth" UNIT="0"/>
+				<texture name="spec" UNIT="1"/>
+				<texture name="night" UNIT="2"/>
+				<texture name="clouds" UNIT="3"/>
+			</textures>
+		</material>
+	</materials>
+	
+</materialLib>

@@ -1,0 +1,25 @@
+<materialLib name="Worley">
+
+    <shaders>
+        <shader name="worley" vs="shaders/quad.vert"
+                              ps="shaders/worley.frag" />
+    </shaders>
+
+    <materials>
+ 
+        <material name="worley" >
+            <shader name="worley" >
+                <values>
+                    <valueof uniform="num_octaves" 
+                                type="RENDERER" component="num_octaves" />
+                    <valueof uniform="scale" 
+                                type="RENDERER" component="scale" />
+                    <valueof uniform="timer" 
+                                type="RENDERER" component="TIMER" />
+                </values>
+            </shader>
+        </material>
+
+    </materials>
+
+</materialLib>

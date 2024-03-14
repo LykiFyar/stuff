@@ -1,0 +1,50 @@
+<project name="Perlin Noise" width="1024" height="512">
+
+    <assets>
+        <attributes>
+            <attribute name="octave" type="RENDERER" data="INT" value="1" />
+            <attribute name="num_octaves" type="RENDERER" data="INT" value="1" />
+            <attribute name="scale" type="RENDERER" data= "FLOAT" value="2.0" />
+        </attributes>
+
+        <viewports>
+            <viewport name="left">
+                <ORIGIN x="0" y="0" />
+                <SIZE x ="0.5" y="1.0" />
+                <CLEAR_COLOR x="1" y="1" z="1" />
+            </viewport>
+             <viewport name="right">
+                <ORIGIN x="0.5" y="0" />
+                <SIZE x ="0.5" y="1.0" />
+             </viewport>
+       </viewports>
+
+        <materialLibs>
+            <materialLib filename="perlin.mlib" />
+        </materialLibs>
+    </assets>
+
+    <pipelines>
+        <pipeline name="Perlin" >
+            <pass class = "quad" name="Perlin" >
+                <viewport name="left"/>
+                <material name="perlin" fromLibrary="Perlin" />
+            </pass>
+
+            <pass class = "quad" name="Octaves" >
+                <viewport name="right"/>
+                <material name="octave" fromLibrary="Perlin" />
+
+            </pass>
+        </pipeline>
+    </pipelines>
+
+    <interface>
+<window label="Perlin settings" >
+    <var label="Num  Octaves" type="RENDERER" context="CURRENT" component="num_octaves" def="step=1 min=1 max=8" />
+    <var label="Octave" type="RENDERER" context="CURRENT" component="octave" def="step=1 min=1 max=8" />
+    <var label="Scale" type="RENDERER" context="CURRENT" component="scale" def="step=0.1 min=0.1 max=8" />
+</window>
+
+    </interface>
+</project>

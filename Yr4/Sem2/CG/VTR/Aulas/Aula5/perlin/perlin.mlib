@@ -1,0 +1,35 @@
+<materialLib name="Perlin">
+
+    <shaders>
+        <shader name="octave" vs ="shaders/quad.vert"
+                              ps="shaders/octave.frag" />
+        <shader name="perlin" vs="shaders/quad.vert"
+                              ps="shaders/perlin.frag" />
+    </shaders>
+
+    <materials>
+        <material name="octave" >
+            <shader name="octave" >
+                <values>
+                    <valueof uniform="octave" 
+                                type="RENDERER" component="octave" />
+                    <valueof uniform="scale" 
+                                type="RENDERER" component="scale" />
+                </values>
+            </shader>
+        </material>
+
+        <material name="perlin" >
+            <shader name="perlin" >
+                <values>
+                    <valueof uniform="num_octaves" 
+                                type="RENDERER" component="num_octaves" />
+                    <valueof uniform="scale" 
+                                type="RENDERER" component="scale" />
+                </values>
+            </shader>
+        </material>
+
+    </materials>
+
+</materialLib>
