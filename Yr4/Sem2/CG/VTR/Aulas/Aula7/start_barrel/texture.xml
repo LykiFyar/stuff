@@ -102,10 +102,10 @@
 			</pass>
 		</pipeline>
 
-		<pipeline name="BarrelDeferred">
+		<pipeline name="BarrelDeferred" defaultCamera="MainCamera">
 			
 			<pass class="default" name="barrels" >
-				<COLOR_CLEAR value = "false" />
+				<!--COLOR_CLEAR value = "false" /-->
 				<scenes instances="30000">
 					<scene name="Barrel" />
 				</scenes>
@@ -114,6 +114,7 @@
 					<light name="Sun" />
 				</lights>
 				<renderTarget name="gBuffer" fromLibrary="Texture"/>
+				<viewport name="MainViewport" />
 				<materialMaps>
 					<map fromMaterial="DefaultOBJMaterial" toMaterial="gBuffer" toLibrary="Texture" />
 				</materialMaps>
@@ -129,11 +130,18 @@
 				</lights>
 			</pass>
 
-			<!--pass class="quad" name="render">
+			<pass class="quad" name="render">
 				<COLOR_CLEAR value="false" />
 				<viewport name="MainViewport" />
 				<material name="deferred" fromLibrary="Texture" />
-			</pass-->
+				<renderTarget name="color" fromLibrary="Texture"/>
+			</pass>
+
+			<pass class="quad" name="resolve">
+				<COLOR_CLEAR value="false" />
+				<viewport name="MainViewport" />
+				<material name="resolve" fromLibrary="Texture" />
+			</pass>
 		</pipeline>
 		
 		
