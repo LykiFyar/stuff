@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<materialLib name="geom test">
+
+
+	<shaders>
+		<shader name="pass through" 	ps="shaders/pixeldirdifambspec.frag" 
+										gs="shaders/passthrough.geom"
+										vs="shaders/pixeldirdifambspec.vert" />
+	</shaders>
+	
+	<materials>
+	
+		<material name="pass through" >
+			<shader name="pass through" >
+				<values>
+					<valueof uniform="m_pvm" 	type="RENDERER" 
+                        						component="PROJECTION_VIEW_MODEL"  />	
+												
+					<valueof uniform="m_normal" type="RENDERER" 						
+                                                component="NORMAL"  />	
+												
+					<valueof uniform="m_view" 	type="RENDERER" 						
+                                                component="VIEW"  />	
+												
+					<valueof uniform="l_dir"	type="LIGHT" 
+                                                component="DIRECTION" id="0"/>
+							
+				</values>
+			</shader>
+		</material>
+	
+	</materials>
+	
+</materialLib>

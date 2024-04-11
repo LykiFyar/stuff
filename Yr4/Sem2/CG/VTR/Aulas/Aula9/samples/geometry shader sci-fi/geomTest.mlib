@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<materialLib name="geom test">
+
+	<shaders>
+		<shader name="scifi" 	ps="shaders/pixeldirdifambspec.frag" 
+								gs="shaders/scifi.geom" 
+								vs="shaders/pixeldirdifambspec.vert" />
+	</shaders>
+	
+	<materials>
+	
+		<material name="scifi" >
+			<shader name="scifi" >
+				<values>
+					<valueof uniform="scale" 	type="RENDERER"  
+												component="scale"  />	
+												
+					<valueof uniform="timer" 	type="RENDERER"  
+												component="TIMER"  />	
+												
+					<valueof uniform="m_p" 	type="RENDERER"  
+												component="PROJECTION"  />	
+												
+					<valueof uniform="m_vm" 	type="RENDERER"  
+												component="VIEW_MODEL"  />	
+												
+					<valueof uniform="m_normal" 	type="RENDERER"  
+												component="NORMAL"  />	
+												
+					<valueof uniform="m_view" 	type="RENDERER"  
+												component="VIEW"  />	
+												
+					<valueof uniform="l_dir"	type="LIGHT" 
+												component="DIRECTION" id="0"/>
+							
+				</values>
+			</shader>
+		</material>
+	
+	</materials>
+	
+</materialLib>
