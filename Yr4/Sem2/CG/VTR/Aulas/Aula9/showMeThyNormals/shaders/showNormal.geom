@@ -1,7 +1,7 @@
 #version 420
  
 layout(triangles) in;
-layout (line_strip, max_vertices=6) out;
+layout (line_strip, max_vertices=18) out;
 
 uniform mat4 m_pvm;
 
@@ -26,10 +26,64 @@ void main() {
 	EndPrimitive();
 
 	gl_Position = m_pvm * gl_in[1].gl_Position;
+	color = vec4(0, 1, 0, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[1].gl_Position + vec4(DataIn[1].normal, 0.0) * linelength);
+	color = vec4(0, 1, 0, 1);
+	EmitVertex();
+	EndPrimitive();
+
+	gl_Position = m_pvm * gl_in[2].gl_Position;
+	color = vec4(0, 1, 0, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[2].gl_Position + vec4(DataIn[2].normal, 0.0) * linelength);
+	color = vec4(0, 1, 0, 1);
+	EmitVertex();
+	EndPrimitive();
+
+	// Tangent
+
+	gl_Position = m_pvm * gl_in[0].gl_Position;
+	color = vec4(1, 0, 0, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[0].gl_Position + DataIn[0].tangent * linelength);
+	color = vec4(1, 0, 0, 1);
+	EmitVertex();
+	EndPrimitive();
+
+	gl_Position = m_pvm * gl_in[1].gl_Position;
 	color = vec4(1, 0, 0, 1);
 	EmitVertex();
 	gl_Position = m_pvm * (gl_in[1].gl_Position + DataIn[1].tangent * linelength);
 	color = vec4(1, 0, 0, 1);
+	EmitVertex();
+	EndPrimitive();
+
+
+	gl_Position = m_pvm * gl_in[2].gl_Position;
+	color = vec4(1, 0, 0, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[2].gl_Position + DataIn[2].tangent * linelength);
+	color = vec4(1, 0, 0, 1);
+	EmitVertex();
+	EndPrimitive();
+
+
+	// Bitangent
+
+	gl_Position = m_pvm * gl_in[0].gl_Position;
+	color = vec4(0, 0, 1, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[0].gl_Position + DataIn[0].bitangent * linelength);
+	color = vec4(0, 0, 1, 1);
+	EmitVertex();
+	EndPrimitive();
+	
+	gl_Position = m_pvm * gl_in[1].gl_Position;
+	color = vec4(0, 0, 1, 1);
+	EmitVertex();
+	gl_Position = m_pvm * (gl_in[1].gl_Position + DataIn[1].bitangent * linelength);
+	color = vec4(0, 0, 1, 1);
 	EmitVertex();
 	EndPrimitive();
 
