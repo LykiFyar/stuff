@@ -1,0 +1,79 @@
+<materialLib name="Compute">
+
+    <shaders>
+        <shader name="cb" cs="comp.comp" />
+        <shader name="cb2" cs="comp2.comp" />
+    </shaders>
+
+    <textures>
+        <texture name="src" file="image.jpg" />
+        <texture name="dest">
+            <WIDTH value="1599" />
+            <HEIGHT value="1602" />
+            <DEPTH value="1" />
+            <INTERNAL_FORMAT value="RGBA" />
+        </texture>
+    </textures>
+
+    <buffers>
+        <buffer name="src" >
+            <DIM x=5 y=1 z=1 />         <!-- Este buffer vai ser um buffer de registos com 5 linhas e cada linha com 1 valor -->
+            <structure>
+                <field value="FLOAT" /> <!-- Cada valor é um float. se y = 3 teria que meter field = FLOAT  3 vezes--> 
+            </structure>
+            <file name="b.txt"/>        <!-- se for um ficheiro binario posso passar como txt? e carrega-lo como binario na nau -->
+        </buffer>
+
+        <buffer name="dest">
+            <DIM x=5 y=1 z=1 />
+            <structure>
+                <field value="FLOAT" />
+            </structure>
+        </buffer>
+    </buffers>
+
+    <materials>
+
+        <material name="copyImage">
+
+            <shader name="cb2" >
+                <values>
+                    <valueof uniform="imageUnit"
+                             type="IMAGE_TEXTURE" id="3" component="UNIT"/>
+                    <valueof uniform="texUnit"
+                             type="TEXTURE_BINDING" id="2" component="UNIT"/>
+                </values>
+            </shader>
+
+            <textures>
+                <texture name="src" UNIT="2" />
+            </textures>
+
+            <imageTextures> <!-- Nestas textures podemos ler e escrever enquanto que nas normais podemos apenas ler -->
+                <imageTexture UNIT="3" texture="dest">
+                    <ACCESS value="WRITE_ONLY" />
+                    <LEVEL value="0" />
+                </imageTexture>             <!--  FALTAM COISAAAAAAAAAAS -->
+            </imageTextures>
+
+        </material>
+
+        <material name="copyBuffer">
+
+            <shader name="cb" />
+
+            <buffers>
+                <buffer name="src">
+                    <TYPE value="SHADER_STORAGE" />
+                    <BINDING_POINT value="1" /> <!-- Não usar o 0 -->
+                </buffer>
+
+                <buffer name="dest">
+                    <TYPE value="SHADER_STORAGE" />
+                    <BINDING_POINT value="2" />
+                </buffer>
+            </buffers>
+        </material>
+    </materials>
+
+</materialLib>

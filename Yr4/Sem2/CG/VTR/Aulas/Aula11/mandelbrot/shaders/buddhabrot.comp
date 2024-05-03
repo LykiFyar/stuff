@@ -1,0 +1,74 @@
+#version 460
+
+layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+const int max_it = 512;
+const int max_it_medium = 256;
+const int max_it_small = 128;
+
+uniform float scale = 1.0;
+
+
+const float PI = 3.14159265359;
+
+layout(std430, binding = 1) buffer result {
+	uvec4 color[];
+};
+
+uniform int power = 2;
+
+
+
+vec2 points[max_it];
+
+vec2 complexPower(vec2 c, float exp) {
+
+    float r = pow(sqrt(c.x*c.x + c.y*c.y), exp);
+    float angle;
+
+    if (c.x == 0)
+        angle = PI * 0.5;
+    else {
+        angle = atan(c.y/c.x);
+        if (c.x < 0)
+            angle += PI;
+    }
+    angle = angle * exp;
+    return vec2(r * cos(angle), r * sin(angle));
+}
+
+
+void main() {
+
+    int index;
+
+    vec2 img_dims = vec2(1024.0,1024.0);
+
+    vec2 point = (vec2(vec2(gl_GlobalInvocationID.xy) / img_dims) * 2.0 - 1.0) / scale;
+
+    int it = 0;
+    vec2 z = vec2(0,0);
+    while ((it < max_it) && (length(z) < 2)) {
+        z = complexPower(z,power) + point;
+        points[it] = z;
+        it++;
+    }
+
+    if (it < max_it) {
+
+        for (int i = 0; i < it; ++i) {
+
+            ivec2 index2 = clamp(ivec2( img_dims * (points[i] * scale * 0.5 + 0.5) ), ivec2(0), ivec2(img_dims)-1);
+            index = index2.x * 1024 + index2.y;
+            
+            if (i < max_it_small)
+                atomicAdd(color[index].x, 1);
+            if (i < max_it_medium)
+                atomicAdd(color[index].y, 1);
+
+            atomicAdd(color[index].z, 1);
+        }
+    }
+
+        
+} 

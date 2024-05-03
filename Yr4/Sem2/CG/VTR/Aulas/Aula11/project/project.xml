@@ -1,0 +1,19 @@
+<project name="bla" width="512" height="512">
+
+    <assets>
+        <materialLibs>
+            <materialLib filename="project.mlib"/>
+        </materialLibs>
+    </assets>
+
+    <pipelines>
+        <pipeline name="bla">
+            <pass class="compute" name="bla">
+                <material name="copyBuffer" fromLibrary="Compute"
+                          dimX="1599" dimY="1602" dimZ="1" />
+                    <!--  dimX="5" dimY="1" dimZ="1" /> -->
+            </pass>
+        </pipeline>
+    </pipelines>
+
+</project>

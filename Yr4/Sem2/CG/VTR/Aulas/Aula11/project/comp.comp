@@ -1,0 +1,19 @@
+#version 460
+
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+layout(std430, binding = 1) buffer srcBuffer
+{
+    float srcPos[];
+};
+
+layout(std430, binding = 2) buffer destBuffer
+{
+    float destPos[];
+};
+
+void main()
+{
+    uint index = gl_GlobalInvocationID.x; // indice da coordenada dentro do buffer
+    destPos[index] = srcPos[index];
+}

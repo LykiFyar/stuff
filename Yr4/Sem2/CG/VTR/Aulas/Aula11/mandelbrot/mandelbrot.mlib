@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<materialLib name="ImageProcessing">
+
+	<buffers>
+		<buffer name="result">
+			<DIM x=1024 y=1024 z=1 />
+			<CLEAR value="BY_FRAME" />
+			<structure>
+				<field value="UINT" />
+				<field value="UINT" />
+				<field value="UINT" />
+				<field value="UINT" />
+			</structure>	
+		</buffer>
+	</buffers>	
+
+	<shaders>		
+		<shader name="mandelbrot" 		vs = "shaders/quad.vert"
+										ps = "shaders/mandelbrot.frag" /> 
+
+		<shader name="julia" 		    vs = "shaders/quad.vert"
+										ps = "shaders/julia.frag" /> 
+
+        <shader name="buddhabrot"       cs = "shaders/buddhabrot.comp" />
+
+
+        <shader name="showBuddhabrot"   vs = "shaders/quad.vert"
+										ps = "shaders/showBuddhabrot.frag" /> 
+
+
+	</shaders>
+
+	<materials>
+		
+		<material name ="mandelbrot">
+			<shader name="mandelbrot">
+				<values>									
+					<valueof uniform="vp_dims"		
+                                type="VIEWPORT" context="CURRENT"
+								component="ABSOLUTE_SIZE" />		
+					<valueof uniform="timer"		
+                                type="RENDERER" context="CURRENT"
+								component="TIMER" />	
+					<valueof uniform="scale"		
+                                type="RENDERER" context="CURRENT"
+								component="scale" />	
+					<valueof uniform="max_it"		
+                                type="RENDERER" context="CURRENT"
+								component="max_it" />	
+					<valueof uniform="power"		
+                                type="RENDERER" context="CURRENT"
+								component="power" />	
+					<valueof uniform="center"		
+                                type="RENDERER" context="CURRENT"
+								component="center" />	
+				</values>
+			</shader>
+        </material>
+
+		<material name ="julia">
+			<shader name="julia">
+				<values>									
+					<valueof uniform="vp_dims"		
+                                type="VIEWPORT" context="CURRENT"
+								component="ABSOLUTE_SIZE" />		
+					<valueof uniform="timer"		
+                                type="RENDERER" context="CURRENT"
+								component="TIMER" />	
+					<valueof uniform="scale"		
+                                type="RENDERER" context="CURRENT"
+								component="scale" />	
+					<valueof uniform="radius"		
+                                type="RENDERER" context="CURRENT"
+								component="radius" />	
+					<valueof uniform="max_it"		
+                                type="RENDERER" context="CURRENT"
+								component="max_it" />	
+					<valueof uniform="power"		
+                                type="RENDERER" context="CURRENT"
+								component="power" />	
+					<valueof uniform="center"		
+                                type="RENDERER" context="CURRENT"
+								component="center" />	
+                    <value uniform="click_pos" 
+                                type="RENDERER" context="CURRENT"
+                                component="MOUSE_RIGHT_CLICK" />
+				</values>
+			</shader>
+        </material>
+
+		<material name ="buddhabrot">
+			<shader name="buddhabrot">
+				<values>									
+					<valueof uniform="power"		
+                                type="RENDERER" context="CURRENT"
+								component="power" />	
+					<valueof uniform="scale"		
+                                type="RENDERER" context="CURRENT"
+								component="scale" />	
+				</values>
+			</shader>
+            <buffers>
+                <buffer name="result" >
+                    <TYPE value="SHADER_STORAGE" />
+                    <BINDING_POINT value="1" />
+                </buffer>
+            </buffers>
+        </material>
+
+		<material name ="showBuddhabrot">
+			<shader name="showBuddhabrot" />
+
+            <buffers>
+                <buffer name="result" >
+                    <TYPE value="SHADER_STORAGE" />
+                    <BINDING_POINT value="1" />
+                </buffer>
+            </buffers>
+        </material>
+
+	</materials>
+</materialLib>

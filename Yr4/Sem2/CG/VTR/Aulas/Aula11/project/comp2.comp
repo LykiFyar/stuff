@@ -1,0 +1,19 @@
+#version 460
+
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+uniform sampler2D texUnit;
+uniform writeonly image2D imageUnit;
+
+
+void main()
+{
+    ivec2 loc = ivec2(gl_GlobalInvocationID.xy);
+    vec4 pixel = texelFetch(texUnit, loc, 0);
+    
+    // Escreve o pixel na imagem
+    imageStore(imageUnit, loc, pixel);
+
+    // Ler o pixel da imagem
+    //vec4 pixel2 = imageLoad(imageUnit, loc);
+}

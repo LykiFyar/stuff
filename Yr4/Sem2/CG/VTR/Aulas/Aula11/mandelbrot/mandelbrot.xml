@@ -1,0 +1,75 @@
+
+<?xml version="1.0" ?>
+<project name="Mandelbrot" width="1024" height="1024">
+	<assets>
+        <attributes>
+            <attribute type="RENDERER" name="scale" data="FLOAT" value = 0.5 />
+            <attribute type="RENDERER" name="radius" data="FLOAT" value = 0.15 />
+            <attribute type="RENDERER" name="max_it" data="INT" value = 200 />
+            <attribute type="RENDERER" name="power" data="INT" value = 2 />
+            <attribute type="RENDERER" name="center" data="VEC2" x="0" y="0"  />
+
+        </attributes>
+		<viewports>
+			<viewport name="Main" >
+				<CLEAR_COLOR  r="0.0" g="0.0" b="0.0" />
+			</viewport>
+		</viewports>
+	
+		<materialLibs>
+			<materialLib filename="mandelbrot.mlib"/>
+		</materialLibs>
+	</assets>
+
+	<pipelines>
+		<pipeline name="mandelbrot" >
+			<pass class="quad" name="mandelbrot" >
+				<viewport name="Main" />
+				<materialMaps>
+					<map fromMaterial="*" 
+                         toMaterial="mandelbrot" 
+                         toLibrary="ImageProcessing" />
+				</materialMaps>
+			</pass>		
+		</pipeline>
+		<pipeline name="julia" >
+			<pass class="quad" name="julia" >
+				<viewport name="Main" />
+				<materialMaps>
+					<map fromMaterial="*" 
+                         toMaterial="julia" 
+                         toLibrary="ImageProcessing" />
+				</materialMaps>
+			</pass>		
+		</pipeline>
+		<pipeline name="buddhabrot" >
+			<pass class="compute" name="buddhabrot" >
+                <material name="buddhabrot" fromLibrary="ImageProcessing"
+                        dimX = 1024 dimY = 1024 dimZ = 1 />
+			</pass>		
+			<pass class="quad" name="show" >
+				<viewport name="Main" />
+				<material name="showBuddhabrot" fromLibrary="ImageProcessing" />
+			</pass>		
+		</pipeline>
+	
+	</pipelines>
+	
+	<interface>
+		<window label="settings" >
+            <pipelineList label="Fractal" />
+            <var label="scale" type="RENDERER" 
+                    context="CURRENT" component="scale" def="min=0.1 max=10 step=0.1"/>
+            <var label="max it." type="RENDERER" 
+                    context="CURRENT" component="max_it" />
+            <var label="center" type="RENDERER" 
+                    context="CURRENT" component="center" />
+            <var label="power" type="RENDERER" 
+                    context="CURRENT" component="power" def="min=1 max=10"/>
+			<var label="radius (Julia)" type="RENDERER" 
+                    context="CURRENT" component="radius" def="min=0.01 max=10 step=0.01"/>
+
+		</window>
+	</interface>
+	
+</project>

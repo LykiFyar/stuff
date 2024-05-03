@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<materialLib name="Compute">
+
+	<textures>
+		<texture name="tex">
+			<WIDTH value=512 />
+			<HEIGHT value=512 />
+			<INTERNAL_FORMAT value="RGBA" />
+		</texture>	
+		<texture name="source" filename="textures/lena.jpg" mipmap="0" />
+	</textures>
+
+	<shaders>
+		<shader name="compute" 		cs="shaders/filter.comp" /> 
+	</shaders>
+	
+	<materials>
+
+		<material name ="computeShader">
+			<shader name="compute">
+				<values>									
+					<valueof uniform="imageUnit"		type="IMAGE_TEXTURE" context="CURRENT"
+														id=1 component="UNIT" />
+					<valueof uniform="texUnit"		type="TEXTURE_BINDING" context="CURRENT"
+														id=1 component="UNIT" />								
+				</values>
+			</shader>
+			<textures>
+				<texture UNIT="1" name="source" />				
+			</textures>
+			<imageTextures>
+				<imageTexture UNIT=1 texture="tex" >
+					<ACCESS value="WRITE_ONLY" />
+					<LEVEL value=0 />
+				</imageTexture>
+			</imageTextures>	
+		</material>
+		</materials>
+
+</materialLib>

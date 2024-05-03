@@ -1,0 +1,26 @@
+#version 430
+
+layout (local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+
+uniform writeonly image2D imageUnit;
+uniform sampler2D texUnit;
+
+float gaussian_kernel[5][5] = {{1,  4,  6,  4,  1},
+                   			   {4, 16, 24, 16,  4},
+                   			   {6, 24, 36, 24,  6},
+                   			   {4, 16, 24, 16,  4},
+                   			   {1,  4,  6,  4,  1}};
+
+// Note: the result of applying the kernel must be divided by 256
+
+void main()
+{
+	ivec2 i = ivec2(gl_GlobalInvocationID.xy) ;
+	
+	// compute the filter in here
+	vec4 res = vec4(0) ;
+
+	ivec2 storeLoc = ivec2(gl_GlobalInvocationID) ;
+
+	imageStore(imageUnit, storeLoc, res);
+} 
